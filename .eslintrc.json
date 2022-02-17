@@ -1,9 +1,5 @@
 {
-  "extends": [
-    "airbnb",
-    "plugin:prettier/recommended",
-    "prettier/react"
-  ],
+  "extends": ["airbnb", "prettier", "plugin:@typescript-eslint/recommended"],
   "env": {
     "browser": true,
     "commonjs": true,
@@ -11,9 +7,24 @@
     "jest": true,
     "node": true
   },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  },
   "rules": {
+    "import/no-unresolved": [2, { "caseSensitive": false }],
+    "no-shadow": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "react/function-component-definition": "off",
+    "react/react-in-jsx-scope": "off",
     "jsx-a11y/href-no-hash": ["off"],
-    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
     "max-len": [
       "warn",
       {
