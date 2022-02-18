@@ -8,6 +8,7 @@ export const StyledPaper = styled(Paper)`
   align-items: center;
 
   border-radius: 0;
+  border: 1px solid black;
 `;
 
 export const StyledCopyright = styled.div`

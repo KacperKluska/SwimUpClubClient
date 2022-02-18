@@ -13,7 +13,7 @@ import {
 } from './AppFooter.styles';
 
 export const AppFooter = () => (
-  <StyledPaper elevation={0} sx={{ width: '100%', height: '300px' }}>
+  <StyledPaper elevation={0}>
     <StyledData>
       <StyledColumn>
         <StyledColumnHeader>{translate('footer.contact')}</StyledColumnHeader>
