@@ -1,9 +1,9 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import { blue, deepPurple, green, grey } from '@mui/material/colors';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MyAppBar } from './components/AppBar/MyAppBar.component';
 import { AppFooter } from './components/AppFooter/AppFooter.component';
-import { MainMenu } from './components/MainMenu/MainMenu.component';
+import { Routing } from './pages/Routing/Routing.component';
 import { LOCALES, translate, TranslationsProvider } from './translations/src';
 
 function App() {
@@ -26,22 +26,6 @@ function App() {
     },
   });
 
-  const coachMenuItems = [
-    'addWorkout',
-    'swimmers',
-    'dictionary',
-    'calendar',
-    'timer',
-  ];
-  const swimmerMenuItems = [
-    'workouts',
-    'coaches',
-    'dictionary',
-    'calendar',
-    'timer',
-  ];
-  const adminMenuItems = ['swimmers', 'coaches', 'newsletter'];
-
   return (
     <TranslationsProvider
       locale={language === 'PL' ? LOCALES.POLISH : LOCALES.ENGLISH}
@@ -55,7 +39,7 @@ function App() {
           language={language}
           setLanguage={setLanguage}
         />
-        <MainMenu items={coachMenuItems} />
+        <Routing />
         <AppFooter />
       </ThemeProvider>
     </TranslationsProvider>
