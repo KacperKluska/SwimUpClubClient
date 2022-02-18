@@ -26,5 +26,16 @@ export default {
       contact: 'Kontakt',
       socialMedia: 'Social media',
     },
+    timer: {
+      timer: 'Stoper',
+      start: 'Start',
+      pause: 'Pauza',
+      resume: 'Wznów',
+      split: 'Międzyczas',
+      reset: 'Resetuj',
+      stop: 'Stop',
+      copy: 'Kopiuj',
+      copiedMessage: 'Międzyczas skopiowany',
+    },
   },
 };
