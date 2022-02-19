@@ -13,6 +13,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { FormControl, InputLabel, Select } from '@mui/material';
 import { translate } from '../../translations/src';
+import { CustomLink } from '../CustomLink/CustomLink.component';
 
 interface Props {
   title: React.ReactNode;
@@ -43,7 +44,10 @@ export const MyAppBar = ({
     setAnchorElUser(null);
   };
 
-  const settings = ['Profile', 'Logout'];
+  const settings = [
+    { name: 'Profile', path: '/settings' },
+    { name: 'Logout', path: '/' },
+  ];
 
   return (
     <AppBar position="static">
@@ -55,7 +59,9 @@ export const MyAppBar = ({
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}
           >
-            {title}
+            <CustomLink path="/">
+              <div>{title}</div>
+            </CustomLink>
           </Typography>
 
           <Box
@@ -112,9 +118,11 @@ export const MyAppBar = ({
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
+                <CustomLink path={setting.path}>
+                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.name}</Typography>
+                  </MenuItem>
+                </CustomLink>
               ))}
             </Menu>
           </Box>

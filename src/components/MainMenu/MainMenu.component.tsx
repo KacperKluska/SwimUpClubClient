@@ -1,6 +1,6 @@
 import { MenuCardItem } from '../../pages/MainMenuPage/MainMenuPage.component';
 import { translate } from '../../translations/src';
-import { StyledLink } from '../CustomLink/CustomLink.styles';
+import { CustomLink } from '../CustomLink/CustomLink.component';
 import { StyledPaper, StyledCard } from './MainMenu.styles';
 
 interface MainMenuProps {
@@ -10,11 +10,11 @@ interface MainMenuProps {
 export const MainMenu = ({ items }: MainMenuProps) => (
   <StyledPaper>
     {items.map((item) => (
-      <StyledLink to={item.path}>
+      <CustomLink path={item.path}>
         <StyledCard elevation={4}>
           {translate(`mainMenu.cards.${item.name}`)}
         </StyledCard>
-      </StyledLink>
+      </CustomLink>
     ))}
   </StyledPaper>
 );
