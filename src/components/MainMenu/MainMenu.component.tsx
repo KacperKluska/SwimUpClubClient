@@ -10,7 +10,7 @@ interface MainMenuProps {
 export const MainMenu = ({ items }: MainMenuProps) => (
   <StyledPaper>
     {items.map((item) => (
-      <CustomLink path={item.path}>
+      <CustomLink path={item.path} key={item.name}>
         <StyledCard elevation={4}>
           {translate(`mainMenu.cards.${item.name}`)}
         </StyledCard>

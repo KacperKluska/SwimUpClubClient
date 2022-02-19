@@ -11,42 +11,27 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { FormControl, InputLabel, Select } from '@mui/material';
+import { Button, FormControl, InputLabel, Select } from '@mui/material';
 import { translate } from '../../translations/src';
 import { CustomLink } from '../CustomLink/CustomLink.component';
-import { UserContext } from '../../context/UserContext';
+import { Routes } from '../../pages/Routing/Routes.type';
 
 interface Props {
   title: React.ReactNode;
   name: string;
+  userLogged?: boolean;
+  setUserLogged?: React.Dispatch<React.SetStateAction<boolean>>;
   darkMode?: boolean;
   setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>;
   language?: string;
   setLanguage?: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const handleLangChange = (
-  language?: string,
-  setLanguage?: React.Dispatch<React.SetStateAction<string>>,
-) => {
-  if (setLanguage !== undefined)
-    setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'));
-  if (language !== undefined)
-    localStorage.setItem('language', language === 'PL' ? 'EN' : 'PL');
-};
-
-const handleThemeChange = (
-  darkMode?: boolean,
-  setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>,
-) => {
-  if (setDarkMode !== undefined) setDarkMode((prev) => !prev);
-  if (darkMode !== undefined)
-    localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
-};
-
 export const MyAppBar = ({
   title,
   name,
+  userLogged,
+  setUserLogged,
   darkMode = false,
   setDarkMode,
   language = 'PL',
@@ -64,9 +49,30 @@ export const MyAppBar = ({
     setAnchorElUser(null);
   };
 
+  const handleLangChange = () => {
+    if (setLanguage !== undefined)
+      setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'));
+    if (language !== undefined)
+      localStorage.setItem('language', language === 'PL' ? 'EN' : 'PL');
+  };
+
+  const handleThemeChange = () => {
+    if (setDarkMode !== undefined) setDarkMode((prev) => !prev);
+    if (darkMode !== undefined)
+      localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
+  };
+
+  const handleLogin = () => {
+    if (setUserLogged !== undefined) setUserLogged(true);
+  };
+
+  const handleLogout = () => {
+    if (setUserLogged !== undefined) setUserLogged(false);
+  };
+
   const settings = [
-    { name: 'Profile', path: '/settings' },
-    { name: 'Logout', path: '/' },
+    { name: 'profile', path: Routes.SETTINGS },
+    { name: 'logout', path: Routes.HOME, onClick: handleLogout },
   ];
 
   return (
@@ -79,7 +85,7 @@ export const MyAppBar = ({
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}
           >
-            <CustomLink path="/">
+            <CustomLink path={userLogged ? '/main-menu' : '/'}>
               <div>{title}</div>
             </CustomLink>
           </Typography>
@@ -100,7 +106,7 @@ export const MyAppBar = ({
                 id="demo-simple-select-helper"
                 value={language}
                 label="Age"
-                onChange={() => handleLangChange(language, setLanguage)}
+                onChange={handleLangChange}
                 defaultValue="PL"
               >
                 <MenuItem value="PL">PL</MenuItem>
@@ -109,16 +115,24 @@ export const MyAppBar = ({
             </FormControl>
             <IconButton
               sx={{ ml: 1 }}
-              onClick={() => handleThemeChange(darkMode, setDarkMode)}
+              onClick={handleThemeChange}
               color="inherit"
             >
               {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
             </IconButton>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt={name} src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
+            {userLogged ? (
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt={name} src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+            ) : (
+              <CustomLink path={Routes.LOGIN}>
+                <Button type="button" onClick={handleLogin}>
+                  {translate('appBar.signIn')}
+                </Button>
+              </CustomLink>
+            )}
             <Menu
               sx={{ mt: '45px' }}
               id="menu-appbar"
@@ -136,9 +150,15 @@ export const MyAppBar = ({
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <CustomLink path={setting.path}>
-                  <MenuItem key={setting.name} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting.name}</Typography>
+                <CustomLink path={setting.path} key={setting.name}>
+                  <MenuItem
+                    key={setting.name}
+                    onClick={handleCloseUserMenu}
+                    sx={{ width: '100%' }}
+                  >
+                    <Typography textAlign="center" onClick={setting?.onClick}>
+                      {translate(`appBar.${setting.name}`)}
+                    </Typography>
                   </MenuItem>
                 </CustomLink>
               ))}

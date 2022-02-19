@@ -9,6 +9,17 @@ export default {
     appBar: {
       appName: 'SwimUp Club',
       language: 'Language',
+      signIn: 'Sign in',
+      profile: 'Profile',
+      logout: 'Logout',
+    },
+    loginPage: {
+      title: 'Sign in',
+      email: 'Email',
+      emailPrompt: 'Enter your email address',
+      password: 'Password',
+      passwordPrompt: 'Enter your password',
+      signIn: 'Sign in',
     },
     mainMenu: {
       cards: {

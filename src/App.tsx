@@ -8,7 +8,8 @@ import { Routing } from './pages/Routing/Routing.component';
 import { LOCALES, translate, TranslationsProvider } from './translations/src';
 
 function App() {
-  const { lang, theme } = useContext(UserContext);
+  const { isLogged, lang, theme } = useContext(UserContext);
+  const { userLogged, setUserLogged } = { ...isLogged };
   const { language, setLanguage } = { ...lang };
   const { darkMode, setDarkMode } = { ...theme };
 
@@ -36,6 +37,8 @@ function App() {
         <MyAppBar
           title={translate('appName')}
           name="Kacper"
+          userLogged={userLogged}
+          setUserLogged={setUserLogged}
           darkMode={darkMode}
           setDarkMode={setDarkMode}
           language={language}
