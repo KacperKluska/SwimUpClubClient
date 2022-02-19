@@ -3,11 +3,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './theme/reset.css';
+import { UserContextProvider } from './context/UserContext';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <UserContextProvider>
+        <App />
+      </UserContextProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root'),

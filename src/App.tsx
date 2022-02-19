@@ -1,14 +1,16 @@
 import { createTheme, ThemeProvider } from '@mui/material';
 import { blue, deepPurple, green, grey } from '@mui/material/colors';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { MyAppBar } from './components/AppBar/MyAppBar.component';
 import { AppFooter } from './components/AppFooter/AppFooter.component';
+import { UserContext } from './context/UserContext';
 import { Routing } from './pages/Routing/Routing.component';
 import { LOCALES, translate, TranslationsProvider } from './translations/src';
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
-  const [language, setLanguage] = useState('PL');
+  const { lang, theme } = useContext(UserContext);
+  const { language, setLanguage } = { ...lang };
+  const { darkMode, setDarkMode } = { ...theme };
 
   const darkTheme = createTheme({
     palette: {

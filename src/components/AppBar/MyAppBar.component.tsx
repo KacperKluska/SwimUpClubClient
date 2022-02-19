@@ -14,15 +14,35 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { FormControl, InputLabel, Select } from '@mui/material';
 import { translate } from '../../translations/src';
 import { CustomLink } from '../CustomLink/CustomLink.component';
+import { UserContext } from '../../context/UserContext';
 
 interface Props {
   title: React.ReactNode;
   name: string;
-  darkMode: boolean;
-  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
-  language: string;
-  setLanguage: React.Dispatch<React.SetStateAction<string>>;
+  darkMode?: boolean;
+  setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>;
+  language?: string;
+  setLanguage?: React.Dispatch<React.SetStateAction<string>>;
 }
+
+const handleLangChange = (
+  language?: string,
+  setLanguage?: React.Dispatch<React.SetStateAction<string>>,
+) => {
+  if (setLanguage !== undefined)
+    setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'));
+  if (language !== undefined)
+    localStorage.setItem('language', language === 'PL' ? 'EN' : 'PL');
+};
+
+const handleThemeChange = (
+  darkMode?: boolean,
+  setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>,
+) => {
+  if (setDarkMode !== undefined) setDarkMode((prev) => !prev);
+  if (darkMode !== undefined)
+    localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
+};
 
 export const MyAppBar = ({
   title,
@@ -80,9 +100,7 @@ export const MyAppBar = ({
                 id="demo-simple-select-helper"
                 value={language}
                 label="Age"
-                onChange={() =>
-                  setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'))
-                }
+                onChange={() => handleLangChange(language, setLanguage)}
                 defaultValue="PL"
               >
                 <MenuItem value="PL">PL</MenuItem>
@@ -91,7 +109,7 @@ export const MyAppBar = ({
             </FormControl>
             <IconButton
               sx={{ ml: 1 }}
-              onClick={() => setDarkMode((prev) => !prev)}
+              onClick={() => handleThemeChange(darkMode, setDarkMode)}
               color="inherit"
             >
               {darkMode ? <Brightness7Icon /> : <Brightness4Icon />}
