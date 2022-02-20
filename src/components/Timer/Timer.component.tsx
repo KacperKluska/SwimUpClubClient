@@ -1,6 +1,6 @@
 import { Alert, Snackbar } from '@mui/material';
 import { useState } from 'react';
-import { translate } from '../../translations/src';
+import { useTranslations } from '../../translations/src';
 import { getTimeString } from '../../utils/getTimeString';
 import { StyledTimer, StyledHeader, StyledButtons } from './Timer.styles';
 import { useTimer } from './useTimer';
@@ -9,6 +9,7 @@ export const Timer = () => {
   const { time, setTime, timerOn, setTimerOn, meantime, setMeantime } =
     useTimer();
   const [open, setOpen] = useState(false);
+  const translate = useTranslations();
 
   const handleSnackBarClick = () => {
     setOpen(true);

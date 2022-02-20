@@ -1,7 +1,7 @@
 /* eslint-disable import/named */
 
 import TranslationsProvider from './components/TranslationsProvider';
-import translate from './services/translate';
 import LOCALES from './utils/locales';
+import { useTranslations } from './services/useTranslation';
 
-export { TranslationsProvider, translate, LOCALES };
+export { TranslationsProvider, LOCALES, useTranslations };

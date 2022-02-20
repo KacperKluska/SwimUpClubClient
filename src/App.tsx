@@ -5,7 +5,7 @@ import { MyAppBar } from './components/AppBar/MyAppBar.component';
 import { AppFooter } from './components/AppFooter/AppFooter.component';
 import { UserContext } from './context/UserContext';
 import { Routing } from './pages/Routing/Routing.component';
-import { LOCALES, translate, TranslationsProvider } from './translations/src';
+import { LOCALES, TranslationsProvider } from './translations/src';
 
 function App() {
   const { isLogged, lang, theme } = useContext(UserContext);
@@ -35,7 +35,7 @@ function App() {
     >
       <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
         <MyAppBar
-          title={translate('appName')}
+          title="appName"
           name="Kacper"
           userLogged={userLogged}
           setUserLogged={setUserLogged}

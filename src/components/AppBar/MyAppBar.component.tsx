@@ -12,12 +12,12 @@ import MenuItem from '@mui/material/MenuItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Button, FormControl, InputLabel, Select } from '@mui/material';
-import { translate } from '../../translations/src';
 import { CustomLink } from '../CustomLink/CustomLink.component';
 import { Routes } from '../../pages/Routing/Routes.type';
+import { useTranslations } from '../../translations/src';
 
 interface Props {
-  title: React.ReactNode;
+  title: string;
   name: string;
   userLogged?: boolean;
   setUserLogged?: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +40,7 @@ export const MyAppBar = ({
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
     null,
   );
+  const translate = useTranslations();
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -86,7 +87,7 @@ export const MyAppBar = ({
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'flex' } }}
           >
             <CustomLink path={userLogged ? '/main-menu' : '/'}>
-              <div>{title}</div>
+              <div>{translate(title)}</div>
             </CustomLink>
           </Typography>
 
