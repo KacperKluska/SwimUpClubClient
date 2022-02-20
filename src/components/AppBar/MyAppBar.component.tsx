@@ -63,10 +63,6 @@ export const MyAppBar = ({
       localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
   };
 
-  const handleLogin = () => {
-    if (setUserLogged !== undefined) setUserLogged(true);
-  };
-
   const handleLogout = () => {
     if (setUserLogged !== undefined) setUserLogged(false);
   };
@@ -129,9 +125,7 @@ export const MyAppBar = ({
               </Tooltip>
             ) : (
               <CustomLink path={Routes.LOGIN}>
-                <Button type="button" onClick={handleLogin}>
-                  {translate('appBar.signIn')}
-                </Button>
+                <Button type="button">{translate('appBar.signIn')}</Button>
               </CustomLink>
             )}
             <Menu

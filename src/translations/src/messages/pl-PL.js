@@ -21,6 +21,8 @@ export default {
       password: 'Hasło',
       passwordPrompt: 'Wpisz swoje hasło',
       signIn: 'Zaloguj się',
+      wrongData:
+        'Podałeś błędny email i/lub hasło, spróbuj pownownie albo skontaktuj się z administratorem',
     },
     mainMenu: {
       cards: {

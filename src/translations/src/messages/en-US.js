@@ -20,6 +20,8 @@ export default {
       password: 'Password',
       passwordPrompt: 'Enter your password',
       signIn: 'Sign in',
+      wrongData:
+        'You passed wrong email and/or password, try again or contact administrator',
     },
     mainMenu: {
       cards: {
