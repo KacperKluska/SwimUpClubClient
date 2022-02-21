@@ -16,7 +16,7 @@ function App() {
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',
-      primary: grey,
+      primary: { main: grey[50] },
       secondary: deepPurple,
     },
   });
@@ -25,7 +25,7 @@ function App() {
     palette: {
       mode: 'light',
       primary: blue,
-      secondary: green,
+      secondary: { main: grey[50] },
     },
   });
 

@@ -35,7 +35,7 @@ export const LoginBox = () => {
         error={wrongData}
         id="outlined-error"
         label={translate('loginPage.email')}
-        value={null}
+        value={email}
         placeholder={translate('loginPage.emailPrompt')}
         onChange={(event) => handleEmailChange(event)}
       />

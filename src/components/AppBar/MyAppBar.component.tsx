@@ -11,7 +11,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { Button, FormControl, InputLabel, Select } from '@mui/material';
+import { Button, FormControl, InputLabel, Paper, Select } from '@mui/material';
 import { CustomLink } from '../CustomLink/CustomLink.component';
 import { Routes } from '../../pages/Routing/Routes.type';
 import { useTranslations } from '../../translations/src';
@@ -86,7 +86,6 @@ export const MyAppBar = ({
               <div>{translate(title)}</div>
             </CustomLink>
           </Typography>
-
           <Box
             sx={{
               flexGrow: 0,
@@ -125,7 +124,9 @@ export const MyAppBar = ({
               </Tooltip>
             ) : (
               <CustomLink path={Routes.LOGIN}>
-                <Button type="button">{translate('appBar.signIn')}</Button>
+                <Paper>
+                  <Button type="button">{translate('appBar.signIn')}</Button>
+                </Paper>
               </CustomLink>
             )}
             <Menu
