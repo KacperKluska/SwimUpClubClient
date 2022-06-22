@@ -23,6 +23,19 @@ export default {
       wrongData:
         'You passed wrong email and/or password, try again or contact administrator',
     },
+    settingsPage: {
+      profile: 'Profile',
+      profileDetails: 'Profile Details',
+      edit: 'Edit data',
+      email: 'Email',
+      name: 'Name',
+      surname: 'Surname',
+      age: 'Age',
+      weight: 'Weight',
+      height: 'Height',
+      phoneNumber: 'Phone number',
+      gender: 'Gender',
+    },
     mainMenu: {
       cards: {
         addWorkout: 'Add workout',

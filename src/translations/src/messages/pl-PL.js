@@ -24,6 +24,19 @@ export default {
       wrongData:
         'Podałeś błędny email i/lub hasło, spróbuj pownownie albo skontaktuj się z administratorem',
     },
+    settingsPage: {
+      profile: 'Profil',
+      profileDetails: 'Szczegółowe dane',
+      edit: 'Edytuj dane',
+      email: 'Email',
+      name: 'Imie',
+      surname: 'Nazwisko',
+      age: 'Wiek',
+      weight: 'Waga',
+      height: 'Wzrost',
+      phoneNumber: 'Numer telefonu',
+      gender: 'Płeć',
+    },
     mainMenu: {
       cards: {
         addWorkout: 'Dodaj trening',
