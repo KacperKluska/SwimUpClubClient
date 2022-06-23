@@ -1,4 +1,7 @@
+import { useContext } from 'react';
 import { MainMenu } from '../../components/MainMenu/MainMenu.component';
+import { UserContext } from '../../context/UserContext';
+import { NotFoundPage } from '../NotFoundPage/NotFoundPage.component';
 import { Routes } from '../Routing/Routes.type';
 
 export interface MenuCardItem {
@@ -6,26 +9,44 @@ export interface MenuCardItem {
   path: string;
 }
 
-const coachMenuItems: MenuCardItem[] = [
-  { name: 'addWorkout', path: Routes.HOME },
-  { name: 'swimmers', path: Routes.HOME },
-  { name: 'dictionary', path: Routes.DICTIONARY },
-  { name: 'calendar', path: Routes.HOME },
-  { name: 'timer', path: Routes.TIMER },
-];
+const getMenuItems = (
+  role: 'USER' | 'COACH' | 'ADMIN' | undefined,
+): MenuCardItem[] | null => {
+  switch (role) {
+    case 'USER':
+      return [
+        { name: 'workouts', path: Routes.HOME },
+        { name: 'coaches', path: Routes.HOME },
+        { name: 'dictionary', path: Routes.HOME },
+        { name: 'calendar', path: Routes.HOME },
+        { name: 'timer', path: Routes.TIMER },
+      ];
+    case 'COACH':
+      return [
+        { name: 'addWorkout', path: Routes.HOME },
+        { name: 'swimmers', path: Routes.HOME },
+        { name: 'dictionary', path: Routes.DICTIONARY },
+        { name: 'calendar', path: Routes.HOME },
+        { name: 'timer', path: Routes.TIMER },
+      ];
+    case 'ADMIN':
+      return [
+        { name: 'swimmers', path: Routes.HOME },
+        { name: 'coaches', path: Routes.HOME },
+        { name: 'newsletter', path: Routes.HOME },
+        { name: 'createAccount', path: Routes.HOME },
+      ];
+    default:
+      return null;
+  }
+};
 
-// const swimmerMenuItems: MenuCardItem[] = [
-//   { name: 'workouts', path: Routes.HOME },
-//   { name: 'coaches', path: Routes.HOME },
-//   { name: 'dictionary', path: Routes.HOME },
-//   { name: 'calendar', path: Routes.HOME },
-//   { name: 'timer', path: Routes.TIMER },
-// ];
+export const MainMenuPage = () => {
+  const { userData } = useContext(UserContext);
+  const { user } = { ...userData };
 
-// const adminMenuItems: MenuCardItem[] = [
-//   { name: 'swimmers', path: Routes.HOME },
-//   { name: 'coaches', path: Routes.HOME },
-//   { name: 'newsletter', path: Routes.HOME },
-// ];
+  const items = getMenuItems(user?.role);
+  if (!items) return <NotFoundPage />;
 
-export const MainMenuPage = () => <MainMenu items={coachMenuItems} />;
+  return <MainMenu items={items} />;
+};
