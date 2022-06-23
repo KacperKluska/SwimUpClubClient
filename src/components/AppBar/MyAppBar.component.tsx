@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Button, FormControl, InputLabel, Paper, Select } from '@mui/material';
+import axios from 'axios';
 import { CustomLink } from '../CustomLink/CustomLink.component';
 import { Routes } from '../../pages/Routing/Routes.type';
 import { useTranslations } from '../../translations/src';
@@ -63,7 +64,10 @@ export const MyAppBar = ({
       localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    await axios.delete('http://localhost:3001/auth/logout', {
+      withCredentials: true,
+    });
     if (setUserLogged !== undefined) setUserLogged(false);
   };
 
