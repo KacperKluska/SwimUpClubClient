@@ -18,10 +18,21 @@ interface LangReturnType {
   setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
+interface UserData {
+  email: string;
+  role: 'USER' | 'COACH' | 'ADMIN';
+}
+
+interface UserInterface {
+  user: UserData | null;
+  setUser: React.Dispatch<React.SetStateAction<UserData | null>>;
+}
+
 interface UserContextReturnType {
   isLogged: IsLoggedReturnType;
   theme: ThemeReturnType;
   lang: LangReturnType;
+  userData: UserInterface;
 }
 
 interface UserContextProps {
@@ -35,6 +46,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [userLogged, setUserLogged] = useState(false);
   const [language, setLanguage] = useState(getLanguage('PL'));
   const [darkMode, setDarkMode] = useState(getDarkMode('light') === 'dark');
+  const [user, setUser] = useState<UserData | null>(null);
 
   return (
     <UserContext.Provider
@@ -42,6 +54,7 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
         isLogged: { userLogged, setUserLogged },
         theme: { darkMode, setDarkMode },
         lang: { language, setLanguage },
+        userData: { user, setUser },
       }}
     >
       {children}
