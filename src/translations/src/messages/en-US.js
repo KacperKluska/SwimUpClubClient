@@ -48,6 +48,7 @@ export default {
         calendar: 'Calendar',
         timer: 'Timer',
         newsletter: 'Newsletter',
+        createAccount: 'Create new Account',
       },
     },
     footer: {
