@@ -22,6 +22,8 @@ export default {
       signIn: 'Sign in',
       wrongData:
         'You passed wrong email and/or password, try again or contact administrator',
+      emptyData:
+        `You have to fill both fields`,
     },
     settingsPage: {
       profile: 'Profile',

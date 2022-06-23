@@ -23,6 +23,7 @@ export default {
       signIn: 'Zaloguj się',
       wrongData:
         'Podałeś błędny email i/lub hasło, spróbuj pownownie albo skontaktuj się z administratorem',
+      emptyData: `Musisz uzupełnić oba pola`,
     },
     settingsPage: {
       profile: 'Profil',
