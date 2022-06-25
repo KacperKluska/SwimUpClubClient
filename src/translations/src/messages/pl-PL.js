@@ -38,6 +38,10 @@ export default {
       phoneNumber: 'Numer telefonu',
       gender: 'Płeć',
     },
+    homePage: {
+      mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
+      joinTitle: 'Dołącz do SwimUp Club już dzisiaj!',
+    },
     mainMenu: {
       cards: {
         addWorkout: 'Dodaj trening',

@@ -22,8 +22,7 @@ export default {
       signIn: 'Sign in',
       wrongData:
         'You passed wrong email and/or password, try again or contact administrator',
-      emptyData:
-        `You have to fill both fields`,
+      emptyData: `You have to fill both fields`,
     },
     settingsPage: {
       profile: 'Profile',
@@ -37,6 +36,10 @@ export default {
       height: 'Height',
       phoneNumber: 'Phone number',
       gender: 'Gender',
+    },
+    homePage: {
+      mainTitle: 'Track your score, beat the best',
+      joinTitle: 'Join to SwimUp Club today!',
     },
     mainMenu: {
       cards: {
