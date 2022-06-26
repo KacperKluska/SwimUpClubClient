@@ -67,7 +67,7 @@ export const LoginBox = () => {
       <StyledHeader variant="h4">{translate('loginPage.title')}</StyledHeader>
       <TextField
         error={error}
-        id="outlined-error"
+        id="email"
         label={translate('loginPage.email')}
         value={email}
         placeholder={translate('loginPage.emailPrompt')}
@@ -76,7 +76,7 @@ export const LoginBox = () => {
       />
       <TextField
         error={error}
-        id="outlined-error-helper-text"
+        id="password"
         label={translate('loginPage.password')}
         value={password}
         placeholder={translate('loginPage.passwordPrompt')}
