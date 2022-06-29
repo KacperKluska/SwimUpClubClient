@@ -12,12 +12,14 @@ import { Routes as temp } from './Routes.type';
 export const Routing = () => (
   <Routes>
     <Route path={temp.HOME} element={<HomePage />} />
-    <Route path={temp.LOGIN} element={<LoginPage />} />
+    <Route element={<ProtectedRoute authNotAllowed />}>
+      <Route path={temp.LOGIN} element={<LoginPage />} />
+    </Route>
     <Route element={<ProtectedRoute />}>
+      <Route path={temp.MENU} element={<MainMenuPage />} />
       <Route path={temp.DICTIONARY} element={<DictionaryPage />} />
       <Route path={temp.TIMER} element={<TimerPage />} />
       <Route path={temp.SETTINGS} element={<SettingsPage />} />
-      <Route path={temp.MENU} element={<MainMenuPage />} />
     </Route>
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
