@@ -12,8 +12,11 @@ export const ProtectedRoute = ({
   authNotAllowed = false,
 }: Props) => {
   const { isLogged, userData } = useContext(UserContext);
-  const auth = isLogged?.userLogged;
-  const userRole = userData?.user?.role;
+  const { userLogged: auth } = { ...isLogged };
+  const { user } = { ...userData };
+  const userRole = user?.role;
+
+  // TODO fix refresh error
   // if we are logged and trying to sign-in again
   if (authNotAllowed && auth) return <Navigate to="/" />;
   // if we are not logged and trying to get resources for sign-in users

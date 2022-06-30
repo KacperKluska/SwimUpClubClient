@@ -42,7 +42,6 @@ interface UserContextProps {
 
 export const UserContext = createContext<Partial<UserContextReturnType>>({});
 
-// eslint-disable-next-line react/prop-types
 export const UserContextProvider = ({ children }: UserContextProps) => {
   const [userLogged, setUserLogged] = useState(false);
   const [language, setLanguage] = useState(getLanguage('PL'));
