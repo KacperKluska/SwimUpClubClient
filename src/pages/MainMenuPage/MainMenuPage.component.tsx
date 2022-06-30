@@ -34,7 +34,7 @@ const getMenuItems = (
         { name: 'swimmers', path: Routes.HOME },
         { name: 'coaches', path: Routes.HOME },
         { name: 'newsletter', path: Routes.HOME },
-        { name: 'createAccount', path: Routes.HOME },
+        { name: 'createAccount', path: Routes.REGISTER },
       ];
     default:
       return null;

@@ -5,6 +5,7 @@ import { HomePage } from '../HomePage/HomePage.component';
 import { LoginPage } from '../LoginPage/LoginPage.component';
 import { MainMenuPage } from '../MainMenuPage/MainMenuPage.component';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage.component';
+import { RegisterPage } from '../RegisterPage/RegisterPage.component';
 import { SettingsPage } from '../SettingsPage/SettingsPage.component';
 import { TimerPage } from '../TimerPage/TimerPage.component';
 import { Routes as temp } from './Routes.type';
@@ -20,6 +21,9 @@ export const Routing = () => (
       <Route path={temp.DICTIONARY} element={<DictionaryPage />} />
       <Route path={temp.TIMER} element={<TimerPage />} />
       <Route path={temp.SETTINGS} element={<SettingsPage />} />
+      <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
+        <Route path={temp.REGISTER} element={<RegisterPage />} />
+      </Route>
     </Route>
     <Route path="*" element={<NotFoundPage />} />
   </Routes>
