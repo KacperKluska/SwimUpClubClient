@@ -94,10 +94,10 @@ export const MyAppBar = ({
             sx={{
               flexGrow: 0,
               display: { xs: 'flex', md: 'flex' },
-              gap: '1rem',
+              gap: { md: '1rem', xs: '0.5rem' },
             }}
           >
-            <FormControl sx={{ m: 1, minWidth: 120 }}>
+            <FormControl sx={{ m: 1, minWidth: 100 }}>
               <InputLabel id="demo-simple-select-helper-label">
                 {translate('language')}
               </InputLabel>

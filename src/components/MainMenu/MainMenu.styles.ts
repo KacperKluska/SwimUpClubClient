@@ -13,6 +13,11 @@ export const StyledPaper = styled(Paper)`
   padding: 10rem;
 
   border-radius: 0;
+
+  @media (max-width: 768px) {
+    padding: auto;
+    justify-content: center;
+  }
 `;
 
 export const StyledCard = styled(Card)`
@@ -23,8 +28,12 @@ export const StyledCard = styled(Card)`
   width: 200px;
   height: 200px;
 
+  padding: 1rem;
+
   font-size: 1.5rem;
   font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
   transition: all 0.3s ease-in-out;
 
   &:hover {

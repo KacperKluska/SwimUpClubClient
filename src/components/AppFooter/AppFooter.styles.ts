@@ -9,6 +9,10 @@ export const StyledPaper = styled(Paper)`
 
   border-radius: 0;
   border-top: 1px solid black;
+
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const StyledCopyright = styled.div`
