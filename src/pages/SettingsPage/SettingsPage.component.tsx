@@ -9,6 +9,7 @@ export interface Data {
   name: string;
   surname: string;
   email: string;
+  photo: string | null;
 }
 
 export interface Details {
@@ -38,6 +39,7 @@ export const SettingsPage = () => {
         name: response.data.name,
         surname: response.data.surname,
         email: response.data.email,
+        photo: response.data.photo,
       };
       const userDetails = {
         age: response.data.age,

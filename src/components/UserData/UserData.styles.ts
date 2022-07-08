@@ -21,7 +21,7 @@ export const StyledImage = styled.img`
   max-width: 175px;
   max-height: 250px;
 
-  object-fit: contain;
+  object-fit: cover;
 
   background-color: gray;
 `;

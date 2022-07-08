@@ -10,6 +10,8 @@ import {
   StyledHeader,
 } from './UserData.styles';
 import { Data } from '../../pages/SettingsPage/SettingsPage.component';
+import { useUserImage } from '../../hooks/useImage';
+import { AddProfilePicture } from '../AddProfilePicture/AddProfilePicture.component';
 
 interface Props {
   data: Data | null;
@@ -18,6 +20,7 @@ interface Props {
 export const UserData = ({ data }: Props) => {
   const [editing, setEditing] = useState(false);
   const translate = useTranslations();
+  const img = useUserImage(data?.photo || '');
 
   const inputs = [
     { label: 'name', value: data?.name },
@@ -27,7 +30,7 @@ export const UserData = ({ data }: Props) => {
 
   return (
     <StyledUserDataWrapper>
-      <StyledImage src="" alt="user image" />
+      {img ? <StyledImage src={img} alt="user image" /> : <AddProfilePicture />}
       <StyledData>
         <StyledHeader variant="h4">
           {translate(`settingsPage.profile`)}
