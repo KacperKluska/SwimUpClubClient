@@ -1,6 +1,5 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
-import { createContext, useState, ReactNode, useEffect } from 'react';
-import axios from 'axios';
+import { createContext, useState, ReactNode } from 'react';
 import { getLanguage } from '../utils/getLanguage';
 import { getDarkMode } from '../utils/getDarkMode';
 
@@ -47,22 +46,6 @@ export const UserContextProvider = ({ children }: UserContextProps) => {
   const [language, setLanguage] = useState(getLanguage('PL'));
   const [darkMode, setDarkMode] = useState(getDarkMode('light') === 'dark');
   const [user, setUser] = useState<UserData | null>(null);
-
-  const refresh = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/auth/refresh', {
-        withCredentials: true,
-      });
-      setUser(response.data.data);
-      setUserLogged(true);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  useEffect(() => {
-    refresh();
-  }, []);
 
   return (
     <UserContext.Provider

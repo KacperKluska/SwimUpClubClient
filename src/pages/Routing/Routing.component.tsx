@@ -12,7 +12,9 @@ import { Routes as temp } from './Routes.type';
 
 export const Routing = () => (
   <Routes>
-    <Route path={temp.HOME} element={<HomePage />} />
+    <Route element={<ProtectedRoute authNotNeeded />}>
+      <Route path={temp.HOME} element={<HomePage />} />
+    </Route>
     <Route element={<ProtectedRoute authNotAllowed />}>
       <Route path={temp.LOGIN} element={<LoginPage />} />
     </Route>
