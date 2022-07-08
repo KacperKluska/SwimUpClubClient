@@ -16,10 +16,12 @@ import axios from 'axios';
 import { CustomLink } from '../CustomLink/CustomLink.component';
 import { Routes } from '../../pages/Routing/Routes.type';
 import { useTranslations } from '../../translations/src';
+import { useUserImage } from '../../hooks/useImage';
 
 interface Props {
   title: string;
   name: string;
+  imageName: string;
   userLogged?: boolean;
   setUserLogged?: React.Dispatch<React.SetStateAction<boolean>>;
   darkMode?: boolean;
@@ -31,6 +33,7 @@ interface Props {
 export const MyAppBar = ({
   title,
   name,
+  imageName,
   userLogged,
   setUserLogged,
   darkMode = false,
@@ -42,6 +45,7 @@ export const MyAppBar = ({
     null,
   );
   const translate = useTranslations();
+  const img = useUserImage(imageName);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -123,7 +127,7 @@ export const MyAppBar = ({
             {userLogged ? (
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={name} src="/static/images/avatar/2.jpg" />
+                  <Avatar alt={name} src={img ?? 'undefined'} />
                 </IconButton>
               </Tooltip>
             ) : (
