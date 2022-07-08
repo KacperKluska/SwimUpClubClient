@@ -58,6 +58,7 @@ export default {
       height: 'Wzrost',
       phoneNumber: 'Numer telefonu',
       gender: 'Płeć',
+      uploadImage: "Wgraj zdjęcie",
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

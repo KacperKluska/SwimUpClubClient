@@ -57,6 +57,7 @@ export default {
       height: 'Height',
       phoneNumber: 'Phone number',
       gender: 'Gender',
+      uploadImage: 'Upload image',
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
