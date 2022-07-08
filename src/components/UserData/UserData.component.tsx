@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import { useState } from 'react';
+import axios from 'axios';
 import { useTranslations } from '../../translations/src';
 import {
   StyledData,
@@ -8,6 +9,8 @@ import {
   StyledUserDataWrapper,
   StyledEditButton,
   StyledHeader,
+  StyledImageFrame,
+  StyledRemoveButton,
 } from './UserData.styles';
 import { Data } from '../../pages/SettingsPage/SettingsPage.component';
 import { useUserImage } from '../../hooks/useImage';
@@ -22,6 +25,13 @@ export const UserData = ({ data }: Props) => {
   const translate = useTranslations();
   const img = useUserImage(data?.photo || '');
 
+  const removeImage = async () => {
+    await axios.delete('http://localhost:3001/uploads/file', {
+      withCredentials: true,
+    });
+    window.location.reload();
+  };
+
   const inputs = [
     { label: 'name', value: data?.name },
     { label: 'surname', value: data?.surname },
@@ -30,7 +40,16 @@ export const UserData = ({ data }: Props) => {
 
   return (
     <StyledUserDataWrapper>
-      {img ? <StyledImage src={img} alt="user image" /> : <AddProfilePicture />}
+      {img ? (
+        <StyledImageFrame>
+          <StyledImage src={img} alt="user image" />
+          <StyledRemoveButton type="button" onClick={removeImage}>
+            X
+          </StyledRemoveButton>
+        </StyledImageFrame>
+      ) : (
+        <AddProfilePicture />
+      )}
       <StyledData>
         <StyledHeader variant="h4">
           {translate(`settingsPage.profile`)}

@@ -43,3 +43,33 @@ export const StyledEditButton = styled(Button)`
   top: 1rem;
   right: 1rem;
 `;
+
+export const StyledImageFrame = styled.div`
+  position: relative;
+
+  width: 175px;
+  height: 250px;
+
+  z-index: 2;
+
+  background-color: transparent;
+`;
+
+export const StyledRemoveButton = styled(Button)`
+  position: absolute;
+  top: -11px;
+  right: -11px;
+  min-width: 0;
+  width: 30px;
+  height: 30px;
+
+  padding: 0;
+  background-color: red;
+  border-radius: 15px;
+
+  z-index: 10;
+
+  &:hover {
+    background-color: pink;
+  }
+`;

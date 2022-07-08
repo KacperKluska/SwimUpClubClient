@@ -20,7 +20,7 @@ function App() {
     const result = await axios.get('http://localhost:3001/users/user', {
       withCredentials: true,
     });
-    if (result?.data?.status === 200) {
+    if (result.status === 200) {
       setUserName(result.data.name || '');
       setImageName(result.data.photo || '');
     }

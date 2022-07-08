@@ -127,7 +127,7 @@ export const MyAppBar = ({
             {userLogged ? (
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={name} src={img ?? 'undefined'} />
+                  <Avatar alt={name} src={img || 'undefined'} />
                 </IconButton>
               </Tooltip>
             ) : (
