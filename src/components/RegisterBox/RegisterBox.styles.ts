@@ -2,13 +2,19 @@ import { Typography } from '@mui/material';
 import { Box } from '@mui/system';
 import styled from 'styled-components';
 
+export const StyledForm = styled.form`
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
+`;
+
+
 export const StyledBox = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 1rem;
 
   width: 100%;
-  max-width: 500px;
   height: 100%;
 `;
 

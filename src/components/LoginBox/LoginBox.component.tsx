@@ -4,7 +4,12 @@ import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { useTranslations } from '../../translations/src';
-import { StyledBox, StyledError, StyledHeader } from './LoginBox.styles';
+import {
+  StyledBox,
+  StyledError,
+  StyledForm,
+  StyledHeader,
+} from './LoginBox.styles';
 
 type ErrorStatus = 'EMPTY_FIELDS' | 'WRONG_DATA';
 
@@ -19,7 +24,8 @@ export const LoginBox = () => {
   const translate = useTranslations();
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
     if (email === '' || password === '') {
       setError(true);
       setErrorType('EMPTY_FIELDS');
@@ -63,28 +69,30 @@ export const LoginBox = () => {
     );
 
   return (
-    <StyledBox>
-      <StyledHeader variant="h4">{translate('loginPage.title')}</StyledHeader>
-      <TextField
-        error={error}
-        id="email"
-        label={translate('loginPage.email')}
-        value={email}
-        placeholder={translate('loginPage.emailPrompt')}
-        onChange={(event) => handleEmailChange(event)}
-        type="email"
-      />
-      <TextField
-        error={error}
-        id="password"
-        label={translate('loginPage.password')}
-        value={password}
-        placeholder={translate('loginPage.passwordPrompt')}
-        onChange={(event) => handlePasswordChange(event)}
-        type="password"
-      />
-      {error ? ErrorMessage : null}
-      <Button onClick={handleLogin}>{translate('loginPage.signIn')}</Button>
-    </StyledBox>
+    <StyledForm onSubmit={handleLogin}>
+      <StyledBox>
+        <StyledHeader variant="h4">{translate('loginPage.title')}</StyledHeader>
+        <TextField
+          error={error}
+          id="email"
+          label={translate('loginPage.email')}
+          value={email}
+          placeholder={translate('loginPage.emailPrompt')}
+          onChange={(event) => handleEmailChange(event)}
+          type="email"
+        />
+        <TextField
+          error={error}
+          id="password"
+          label={translate('loginPage.password')}
+          value={password}
+          placeholder={translate('loginPage.passwordPrompt')}
+          onChange={(event) => handlePasswordChange(event)}
+          type="password"
+        />
+        {error ? ErrorMessage : null}
+        <Button type="submit">{translate('loginPage.signIn')}</Button>
+      </StyledBox>
+    </StyledForm>
   );
 };

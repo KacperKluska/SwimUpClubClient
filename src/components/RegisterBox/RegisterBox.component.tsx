@@ -12,7 +12,12 @@ import {
 import axios from 'axios';
 import { useState } from 'react';
 import { useTranslations } from '../../translations/src';
-import { StyledBox, StyledError, StyledHeader } from './RegisterBox.styles';
+import {
+  StyledBox,
+  StyledError,
+  StyledForm,
+  StyledHeader,
+} from './RegisterBox.styles';
 
 type ErrorStatus =
   | 'EMPTY_FIELDS'
@@ -211,114 +216,118 @@ export const RegisterBox = () => {
   }
 
   return (
-    <StyledBox>
-      <StyledHeader variant="h4">
-        {translate('registerPage.title')}
-      </StyledHeader>
-      <TextField
-        error={error}
-        id="name"
-        label={translate('registerPage.name')}
-        value={name}
-        placeholder={translate('registerPage.namePrompt')}
-        onChange={(event) => handleNameChange(event)}
-        type="text"
-      />
-      <TextField
-        error={error}
-        id="surname"
-        label={translate('registerPage.surname')}
-        value={surname}
-        placeholder={translate('registerPage.surnamePrompt')}
-        onChange={(event) => handleSurnameChange(event)}
-        type="text"
-      />
-      <TextField
-        error={error}
-        id="email"
-        label={translate('registerPage.email')}
-        value={email}
-        placeholder={translate('registerPage.emailPrompt')}
-        onChange={(event) => handleEmailChange(event)}
-        type="email"
-      />
-      <TextField
-        error={error}
-        id="phoneNumber"
-        label={translate('registerPage.phoneNumber')}
-        value={phoneNumber}
-        placeholder={translate('registerPage.phoneNumberPrompt')}
-        onChange={(event) => handlePhoneNumberChange(event)}
-        type="text"
-      />
-      <TextField
-        error={error}
-        id="password"
-        label={translate('registerPage.password')}
-        value={password}
-        placeholder={translate('registerPage.passwordPrompt')}
-        onChange={(event) => handlePasswordChange(event)}
-        type="password"
-      />
-      <TextField
-        error={error}
-        id="passwordRepeated"
-        label={translate('registerPage.passwordRepeated')}
-        value={passwordRepeated}
-        placeholder={translate('registerPage.passwordRepeatedPrompt')}
-        onChange={(event) => handlePasswordRepeatedChange(event)}
-        type="password"
-      />
-
-      <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-          defaultValue={gender}
-          onChange={handleGenderChange}
-        >
-          <FormControlLabel value="Man" control={<Radio />} label="Male" />
-          <FormControlLabel value="Woman" control={<Radio />} label="Female" />
-          <FormControlLabel
-            value="Not binary"
-            control={<Radio />}
-            label="Not binary"
-          />
-        </RadioGroup>
-      </FormControl>
-
-      <FormControl>
-        <FormLabel id="demo-row-radio-buttons-group-label">Role</FormLabel>
-        <RadioGroup
-          row
-          aria-labelledby="demo-row-radio-buttons-group-label"
-          name="row-radio-buttons-group"
-          defaultValue={role}
-          onChange={handleRoleChange}
-        >
-          <FormControlLabel value="USER" control={<Radio />} label="User" />
-          <FormControlLabel value="COACH" control={<Radio />} label="Coach" />
-          <FormControlLabel value="ADMIN" control={<Radio />} label="Admin" />
-        </RadioGroup>
-      </FormControl>
-      {error ? ErrorMessage : null}
-      <Button onClick={handleLogin}>{translate('registerPage.signUp')}</Button>
-      <Snackbar
-        open={open}
-        autoHideDuration={10000}
-        onClose={handleSnackBarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-      >
-        <Alert
+    <StyledForm onSubmit={handleLogin}>
+      <StyledBox>
+        <StyledHeader variant="h4">
+          {translate('registerPage.title')}
+        </StyledHeader>
+        <TextField
+          error={error}
+          id="name"
+          label={translate('registerPage.name')}
+          value={name}
+          placeholder={translate('registerPage.namePrompt')}
+          onChange={(event) => handleNameChange(event)}
+          type="text"
+        />
+        <TextField
+          error={error}
+          id="surname"
+          label={translate('registerPage.surname')}
+          value={surname}
+          placeholder={translate('registerPage.surnamePrompt')}
+          onChange={(event) => handleSurnameChange(event)}
+          type="text"
+        />
+        <TextField
+          error={error}
+          id="email"
+          label={translate('registerPage.email')}
+          value={email}
+          placeholder={translate('registerPage.emailPrompt')}
+          onChange={(event) => handleEmailChange(event)}
+          type="email"
+        />
+        <TextField
+          error={error}
+          id="phoneNumber"
+          label={translate('registerPage.phoneNumber')}
+          value={phoneNumber}
+          placeholder={translate('registerPage.phoneNumberPrompt')}
+          onChange={(event) => handlePhoneNumberChange(event)}
+          type="text"
+        />
+        <TextField
+          error={error}
+          id="password"
+          label={translate('registerPage.password')}
+          value={password}
+          placeholder={translate('registerPage.passwordPrompt')}
+          onChange={(event) => handlePasswordChange(event)}
+          type="password"
+        />
+        <TextField
+          error={error}
+          id="passwordRepeated"
+          label={translate('registerPage.passwordRepeated')}
+          value={passwordRepeated}
+          placeholder={translate('registerPage.passwordRepeatedPrompt')}
+          onChange={(event) => handlePasswordRepeatedChange(event)}
+          type="password"
+        />
+        <FormControl>
+          <FormLabel id="demo-row-radio-buttons-group-label">Gender</FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            defaultValue={gender}
+            onChange={handleGenderChange}
+          >
+            <FormControlLabel value="Man" control={<Radio />} label="Male" />
+            <FormControlLabel
+              value="Woman"
+              control={<Radio />}
+              label="Female"
+            />
+            <FormControlLabel
+              value="Not binary"
+              control={<Radio />}
+              label="Not binary"
+            />
+          </RadioGroup>
+        </FormControl>
+        <FormControl>
+          <FormLabel id="demo-row-radio-buttons-group-label">Role</FormLabel>
+          <RadioGroup
+            row
+            aria-labelledby="demo-row-radio-buttons-group-label"
+            name="row-radio-buttons-group"
+            defaultValue={role}
+            onChange={handleRoleChange}
+          >
+            <FormControlLabel value="USER" control={<Radio />} label="User" />
+            <FormControlLabel value="COACH" control={<Radio />} label="Coach" />
+            <FormControlLabel value="ADMIN" control={<Radio />} label="Admin" />
+          </RadioGroup>
+        </FormControl>
+        {error ? ErrorMessage : null}
+        <Button type="submit">{translate('registerPage.signUp')}</Button>
+        <Snackbar
+          open={open}
+          autoHideDuration={10000}
           onClose={handleSnackBarClose}
-          severity={success ? 'success' : 'error'}
-          sx={{ width: '100%' }}
+          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
         >
-          {alertMsg}
-        </Alert>
-      </Snackbar>
-    </StyledBox>
+          <Alert
+            onClose={handleSnackBarClose}
+            severity={success ? 'success' : 'error'}
+            sx={{ width: '100%' }}
+          >
+            {alertMsg}
+          </Alert>
+        </Snackbar>
+      </StyledBox>
+    </StyledForm>
   );
 };
