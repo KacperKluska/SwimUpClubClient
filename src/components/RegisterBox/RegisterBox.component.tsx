@@ -1,31 +1,32 @@
 import {
-  Alert,
   Button,
   FormControl,
   FormControlLabel,
   FormLabel,
   Radio,
   RadioGroup,
-  Snackbar,
   TextField,
 } from '@mui/material';
 import axios from 'axios';
 import { useState } from 'react';
 import { useTranslations } from '../../translations/src';
+import { MySnackBar } from '../MySnackBar/MySnackBar.component';
 import {
   StyledBox,
   StyledError,
   StyledForm,
   StyledHeader,
 } from './RegisterBox.styles';
+import { validateFields } from './RegisterBox.utils';
 
-type ErrorStatus =
+export type ErrorStatus =
   | 'EMPTY_FIELDS'
   | 'WRONG_EMAIL'
   | 'NOT_IDENTICAL_PASSWORDS'
   | 'PASSWORD_INVALID'
   | 'UNKNOWN_ERROR'
-  | 'PHONE_NUMBER_INVALID';
+  | 'PHONE_NUMBER_INVALID'
+  | 'NONE';
 type Genders = 'Man' | 'Woman' | 'Not binary';
 type Roles = 'ADMIN' | 'USER' | 'COACH';
 
@@ -61,6 +62,7 @@ export const RegisterBox = () => {
     event?: React.SyntheticEvent | Event,
     reason?: string,
   ) => {
+    console.log(event);
     if (reason === 'clickaway') {
       return;
     }
@@ -69,40 +71,17 @@ export const RegisterBox = () => {
   };
 
   const handleLogin = async () => {
-    const passwordPattern =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})/;
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneNumberPattern = /^\d{9}$/;
-
-    if (
-      name === '' ||
-      surname === '' ||
-      email === '' ||
-      password === '' ||
-      passwordRepeated === ''
-    ) {
+    const validation = validateFields(
+      name,
+      surname,
+      email,
+      password,
+      passwordRepeated,
+      phoneNumber,
+    );
+    if (!validation.isValid) {
       setError(true);
-      setErrorType('EMPTY_FIELDS');
-      return;
-    }
-    if (!emailPattern.test(email)) {
-      setError(true);
-      setErrorType('WRONG_EMAIL');
-      return;
-    }
-    if (!phoneNumberPattern.test(phoneNumber)) {
-      setError(true);
-      setErrorType('PHONE_NUMBER_INVALID');
-      return;
-    }
-    if (password !== passwordRepeated) {
-      setError(true);
-      setErrorType('NOT_IDENTICAL_PASSWORDS');
-      return;
-    }
-    if (!passwordPattern.test(password)) {
-      setError(true);
-      setErrorType('PASSWORD_INVALID');
+      setErrorType(validation.message);
       return;
     }
     setError(false);
@@ -313,20 +292,12 @@ export const RegisterBox = () => {
         </FormControl>
         {error ? ErrorMessage : null}
         <Button type="submit">{translate('registerPage.signUp')}</Button>
-        <Snackbar
+        <MySnackBar
+          message={alertMsg}
           open={open}
-          autoHideDuration={10000}
-          onClose={handleSnackBarClose}
-          anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
-        >
-          <Alert
-            onClose={handleSnackBarClose}
-            severity={success ? 'success' : 'error'}
-            sx={{ width: '100%' }}
-          >
-            {alertMsg}
-          </Alert>
-        </Snackbar>
+          status={success ? 'success' : 'error'}
+          handleSnackBarClose={handleSnackBarClose}
+        />
       </StyledBox>
     </StyledForm>
   );
