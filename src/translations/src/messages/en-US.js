@@ -49,6 +49,7 @@ export default {
       profile: 'Profile',
       profileDetails: 'Profile Details',
       edit: 'Edit data',
+      save: 'Save changes',
       email: 'Email',
       name: 'Name',
       surname: 'Surname',

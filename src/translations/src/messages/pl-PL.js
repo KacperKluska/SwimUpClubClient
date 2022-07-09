@@ -50,6 +50,7 @@ export default {
       profile: 'Profil',
       profileDetails: 'Szczegółowe dane',
       edit: 'Edytuj dane',
+      save: 'Zapisz zmiany',
       email: 'Email',
       name: 'Imie',
       surname: 'Nazwisko',
@@ -58,7 +59,7 @@ export default {
       height: 'Wzrost',
       phoneNumber: 'Numer telefonu',
       gender: 'Płeć',
-      uploadImage: "Wgraj zdjęcie",
+      uploadImage: 'Wgraj zdjęcie',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
