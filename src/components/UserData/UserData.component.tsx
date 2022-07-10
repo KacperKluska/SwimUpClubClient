@@ -12,6 +12,7 @@ import {
   StyledHeader,
   StyledImageFrame,
   StyledRemoveButton,
+  StyledTwoColumnsLayout,
 } from './UserData.styles';
 import { Data } from '../../pages/SettingsPage/SettingsPage.component';
 import { useUserImage } from '../../hooks/useImage';
@@ -80,31 +81,33 @@ export const UserData = ({ data }: Props) => {
 
   return (
     <StyledUserDataWrapper>
-      {img ? (
-        <StyledImageFrame>
-          <StyledImage src={img} alt="user image" />
-          <StyledRemoveButton type="button" onClick={removeImage}>
-            X
-          </StyledRemoveButton>
-        </StyledImageFrame>
-      ) : (
-        <AddProfilePicture />
-      )}
-      <StyledData>
-        <StyledHeader variant="h4">
-          {translate(`settingsPage.profile`)}
-        </StyledHeader>
-        {inputs.map((input) => (
-          <TextField
-            key={input.label}
-            fullWidth
-            label={translate(`settingsPage.${input.label}`)}
-            value={input.value}
-            disabled={!editing}
-            onChange={(e) => handleInputChange(e, input.label)}
-          />
-        ))}
-      </StyledData>
+      <StyledHeader variant="h4">
+        {translate(`settingsPage.profile`)}
+      </StyledHeader>
+      <StyledTwoColumnsLayout>
+        {img ? (
+          <StyledImageFrame>
+            <StyledImage src={img} alt="user image" />
+            <StyledRemoveButton type="button" onClick={removeImage}>
+              X
+            </StyledRemoveButton>
+          </StyledImageFrame>
+        ) : (
+          <AddProfilePicture />
+        )}
+        <StyledData>
+          {inputs.map((input) => (
+            <TextField
+              key={input.label}
+              fullWidth
+              label={translate(`settingsPage.${input.label}`)}
+              value={input.value}
+              disabled={!editing}
+              onChange={(e) => handleInputChange(e, input.label)}
+            />
+          ))}
+        </StyledData>
+      </StyledTwoColumnsLayout>
       {!editing ? (
         <StyledEditButton variant="outlined" onClick={() => setEditing(true)}>
           <EditIcon /> {translate(`settingsPage.edit`)}

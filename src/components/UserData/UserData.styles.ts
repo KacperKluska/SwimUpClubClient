@@ -3,23 +3,26 @@ import styled from 'styled-components';
 
 export const StyledUserDataWrapper = styled(Paper)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 3rem;
   position: relative;
 
   padding: 3rem;
   height: auto;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
-export const StyledHeader = styled(Typography)``;
+export const StyledHeader = styled(Typography)`
+  margin-bottom: 1rem;
+`;
 
 export const StyledImage = styled.img`
-  width: 100%;
-  height: 100%;
-  max-width: 175px;
-  max-height: 250px;
+  width: 175px;
+  height: 250px;
 
   object-fit: cover;
 
@@ -29,11 +32,12 @@ export const StyledImage = styled.img`
 export const StyledData = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
-  gap: 1rem;
 
-  width: 500px;
+  min-width: 60%;
+  width: auto;
+  max-width: 500px;
 `;
 
 export const StyledEditButton = styled(Button)`
@@ -72,4 +76,12 @@ export const StyledRemoveButton = styled(Button)`
   &:hover {
     background-color: pink;
   }
+`;
+
+export const StyledTwoColumnsLayout = styled.section`
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  width: 100%;
 `;

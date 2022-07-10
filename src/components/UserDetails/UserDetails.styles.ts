@@ -6,6 +6,10 @@ export const StyledUserDetails = styled(Paper)`
 
   padding: 3rem;
   height: auto;
+
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const StyledEditButton = styled(Button)`
@@ -24,4 +28,8 @@ export const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `;
