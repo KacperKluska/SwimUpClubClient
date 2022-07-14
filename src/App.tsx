@@ -1,11 +1,11 @@
-import { createTheme, ThemeProvider } from '@mui/material';
-import { blue, deepPurple, grey } from '@mui/material/colors';
+import { ThemeProvider } from '@mui/material';
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { MyAppBar } from './components/AppBar/MyAppBar.component';
 import { AppFooter } from './components/AppFooter/AppFooter.component';
 import { UserContext } from './context/UserContext';
 import { Routing } from './pages/Routing/Routing.component';
+import { darkTheme, lightTheme } from './theme';
 import { LOCALES, TranslationsProvider } from './translations/src';
 
 function App() {
@@ -29,22 +29,6 @@ function App() {
   useEffect(() => {
     getUserData();
   }, []);
-
-  const darkTheme = createTheme({
-    palette: {
-      mode: 'dark',
-      primary: { main: grey[50] },
-      secondary: deepPurple,
-    },
-  });
-
-  const lightTheme = createTheme({
-    palette: {
-      mode: 'light',
-      primary: blue,
-      secondary: { main: grey[50] },
-    },
-  });
 
   return (
     <TranslationsProvider
