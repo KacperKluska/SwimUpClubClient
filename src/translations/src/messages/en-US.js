@@ -92,6 +92,14 @@ export default {
       copy: 'Copy',
       copiedMessage: 'Meantime copied!',
     },
+    usersList: {
+      usersListTitle: 'Swimmers list',
+      name: 'Name',
+      surname: 'Surname',
+      email: 'Email',
+      remove: 'Delete',
+      edit: 'Edit',
+    },
     dictionary: {
       styles: {
         frontCrawl: 'Front Crawl',

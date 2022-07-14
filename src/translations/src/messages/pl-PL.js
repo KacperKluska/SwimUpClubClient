@@ -93,6 +93,14 @@ export default {
       copy: 'Kopiuj',
       copiedMessage: 'Międzyczas skopiowany',
     },
+    usersList: {
+      usersListTitle: 'Lista zawodników',
+      name: 'Imie',
+      surname: 'Nazwisko',
+      email: 'Email',
+      remove: 'Usuń',
+      edit: 'Edytuj',
+    },
     dictionary: {
       styles: {
         frontCrawl: 'Kraul',

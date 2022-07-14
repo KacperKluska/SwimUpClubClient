@@ -6,4 +6,5 @@ export const Routes = {
   SETTINGS: '/settings',
   DICTIONARY: '/dictionary',
   TIMER: '/timer',
+  ADMIN_SWIMMERS: '/admin/swimmers',
 };
