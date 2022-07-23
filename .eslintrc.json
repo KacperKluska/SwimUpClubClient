@@ -23,6 +23,7 @@
     "react/react-in-jsx-scope": "off",
     "jsx-a11y/href-no-hash": ["off"],
     "import/extensions": "off",
+    "no-alert": "off",
     "react/jsx-filename-extension": [
       "warn",
       { "extensions": [".js", ".jsx", ".tsx"] }

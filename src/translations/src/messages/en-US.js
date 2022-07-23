@@ -99,6 +99,7 @@ export default {
       email: 'Email',
       remove: 'Delete',
       edit: 'Edit',
+      confirmMessage: `Are you sure you wan't to delete user with email: {value}.`,
     },
     dictionary: {
       styles: {

@@ -5,6 +5,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button } from '@mui/material';
+import axios from 'axios';
 import { useTranslations } from '../../translations/src';
 
 interface Column {
@@ -31,26 +32,38 @@ export const UsersTable = ({ page, rowsPerPage, users }: Props) => {
   const translate = useTranslations();
 
   const columns: readonly Column[] = [
-    { id: 'name', label: translate('usersList.name'), minWidth: 200 },
-    { id: 'surname', label: translate('usersList.surname'), minWidth: 200 },
+    { id: 'name', label: translate('usersList.name'), minWidth: 150 },
+    { id: 'surname', label: translate('usersList.surname'), minWidth: 150 },
     {
       id: 'email',
       label: translate('usersList.email'),
-      minWidth: 200,
+      minWidth: 250,
     },
     {
       id: 'remove',
       label: translate('usersList.remove'),
-      minWidth: 100,
       align: 'center',
     },
     {
       id: 'edit',
       label: translate('usersList.edit'),
-      minWidth: 100,
       align: 'center',
     },
   ];
+
+  const handleDelete = async (email: string) => {
+    // eslint-disable-next-line no-restricted-globals
+    if (confirm(translate('usersList.confirmMessage', { value: email }))) {
+      const result = await axios.delete('http://localhost:3001/users', {
+        params: { email },
+        withCredentials: true,
+      });
+      if (result.status !== 200) {
+        return;
+      }
+      window.location.reload();
+    }
+  };
 
   return (
     <TableContainer>
@@ -77,7 +90,12 @@ export const UsersTable = ({ page, rowsPerPage, users }: Props) => {
                   if (column.id === 'remove') {
                     return (
                       <TableCell key={column.id} align={column.align}>
-                        <Button type="button" variant="outlined" color="error">
+                        <Button
+                          type="button"
+                          variant="outlined"
+                          color="error"
+                          onClick={() => handleDelete(row.email)}
+                        >
                           X
                         </Button>
                       </TableCell>

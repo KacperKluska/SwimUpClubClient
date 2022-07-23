@@ -100,6 +100,7 @@ export default {
       email: 'Email',
       remove: 'Usuń',
       edit: 'Edytuj',
+      confirmMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}.`,
     },
     dictionary: {
       styles: {
