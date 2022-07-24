@@ -4,12 +4,12 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Button } from '@mui/material';
-import axios from 'axios';
+import useWindowDimensions from '../../hooks/useWindowDimension';
 import { useTranslations } from '../../translations/src';
+import { Row } from './Row.component';
 
-interface Column {
-  id: 'name' | 'surname' | 'email' | 'remove' | 'edit';
+export interface Column {
+  id: 'name' | 'surname' | 'email';
   label: string;
   minWidth?: number;
   align?: 'left' | 'center' | 'right';
@@ -30,46 +30,25 @@ interface Props {
 
 export const UsersTable = ({ page, rowsPerPage, users }: Props) => {
   const translate = useTranslations();
+  const { width } = useWindowDimensions();
+  const isSmartphone = width < 756;
 
-  const columns: readonly Column[] = [
-    { id: 'name', label: translate('usersList.name'), minWidth: 150 },
-    { id: 'surname', label: translate('usersList.surname'), minWidth: 150 },
+  const columns: Column[] = [
+    { id: 'name', label: translate('usersList.name'), minWidth: 50 },
+    { id: 'surname', label: translate('usersList.surname'), minWidth: 50 },
     {
       id: 'email',
       label: translate('usersList.email'),
-      minWidth: 250,
-    },
-    {
-      id: 'remove',
-      label: translate('usersList.remove'),
-      align: 'center',
-    },
-    {
-      id: 'edit',
-      label: translate('usersList.edit'),
-      align: 'center',
+      minWidth: 100,
     },
   ];
-
-  const handleDelete = async (email: string) => {
-    // eslint-disable-next-line no-restricted-globals
-    if (confirm(translate('usersList.confirmMessage', { value: email }))) {
-      const result = await axios.delete('http://localhost:3001/users', {
-        params: { email },
-        withCredentials: true,
-      });
-      if (result.status !== 200) {
-        return;
-      }
-      window.location.reload();
-    }
-  };
 
   return (
     <TableContainer>
       <Table stickyHeader aria-label="sticky table">
         <TableHead>
           <TableRow>
+            {!isSmartphone && <TableCell />}
             {columns.map((column) => (
               <TableCell
                 key={column.id}
@@ -85,45 +64,7 @@ export const UsersTable = ({ page, rowsPerPage, users }: Props) => {
           {users
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row) => (
-              <TableRow hover role="checkbox" tabIndex={-1} key={row.email}>
-                {columns.map((column) => {
-                  if (column.id === 'remove') {
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        <Button
-                          type="button"
-                          variant="outlined"
-                          color="error"
-                          onClick={() => handleDelete(row.email)}
-                        >
-                          X
-                        </Button>
-                      </TableCell>
-                    );
-                  }
-                  if (column.id === 'edit') {
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        <Button
-                          type="button"
-                          variant="outlined"
-                          color="primary"
-                        >
-                          {translate('usersList.edit')}
-                        </Button>
-                      </TableCell>
-                    );
-                  }
-                  const value = row[column.id];
-                  return (
-                    <TableCell key={column.id} align={column.align}>
-                      {column.format && typeof value === 'number'
-                        ? column.format(value)
-                        : value}
-                    </TableCell>
-                  );
-                })}
-              </TableRow>
+              <Row row={row} isSmartphone={isSmartphone} />
             ))}
         </TableBody>
       </Table>

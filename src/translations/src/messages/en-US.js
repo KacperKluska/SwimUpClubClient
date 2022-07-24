@@ -99,6 +99,8 @@ export default {
       email: 'Email',
       remove: 'Delete',
       edit: 'Edit',
+      delete: 'Delete',
+      rowsPerPage: 'Rows Per Page:',
       confirmMessage: `Are you sure you wan't to delete user with email: {value}.`,
     },
     dictionary: {

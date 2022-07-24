@@ -100,6 +100,8 @@ export default {
       email: 'Email',
       remove: 'Usuń',
       edit: 'Edytuj',
+      delete: 'Usuń',
+      rowsPerPage: 'Wierszy na stronę:',
       confirmMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}.`,
     },
     dictionary: {

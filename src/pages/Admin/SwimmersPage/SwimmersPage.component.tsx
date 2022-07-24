@@ -67,6 +67,7 @@ export const SwimmersPage = () => {
           page={page}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
+          labelRowsPerPage={translate('usersList.rowsPerPage')}
         />
       </div>
     </CenteredPaper>
