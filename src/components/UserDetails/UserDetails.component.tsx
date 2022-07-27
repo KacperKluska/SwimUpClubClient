@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DoneIcon from '@mui/icons-material/Done';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useTranslations } from '../../translations/src';
 import {
   StyledEditButton,
@@ -11,34 +10,23 @@ import {
   StyledGrid,
 } from './UserDetails.styles';
 import { OneColumnLayout } from '../OneColumnLayout/OneColumnLayout.component';
-import { Details } from '../../pages/SettingsPage/SettingsPage.component';
+import {
+  Details,
+  UpdatedDetails,
+} from '../../pages/SettingsPage/SettingsPage.component';
 
 interface Props {
   details: Details | null;
+  handleUpdateCallback: (updatedData: UpdatedDetails) => void;
 }
 
-export const UserDetails = ({ details }: Props) => {
+export const UserDetails = ({ details, handleUpdateCallback }: Props) => {
   const [editing, setEditing] = useState(false);
   const [age, setAge] = useState<number | null>();
   const [weight, setWeight] = useState<number | null>();
   const [height, setHeight] = useState<number | null>();
   const [phoneNumber, setPhoneNumber] = useState('');
   const translate = useTranslations();
-
-  const handleUpdate = async () => {
-    const result = await axios.patch(
-      'http://localhost:3001/users/user/details',
-      {
-        newAge: age,
-        newWeight: weight,
-        newHeight: height,
-        newPhoneNumber: phoneNumber,
-      },
-      { withCredentials: true },
-    );
-    setEditing(false);
-    window.location.reload();
-  };
 
   const handleInputChange = (event: any, label: string) => {
     if (label === 'age') {
@@ -99,7 +87,10 @@ export const UserDetails = ({ details }: Props) => {
             <StyledEditButton
               variant="outlined"
               color="success"
-              onClick={handleUpdate}
+              onClick={() => {
+                handleUpdateCallback({ age, weight, height, phoneNumber });
+                setEditing(false);
+              }}
             >
               <DoneIcon /> {translate(`settingsPage.save`)}
             </StyledEditButton>

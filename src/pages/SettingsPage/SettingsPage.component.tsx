@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { ChangePassword } from '../../components/ChangePassword/ChangePassword.component';
 import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
 import { UserData } from '../../components/UserData/UserData.component';
 import { UserDetails } from '../../components/UserDetails/UserDetails.component';
@@ -18,6 +19,20 @@ export interface Details {
   weight?: number;
   height?: number;
   gender: 'Man' | 'Woman' | 'Not binary';
+}
+
+export interface UpdatedData {
+  name: string;
+  surname: string;
+  email: string;
+  originalEmail?: string;
+}
+
+export interface UpdatedDetails {
+  age?: number | null;
+  weight?: number | null;
+  height?: number | null;
+  phoneNumber: string;
 }
 
 export const SettingsPage = () => {
@@ -56,6 +71,76 @@ export const SettingsPage = () => {
     }
   };
 
+  const removeImage = async () => {
+    await axios.delete('http://localhost:3001/uploads/file', {
+      withCredentials: true,
+    });
+    window.location.reload();
+  };
+
+  const handleDataUpdate = async (updatedData: UpdatedData) => {
+    const { name, surname, email, originalEmail } = updatedData;
+    await axios.patch(
+      'http://localhost:3001/users/user',
+      {
+        newName: name,
+        newSurname: surname,
+        newEmail: email,
+      },
+      { withCredentials: true },
+    );
+    if (email !== originalEmail) {
+      await axios.delete('http://localhost:3001/auth/logout', {
+        withCredentials: true,
+      });
+    }
+    window.location.reload();
+  };
+
+  const handleDetailsUpdate = async (updatedDetails: UpdatedDetails) => {
+    const { age, weight, height, phoneNumber } = updatedDetails;
+    await axios.patch(
+      'http://localhost:3001/users/user/details',
+      {
+        newAge: age,
+        newWeight: weight,
+        newHeight: height,
+        newPhoneNumber: phoneNumber,
+      },
+      { withCredentials: true },
+    );
+    window.location.reload();
+  };
+
+  const handleImageUpload = async (event: any) => {
+    try {
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append('photo', file);
+
+      await axios.post('http://localhost:3001/uploads/file', formData, {
+        withCredentials: true,
+      });
+    } catch (error) {
+      console.error(error);
+    }
+    window.location.reload();
+  };
+
+  const handlePasswordChange = async (newPassword: string) => {
+    console.log('password', newPassword);
+    try {
+      const result = await axios.patch(
+        'http://localhost:3001/auth/change-password',
+        { password: newPassword },
+        { withCredentials: true },
+      );
+      console.log('result', result);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     getUserData();
   }, []);
@@ -65,8 +150,19 @@ export const SettingsPage = () => {
       <OneColumnLayout>
         {!loading && (
           <>
-            <UserData data={data} />
-            <UserDetails details={details} />
+            <UserData
+              data={data}
+              handleUpdateCallback={handleDataUpdate}
+              removeImageCallback={removeImage}
+              handleImageUpload={handleImageUpload}
+            />
+            <UserDetails
+              details={details}
+              handleUpdateCallback={handleDetailsUpdate}
+            />
+            <ChangePassword
+              handlePasswordChangeCallback={handlePasswordChange}
+            />
           </>
         )}
       </OneColumnLayout>

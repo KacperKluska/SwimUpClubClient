@@ -2,7 +2,6 @@ import { TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
 import DoneIcon from '@mui/icons-material/Done';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useTranslations } from '../../translations/src';
 import {
   StyledData,
@@ -14,15 +13,26 @@ import {
   StyledRemoveButton,
   StyledTwoColumnsLayout,
 } from './UserData.styles';
-import { Data } from '../../pages/SettingsPage/SettingsPage.component';
+import {
+  Data,
+  UpdatedData,
+} from '../../pages/SettingsPage/SettingsPage.component';
 import { useUserImage } from '../../hooks/useImage';
 import { AddProfilePicture } from '../AddProfilePicture/AddProfilePicture.component';
 
 interface Props {
   data: Data | null;
+  handleUpdateCallback: (updatedData: UpdatedData) => void;
+  removeImageCallback?: () => void;
+  handleImageUpload?: (event: any) => void;
 }
 
-export const UserData = ({ data }: Props) => {
+export const UserData = ({
+  data,
+  handleUpdateCallback,
+  removeImageCallback,
+  handleImageUpload,
+}: Props) => {
   const [editing, setEditing] = useState(false);
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -30,32 +40,6 @@ export const UserData = ({ data }: Props) => {
   const translate = useTranslations();
   const img = useUserImage(data?.photo || '');
   const originalEmail = data?.email;
-
-  const removeImage = async () => {
-    await axios.delete('http://localhost:3001/uploads/file', {
-      withCredentials: true,
-    });
-    window.location.reload();
-  };
-
-  const handleUpdate = async () => {
-    const result = await axios.patch(
-      'http://localhost:3001/users/user',
-      {
-        newName: name,
-        newSurname: surname,
-        newEmail: email,
-      },
-      { withCredentials: true },
-    );
-    setEditing(false);
-    if (email !== originalEmail) {
-      await axios.delete('http://localhost:3001/auth/logout', {
-        withCredentials: true,
-      });
-    }
-    window.location.reload();
-  };
 
   const handleInputChange = (event: any, label: string) => {
     if (label === 'name') {
@@ -88,12 +72,14 @@ export const UserData = ({ data }: Props) => {
         {img ? (
           <StyledImageFrame>
             <StyledImage src={img} alt="user image" />
-            <StyledRemoveButton type="button" onClick={removeImage}>
-              X
-            </StyledRemoveButton>
+            {removeImageCallback && (
+              <StyledRemoveButton type="button" onClick={removeImageCallback}>
+                X
+              </StyledRemoveButton>
+            )}
           </StyledImageFrame>
         ) : (
-          <AddProfilePicture />
+          <AddProfilePicture handleImageUpload={handleImageUpload} />
         )}
         <StyledData>
           {inputs.map((input) => (
@@ -116,7 +102,10 @@ export const UserData = ({ data }: Props) => {
         <StyledEditButton
           variant="outlined"
           color="success"
-          onClick={handleUpdate}
+          onClick={() => {
+            handleUpdateCallback({ name, surname, email, originalEmail });
+            setEditing(false);
+          }}
         >
           <DoneIcon /> {translate(`settingsPage.save`)}
         </StyledEditButton>
