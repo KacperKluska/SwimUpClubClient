@@ -60,6 +60,11 @@ export default {
       phoneNumber: 'Numer telefonu',
       gender: 'Płeć',
       uploadImage: 'Wgraj zdjęcie',
+      password: 'Hasło',
+      passwordPlaceholder: 'Podaj nowe hasło',
+      passwordRepeated: 'Powtórzone hasło',
+      passwordRepeatedPlaceholder: 'Powtórz nowe hasło',
+      changePassword: 'Zmień hasło',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

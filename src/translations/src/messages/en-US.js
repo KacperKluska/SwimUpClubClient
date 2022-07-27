@@ -59,6 +59,11 @@ export default {
       phoneNumber: 'Phone number',
       gender: 'Gender',
       uploadImage: 'Upload image',
+      password: 'Password',
+      passwordPlaceholder: 'Enter new password',
+      passwordRepeated: 'Repeated password',
+      passwordRepeatedPlaceholder: 'Repeat new password',
+      changePassword: 'Change password',
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
