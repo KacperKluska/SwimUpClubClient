@@ -14,9 +14,10 @@ interface UserContextProps {
   children: ReactNode;
 }
 
-export const SnackBarContext = createContext<
-  Partial<SnackBarContextReturnType>
->({});
+export const SnackBarContext = createContext<SnackBarContextReturnType>(
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  undefined!,
+);
 
 export const SnackBarContextProvider = ({ children }: UserContextProps) => {
   const [open, setOpen] = useState<boolean>(false);

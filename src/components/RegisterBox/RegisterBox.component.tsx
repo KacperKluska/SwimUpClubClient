@@ -8,9 +8,9 @@ import {
   TextField,
 } from '@mui/material';
 import axios from 'axios';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { SnackBarContext } from '../../context/SnackBarContext';
 import { useTranslations } from '../../translations/src';
-import { MySnackBar } from '../MySnackBar/MySnackBar.component';
 import {
   StyledBox,
   StyledError,
@@ -47,30 +47,15 @@ export const RegisterBox = () => {
 
   // other
   const translate = useTranslations();
-  const [open, setOpen] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [alertMsg, setAlertMsg] = useState('');
+  const { setSnackBar } = useContext(SnackBarContext);
 
   const handleSnackBarClick = (code: number, msg: string) => {
-    if (code === 201) setSuccess(true);
-    else setSuccess(false);
-    setAlertMsg(msg);
-    setOpen(true);
+    if (code === 201) setSnackBar(msg, 'success');
+    else setSnackBar(msg, 'error');
   };
 
-  const handleSnackBarClose = (
-    event?: React.SyntheticEvent | Event,
-    reason?: string,
-  ) => {
-    console.log(event);
-    if (reason === 'clickaway') {
-      return;
-    }
-
-    setOpen(false);
-  };
-
-  const handleLogin = async () => {
+  const handleLogin = async (e: any) => {
+    e.preventDefault();
     const validation = validateFields(
       name,
       surname,
@@ -292,12 +277,6 @@ export const RegisterBox = () => {
         </FormControl>
         {error ? ErrorMessage : null}
         <Button type="submit">{translate('registerPage.signUp')}</Button>
-        <MySnackBar
-          message={alertMsg}
-          open={open}
-          status={success ? 'success' : 'error'}
-          handleSnackBarClose={handleSnackBarClose}
-        />
       </StyledBox>
     </StyledForm>
   );
