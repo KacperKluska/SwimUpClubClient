@@ -1,12 +1,11 @@
 import { Alert, Snackbar } from '@mui/material';
-
-type Status = 'success' | 'error' | 'warning' | 'info';
+import { SnackBarStatus } from '../../context/SnackBarContext';
 
 interface Props {
   message: string;
   open: boolean;
-  status: Status;
-  handleSnackBarClose: (
+  status: SnackBarStatus;
+  handleSnackBarClose?: (
     event?: React.SyntheticEvent | Event,
     reason?: string,
   ) => void;
@@ -20,9 +19,10 @@ export const MySnackBar = ({
 }: Props) => (
   <Snackbar
     open={open}
-    autoHideDuration={10000}
+    autoHideDuration={5000}
     onClose={handleSnackBarClose}
-    anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+    anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+    sx={{ minWidth: '250px', maxWidth: '500px', mt: '70px' }}
   >
     <Alert
       onClose={handleSnackBarClose}
