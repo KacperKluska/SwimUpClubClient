@@ -43,9 +43,9 @@ export const LoginBox = () => {
       setErrorType('WRONG_DATA');
       return;
     }
-    if (setUserLogged !== undefined) setUserLogged(true);
+    setUserLogged(true);
     setError(false);
-    if (setUser !== undefined) setUser(result.data.data.user);
+    setUser(result.data.data.user);
     navigate('../main-menu', { replace: true });
   };
 

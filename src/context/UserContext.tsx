@@ -39,7 +39,8 @@ interface UserContextProps {
   children: ReactNode;
 }
 
-export const UserContext = createContext<Partial<UserContextReturnType>>({});
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+export const UserContext = createContext<UserContextReturnType>(undefined!);
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
   const [userLogged, setUserLogged] = useState(false);

@@ -26,11 +26,10 @@ export const ProtectedRoute = ({
       const response = await axios.get('http://localhost:3001/auth/refresh', {
         withCredentials: true,
       });
-      if (setUser) setUser(response.data.data);
-      if (setUserLogged) setUserLogged(true);
+      setUser(response.data.data);
+      setUserLogged(true);
       setLoading(false);
     } catch (error) {
-      console.error(error);
       setLoading(false);
     }
   };

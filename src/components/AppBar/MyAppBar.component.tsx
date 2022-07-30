@@ -22,12 +22,12 @@ interface Props {
   title: string;
   name: string;
   imageName: string;
-  userLogged?: boolean;
-  setUserLogged?: React.Dispatch<React.SetStateAction<boolean>>;
-  darkMode?: boolean;
-  setDarkMode?: React.Dispatch<React.SetStateAction<boolean>>;
-  language?: string;
-  setLanguage?: React.Dispatch<React.SetStateAction<string>>;
+  userLogged: boolean;
+  setUserLogged: React.Dispatch<React.SetStateAction<boolean>>;
+  darkMode: boolean;
+  setDarkMode: React.Dispatch<React.SetStateAction<boolean>>;
+  language: string;
+  setLanguage: React.Dispatch<React.SetStateAction<string>>;
 }
 
 export const MyAppBar = ({
@@ -56,23 +56,20 @@ export const MyAppBar = ({
   };
 
   const handleLangChange = () => {
-    if (setLanguage !== undefined)
-      setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'));
-    if (language !== undefined)
-      localStorage.setItem('language', language === 'PL' ? 'EN' : 'PL');
+    setLanguage((prev) => (prev === 'PL' ? 'EN' : 'PL'));
+    localStorage.setItem('language', language === 'PL' ? 'EN' : 'PL');
   };
 
   const handleThemeChange = () => {
-    if (setDarkMode !== undefined) setDarkMode((prev) => !prev);
-    if (darkMode !== undefined)
-      localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
+    setDarkMode((prev) => !prev);
+    localStorage.setItem('theme', !darkMode ? 'dark' : 'light');
   };
 
   const handleLogout = async () => {
     await axios.delete('http://localhost:3001/auth/logout', {
       withCredentials: true,
     });
-    if (setUserLogged !== undefined) setUserLogged(false);
+    setUserLogged(false);
   };
 
   const settings = [
