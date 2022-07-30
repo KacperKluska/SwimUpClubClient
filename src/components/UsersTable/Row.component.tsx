@@ -10,6 +10,7 @@ import { useState } from 'react';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import { useTranslations } from '../../translations/src';
 import { Data } from './UsersTable.component';
 
@@ -28,6 +29,7 @@ const StyledCollapsedBody = styled.div`
 export const Row = ({ row, isSmartphone }: Props) => {
   const translate = useTranslations();
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const handleDelete = async (email: string) => {
     // eslint-disable-next-line no-restricted-globals
@@ -41,6 +43,10 @@ export const Row = ({ row, isSmartphone }: Props) => {
       }
       window.location.reload();
     }
+  };
+
+  const handleEdit = async (userEmail: string) => {
+    navigate(`/admin/user/${userEmail}`, { replace: true });
   };
 
   return (
@@ -94,7 +100,12 @@ export const Row = ({ row, isSmartphone }: Props) => {
                 </Button>
               </TableCell>
               <TableCell key="edit" align="center">
-                <Button type="button" variant="outlined" color="primary">
+                <Button
+                  type="button"
+                  variant="outlined"
+                  color="primary"
+                  onClick={() => handleEdit(row.email)}
+                >
                   {translate('usersList.edit')}
                 </Button>
               </TableCell>
