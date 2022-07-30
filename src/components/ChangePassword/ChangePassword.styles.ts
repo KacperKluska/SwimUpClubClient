@@ -18,7 +18,7 @@ export const StyledPaper = styled(Paper)`
     width: auto;
   }
 
-  @media (max-width: 756px) {
+  @media (max-width: 768px) {
     justify-content: flex-start;
     flex-direction: column;
 
@@ -33,7 +33,7 @@ export const StyledPaper = styled(Paper)`
 export const Buttons = styled.div`
   ${centered}
 
-  @media (max-width: 756px) {
+  @media (max-width: 768px) {
     margin-top: 0.5rem;
   }
 `;
