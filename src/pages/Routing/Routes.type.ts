@@ -7,4 +7,6 @@ export const Routes = {
   DICTIONARY: '/dictionary',
   TIMER: '/timer',
   ADMIN_SWIMMERS: '/admin/swimmers',
+  ADMIN_COACHES: '/admin/coaches',
+  ADMIN_USER_PROFILE: '/admin/user/:userEmail',
 };

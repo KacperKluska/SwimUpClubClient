@@ -32,7 +32,7 @@ const getMenuItems = (
     case 'ADMIN':
       return [
         { name: 'swimmers', path: Routes.ADMIN_SWIMMERS },
-        { name: 'coaches', path: Routes.HOME },
+        { name: 'coaches', path: Routes.ADMIN_COACHES },
         { name: 'createAccount', path: Routes.REGISTER },
       ];
     default:

@@ -1,6 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute.component';
+import { CoachesPage } from '../Admin/CoachesPage/CoachesPage.component';
 import { SwimmersPage } from '../Admin/SwimmersPage/SwimmersPage.component';
+import { UserPage } from '../Admin/UserPage/UserPage.component';
 import { DictionaryPage } from '../DictionaryPage/DictionaryPage.component';
 import { HomePage } from '../HomePage/HomePage.component';
 import { LoginPage } from '../LoginPage/LoginPage.component';
@@ -27,6 +29,8 @@ export const Routing = () => (
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
         <Route path={routes.REGISTER} element={<RegisterPage />} />
         <Route path={routes.ADMIN_SWIMMERS} element={<SwimmersPage />} />
+        <Route path={routes.ADMIN_COACHES} element={<CoachesPage />} />
+        <Route path={routes.ADMIN_USER_PROFILE} element={<UserPage />} />
       </Route>
     </Route>
     <Route path="*" element={<NotFoundPage />} />
