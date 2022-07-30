@@ -3,20 +3,35 @@ import styled from 'styled-components';
 
 export const StyledPaper = styled(Paper)`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
 
-  height: auto;
+  min-height: calc(100vh - 72px - 205px);
 
   padding: 10rem;
 
   border-radius: 0;
 
   @media (max-width: 768px) {
-    padding: auto;
+    padding: 4rem;
     justify-content: center;
+  }
+`;
+
+export const StyledItemsContainer = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+
+  @media (max-width: 1096px) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
   }
 `;
 
@@ -38,5 +53,15 @@ export const StyledCard = styled(Card)`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+
+    font-size: 1.2rem;
+
+    width: 150px;
+    height: 150px;
   }
 `;
