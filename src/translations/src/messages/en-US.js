@@ -65,6 +65,17 @@ export default {
       passwordRepeatedPlaceholder: 'Repeat new password',
       changePassword: 'Change password',
     },
+    mySwimmersPage: {
+      title: 'My swimmers',
+      name: 'Name',
+      surname: 'Surname',
+      email: 'Email',
+      confirmRemoveMessage: `Are you sure you want to delete user with email: {value} from your swimmers list?`,
+      removeMessageError: `Couldn't remove user {value} from yours swimmers list.`,
+      remove: 'Delete',
+      edit: 'Edit',
+      delete: 'Delete',
+    },
     homePage: {
       mainTitle: 'Track your score, beat the best',
       joinTitle: 'Join to SwimUp Club today!',
@@ -74,6 +85,7 @@ export default {
         addWorkout: 'Add workout',
         workouts: 'Workouts',
         swimmers: 'Swimmers',
+        mySwimmers: 'My swimmers',
         coaches: 'Coaches',
         dictionary: 'Dictionary',
         calendar: 'Calendar',
@@ -106,7 +118,7 @@ export default {
       edit: 'Edit',
       delete: 'Delete',
       rowsPerPage: 'Rows Per Page:',
-      confirmMessage: `Are you sure you wan't to delete user with email: {value}.`,
+      confirmMessage: `Are you sure you want to delete user with email: {value}?`,
     },
     dictionary: {
       styles: {

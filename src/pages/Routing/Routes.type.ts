@@ -9,4 +9,5 @@ export const Routes = {
   ADMIN_SWIMMERS: '/admin/swimmers',
   ADMIN_COACHES: '/admin/coaches',
   ADMIN_USER_PROFILE: '/admin/user/:userEmail',
+  COACH_MY_SWIMMERS: '/coach/my-swimmers',
 };

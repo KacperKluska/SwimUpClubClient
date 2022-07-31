@@ -66,6 +66,17 @@ export default {
       passwordRepeatedPlaceholder: 'Powtórz nowe hasło',
       changePassword: 'Zmień hasło',
     },
+    mySwimmersPage: {
+      title: 'Moi zawodnicy',
+      name: 'Imie',
+      surname: 'Nazwisko',
+      email: 'Email',
+      confirmRemoveMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}, ze swojej listy zawodników?`,
+      removeMessageError: `Nie udało się usunąć użytkownika {value} z twojej listy zawodników.`,
+      remove: 'Usuń',
+      edit: 'Edytuj',
+      delete: 'Usuń',
+    },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
       joinTitle: 'Dołącz do SwimUp Club już dzisiaj!',
@@ -75,6 +86,7 @@ export default {
         addWorkout: 'Dodaj trening',
         workouts: 'Treningi',
         swimmers: 'Zawodnicy',
+        mySwimmers: 'Moi zawodncy',
         coaches: 'Trenerzy',
         dictionary: 'Słowniczek pojęć',
         calendar: 'Kalendarz',
@@ -107,7 +119,7 @@ export default {
       edit: 'Edytuj',
       delete: 'Usuń',
       rowsPerPage: 'Wierszy na stronę:',
-      confirmMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}.`,
+      confirmMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}?`,
     },
     dictionary: {
       styles: {
