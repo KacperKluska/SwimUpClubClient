@@ -9,6 +9,7 @@ import { LoginPage } from '../LoginPage/LoginPage.component';
 import { MainMenuPage } from '../MainMenuPage/MainMenuPage.component';
 import { MySwimmersPage } from '../MySwimmersPage/MySwimmersPage';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage.component';
+import { ProfilePage } from '../ProfilePage/ProfilePage.component';
 import { RegisterPage } from '../RegisterPage/RegisterPage.component';
 import { SettingsPage } from '../SettingsPage/SettingsPage.component';
 import { TimerPage } from '../TimerPage/TimerPage.component';
@@ -28,6 +29,7 @@ export const Routing = () => (
       <Route path={routes.SETTINGS} element={<SettingsPage />} />
       <Route element={<ProtectedRoute requiredRole="COACH" />}>
         <Route path={routes.TIMER} element={<TimerPage />} />
+        <Route path={routes.COACH_SWIMMER_PROFILE} element={<ProfilePage />} />
         <Route path={routes.COACH_MY_SWIMMERS} element={<MySwimmersPage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>

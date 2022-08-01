@@ -39,7 +39,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
         const result = await axios.delete(
           'http://localhost:3001/users-coaches',
           {
-            params: { swimmerEmail: 'email', coachEmail: user?.email ?? '' },
+            params: { swimmerEmail: email, coachEmail: user?.email ?? '' },
             withCredentials: true,
           },
         );
@@ -47,7 +47,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
         refreshData();
       } catch (error) {
         setSnackBar(
-          translate('mySwimmersPage.confirmRemoveMessage', { value: email }),
+          translate('mySwimmersPage.removeMessageError', { value: email }),
           'error',
         );
       }
@@ -69,7 +69,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
               color="error"
               onClick={() => handleRemove(row.email)}
             >
-              {translate('mySwimmersPage.delete')}
+              {translate('mySwimmersPage.remove')}
             </Button>
           </TableCell>
           <TableCell key="view" align="center">
@@ -79,7 +79,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
               color="primary"
               onClick={() => handleViewData(row.email)}
             >
-              {translate('mySwimmersPage.edit')}
+              {translate('mySwimmersPage.view')}
             </Button>
           </TableCell>
         </StyledCollapsedBody>

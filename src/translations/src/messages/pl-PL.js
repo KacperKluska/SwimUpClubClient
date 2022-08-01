@@ -74,8 +74,7 @@ export default {
       confirmRemoveMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}, ze swojej listy zawodników?`,
       removeMessageError: `Nie udało się usunąć użytkownika {value} z twojej listy zawodników.`,
       remove: 'Usuń',
-      edit: 'Edytuj',
-      delete: 'Usuń',
+      view: 'Podgląd',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

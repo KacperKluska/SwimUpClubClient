@@ -22,7 +22,7 @@ import { AddProfilePicture } from '../AddProfilePicture/AddProfilePicture.compon
 
 interface Props {
   data: Data | null;
-  handleUpdateCallback: (updatedData: UpdatedData) => void;
+  handleUpdateCallback?: (updatedData: UpdatedData) => void;
   removeImageCallback?: () => void;
   handleImageUpload?: (event: any) => void;
 }
@@ -94,21 +94,23 @@ export const UserData = ({
           ))}
         </StyledData>
       </StyledTwoColumnsLayout>
-      {!editing ? (
+      {!editing && handleUpdateCallback ? (
         <StyledEditButton variant="outlined" onClick={() => setEditing(true)}>
           <EditIcon /> {translate(`settingsPage.edit`)}
         </StyledEditButton>
       ) : (
-        <StyledEditButton
-          variant="outlined"
-          color="success"
-          onClick={() => {
-            handleUpdateCallback({ name, surname, email, originalEmail });
-            setEditing(false);
-          }}
-        >
-          <DoneIcon /> {translate(`settingsPage.save`)}
-        </StyledEditButton>
+        handleUpdateCallback && (
+          <StyledEditButton
+            variant="outlined"
+            color="success"
+            onClick={() => {
+              handleUpdateCallback({ name, surname, email, originalEmail });
+              setEditing(false);
+            }}
+          >
+            <DoneIcon /> {translate(`settingsPage.save`)}
+          </StyledEditButton>
+        )
       )}
     </StyledUserDataWrapper>
   );

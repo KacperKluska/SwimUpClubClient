@@ -17,7 +17,7 @@ import {
 
 interface Props {
   details: Details | null;
-  handleUpdateCallback: (updatedData: UpdatedDetails) => void;
+  handleUpdateCallback?: (updatedData: UpdatedDetails) => void;
 }
 
 export const UserDetails = ({ details, handleUpdateCallback }: Props) => {
@@ -76,7 +76,7 @@ export const UserDetails = ({ details, handleUpdateCallback }: Props) => {
               onChange={(e) => handleInputChange(e, input.label)}
             />
           ))}
-          {!editing ? (
+          {!editing && handleUpdateCallback ? (
             <StyledEditButton
               variant="outlined"
               onClick={() => setEditing(true)}
@@ -84,16 +84,18 @@ export const UserDetails = ({ details, handleUpdateCallback }: Props) => {
               <EditIcon /> {translate(`settingsPage.edit`)}
             </StyledEditButton>
           ) : (
-            <StyledEditButton
-              variant="outlined"
-              color="success"
-              onClick={() => {
-                handleUpdateCallback({ age, weight, height, phoneNumber });
-                setEditing(false);
-              }}
-            >
-              <DoneIcon /> {translate(`settingsPage.save`)}
-            </StyledEditButton>
+            handleUpdateCallback && (
+              <StyledEditButton
+                variant="outlined"
+                color="success"
+                onClick={() => {
+                  handleUpdateCallback({ age, weight, height, phoneNumber });
+                  setEditing(false);
+                }}
+              >
+                <DoneIcon /> {translate(`settingsPage.save`)}
+              </StyledEditButton>
+            )
           )}
         </StyledGrid>
       </OneColumnLayout>

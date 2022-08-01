@@ -73,8 +73,7 @@ export default {
       confirmRemoveMessage: `Are you sure you want to delete user with email: {value} from your swimmers list?`,
       removeMessageError: `Couldn't remove user {value} from yours swimmers list.`,
       remove: 'Delete',
-      edit: 'Edit',
-      delete: 'Delete',
+      view: 'View',
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
