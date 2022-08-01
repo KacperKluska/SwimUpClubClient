@@ -5,6 +5,7 @@ import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayou
 import { UserData } from '../../components/UserData/UserData.component';
 import { UserDetails } from '../../components/UserDetails/UserDetails.component';
 import { CenteredPaper } from '../CenteredPaper/CenteredPaper.component';
+import { LoadingPage } from '../LoadingPage/LoadingPage';
 
 export interface Data {
   name: string;
@@ -145,26 +146,22 @@ export const SettingsPage = () => {
     getUserData();
   }, []);
 
+  if (loading) return <LoadingPage />;
+
   return (
     <CenteredPaper>
       <OneColumnLayout>
-        {!loading && (
-          <>
-            <UserData
-              data={data}
-              handleUpdateCallback={handleDataUpdate}
-              removeImageCallback={removeImage}
-              handleImageUpload={handleImageUpload}
-            />
-            <UserDetails
-              details={details}
-              handleUpdateCallback={handleDetailsUpdate}
-            />
-            <ChangePassword
-              handlePasswordChangeCallback={handlePasswordChange}
-            />
-          </>
-        )}
+        <UserData
+          data={data}
+          handleUpdateCallback={handleDataUpdate}
+          removeImageCallback={removeImage}
+          handleImageUpload={handleImageUpload}
+        />
+        <UserDetails
+          details={details}
+          handleUpdateCallback={handleDetailsUpdate}
+        />
+        <ChangePassword handlePasswordChangeCallback={handlePasswordChange} />
       </OneColumnLayout>
     </CenteredPaper>
   );

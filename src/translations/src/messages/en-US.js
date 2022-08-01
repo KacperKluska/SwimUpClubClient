@@ -6,6 +6,9 @@ export default {
     hello: 'Hello',
     language: 'Language',
     pageInProgress: 'Page {page} is in progress',
+    common: {
+      loading: 'Loading...',
+    },
     appBar: {
       appName: 'SwimUp Club',
       language: 'Language',
