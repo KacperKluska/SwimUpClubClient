@@ -84,6 +84,9 @@ export default {
       loadingError:
         'Wystąpił nieznany błąd podczas ładowania listy zawodników.',
       addToMyList: "Dodaj do 'Moi zawodnicy'",
+      addedToMyList: "Dodano do 'Moi zawodnicy'",
+      addToMyListError:
+        'Nie udało się dodać zawodnika o emailu {value} do listy twoich zawodników.',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

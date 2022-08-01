@@ -7,6 +7,7 @@ import { useTranslations } from '../../translations/src';
 import { Data } from './SwimmersTable.component';
 import { UserContext } from '../../context/UserContext';
 import { SnackBarContext } from '../../context/SnackBarContext';
+import { handleAxiosError } from '../../utils/handleAxiosError';
 
 interface Props {
   row: Data;
@@ -27,7 +28,26 @@ export const AllSwimmersCollapseBody = ({ row, open }: Props) => {
   const { setSnackBar } = useContext(SnackBarContext);
   const { user } = userData;
 
-  const handleViewData = async (userEmail: string) => {
+  const handleAddSwimmerToCoachList = async (swimmerEmail: string) => {
+    try {
+      await axios.post(
+        'http://localhost:3001/users-coaches',
+        {},
+        {
+          params: { swimmerEmail, coachEmail: user?.email ?? '' },
+          withCredentials: true,
+        },
+      );
+      setSnackBar(translate('allSwimmersPage.addedToMyList'), 'success');
+    } catch (error) {
+      const errorMsg = translate('allSwimmersPage.addToMyListError', {
+        value: swimmerEmail,
+      });
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
+  const handleViewData = (userEmail: string) => {
     navigate(`/coach/user/${userEmail}`, { replace: true });
   };
 
@@ -40,7 +60,7 @@ export const AllSwimmersCollapseBody = ({ row, open }: Props) => {
               type="button"
               variant="outlined"
               color="success"
-              // onClick={() => handleRemove(row.email)}
+              onClick={() => handleAddSwimmerToCoachList(row.email)}
             >
               {translate('allSwimmersPage.addToMyList')}
             </Button>

@@ -82,6 +82,9 @@ export default {
       title: 'Swimmers',
       loadingError: 'An unexpected error has occurred during loading data.',
       addToMyList: "Add to 'My swimmers'",
+      addedToMyList: "Added to 'My swimmers'",
+      addToMyListError:
+        "Couldn't add user with email {value} to your swimmers list.",
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
