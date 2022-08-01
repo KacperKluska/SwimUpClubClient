@@ -78,6 +78,11 @@ export default {
       remove: 'Delete',
       view: 'View',
     },
+    allSwimmersPage: {
+      title: 'Swimmers',
+      loadingError: 'An unexpected error has occurred during loading data.',
+      addToMyList: "Add to 'My swimmers'",
+    },
     homePage: {
       mainTitle: 'Track your score, beat the best',
       joinTitle: 'Join to SwimUp Club today!',

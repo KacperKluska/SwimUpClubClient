@@ -8,7 +8,7 @@ export default {
     language: 'Język',
     pageInProgress: 'Strona {page} jest w budowie',
     common: {
-      loading: "Ładowanie..."
+      loading: 'Ładowanie...',
     },
     appBar: {
       appName: 'SwimUp Club',
@@ -78,6 +78,12 @@ export default {
       removeMessageError: `Nie udało się usunąć użytkownika {value} z twojej listy zawodników.`,
       remove: 'Usuń',
       view: 'Podgląd',
+    },
+    allSwimmersPage: {
+      title: 'Zawodnicy',
+      loadingError:
+        'Wystąpił nieznany błąd podczas ładowania listy zawodników.',
+      addToMyList: "Dodaj do 'Moi zawodnicy'",
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

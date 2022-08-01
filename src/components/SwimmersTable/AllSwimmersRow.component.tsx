@@ -1,16 +1,15 @@
 import { TableRow } from '@mui/material';
 import { useState } from 'react';
 import { Data } from './SwimmersTable.component';
-import { MySwimmersCollapseBody } from './MySwimmersCollapseBody.component';
+import { AllSwimmersCollapseBody } from './AllSwimmersCollapseBody.component';
 import { TableValues } from './TableValues.component';
 
 interface Props {
   row: Data;
   isSmartphone: boolean;
-  refreshData: () => void;
 }
 
-export const MySwimmersRow = ({ row, isSmartphone, refreshData }: Props) => {
+export const AllSwimmersRow = ({ row, isSmartphone }: Props) => {
   const [open, setOpen] = useState(false);
   const toggleOpen = () => setOpen(!open);
 
@@ -23,11 +22,7 @@ export const MySwimmersRow = ({ row, isSmartphone, refreshData }: Props) => {
         toggleOpen={toggleOpen}
       />
       <TableRow>
-        <MySwimmersCollapseBody
-          row={row}
-          open={open}
-          refreshData={refreshData}
-        />
+        <AllSwimmersCollapseBody row={row} open={open} />
       </TableRow>
     </>
   );
