@@ -1,5 +1,6 @@
 import { Card, Paper } from '@mui/material';
 import styled from 'styled-components';
+import { minPageHeight } from '../../theme';
 
 export const StyledPaper = styled(Paper)`
   display: flex;
@@ -8,7 +9,7 @@ export const StyledPaper = styled(Paper)`
   flex-wrap: wrap;
   gap: 2rem;
 
-  min-height: calc(100vh - 72px - 205px);
+  ${minPageHeight}
 
   padding: 10rem;
 
