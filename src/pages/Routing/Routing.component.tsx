@@ -3,6 +3,7 @@ import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute.c
 import { CoachesPage } from '../Admin/CoachesPage/CoachesPage.component';
 import { SwimmersPage } from '../Admin/SwimmersPage/SwimmersPage.component';
 import { UserPage } from '../Admin/UserPage/UserPage.component';
+import { AllSwimmersPage } from '../AllSwimmersPage/AllSwimmersPage';
 import { DictionaryPage } from '../DictionaryPage/DictionaryPage.component';
 import { HomePage } from '../HomePage/HomePage.component';
 import { LoginPage } from '../LoginPage/LoginPage.component';
@@ -31,6 +32,7 @@ export const Routing = () => (
         <Route path={routes.TIMER} element={<TimerPage />} />
         <Route path={routes.COACH_SWIMMER_PROFILE} element={<ProfilePage />} />
         <Route path={routes.COACH_MY_SWIMMERS} element={<MySwimmersPage />} />
+        <Route path={routes.COACH_ALL_SWIMMERS} element={<AllSwimmersPage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
         <Route path={routes.REGISTER} element={<RegisterPage />} />

@@ -24,7 +24,7 @@ const getMenuItems = (
     case 'COACH':
       return [
         { name: 'addWorkout', path: Routes.HOME },
-        { name: 'swimmers', path: Routes.HOME },
+        { name: 'swimmers', path: Routes.COACH_ALL_SWIMMERS },
         { name: 'mySwimmers', path: Routes.COACH_MY_SWIMMERS },
         { name: 'dictionary', path: Routes.DICTIONARY },
         { name: 'calendar', path: Routes.HOME },
