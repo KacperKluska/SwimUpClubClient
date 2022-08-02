@@ -77,6 +77,15 @@ export default {
       removeMessageError: `Couldn't remove user {value} from yours swimmers list.`,
       remove: 'Delete',
       view: 'View',
+      addWorkout: 'Add workout',
+    },
+    addWorkoutPage: {
+      session: 'Session',
+      addNote: 'Add note',
+      addWorkout: 'Add workout',
+      deleteSession: 'Delete Session',
+      workoutsTab: 'Workouts',
+      notesTab: 'Notes',
     },
     allSwimmersPage: {
       title: 'Swimmers',

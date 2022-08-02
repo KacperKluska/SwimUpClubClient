@@ -78,6 +78,15 @@ export default {
       removeMessageError: `Nie udało się usunąć użytkownika {value} z twojej listy zawodników.`,
       remove: 'Usuń',
       view: 'Podgląd',
+      addWorkout: 'Dodaj trening',
+    },
+    addWorkoutPage: {
+      session: 'Sesja',
+      addNote: 'Dodaj notatkę',
+      addWorkout: 'Dodaj trening',
+      deleteSession: 'Usuń sesję',
+      workoutsTab: 'Treningi',
+      notesTab: 'Notatki',
     },
     allSwimmersPage: {
       title: 'Zawodnicy',

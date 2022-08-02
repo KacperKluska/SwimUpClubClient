@@ -51,6 +51,11 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
     navigate(`/coach/user/${userEmail}`, { replace: true });
   };
 
+  const handleStartWorkoutSession = (userEmail: string) => {
+    console.log('hello', userEmail);
+    navigate(`/coach/add-workout/${userEmail}`, { replace: true });
+  };
+
   return (
     <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
       <Collapse in={open} timeout="auto" unmountOnExit>
@@ -58,10 +63,10 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
           <Button
             type="button"
             variant="outlined"
-            color="error"
-            onClick={() => handleRemove(row.email)}
+            color="success"
+            onClick={() => handleStartWorkoutSession(row.email)}
           >
-            {translate('mySwimmersPage.remove')}
+            {translate('mySwimmersPage.addWorkout')}
           </Button>
           <Button
             type="button"
@@ -70,6 +75,14 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
             onClick={() => handleViewData(row.email)}
           >
             {translate('mySwimmersPage.view')}
+          </Button>
+          <Button
+            type="button"
+            variant="outlined"
+            color="error"
+            onClick={() => handleRemove(row.email)}
+          >
+            {translate('mySwimmersPage.remove')}
           </Button>
         </StyledCollapsedBody>
       </Collapse>

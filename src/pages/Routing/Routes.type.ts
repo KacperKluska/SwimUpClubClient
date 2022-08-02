@@ -11,5 +11,6 @@ export const Routes = {
   ADMIN_USER_PROFILE: '/admin/user/:userEmail',
   COACH_MY_SWIMMERS: '/coach/my-swimmers',
   COACH_ALL_SWIMMERS: '/coach/all-swimmers',
+  COACH_ADD_WORKOUT: '/coach/add-workout/:userEmail',
   COACH_SWIMMER_PROFILE: '/coach/user/:userEmail',
 };

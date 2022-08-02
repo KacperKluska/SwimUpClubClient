@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from '../../components/ProtectedRoute/ProtectedRoute.component';
+import { AddWorkoutPage } from '../AddWorkoutPage/AddWorkoutPage';
 import { CoachesPage } from '../Admin/CoachesPage/CoachesPage.component';
 import { SwimmersPage } from '../Admin/SwimmersPage/SwimmersPage.component';
 import { UserPage } from '../Admin/UserPage/UserPage.component';
@@ -32,6 +33,7 @@ export const Routing = () => (
         <Route path={routes.TIMER} element={<TimerPage />} />
         <Route path={routes.COACH_SWIMMER_PROFILE} element={<ProfilePage />} />
         <Route path={routes.COACH_MY_SWIMMERS} element={<MySwimmersPage />} />
+        <Route path={routes.COACH_ADD_WORKOUT} element={<AddWorkoutPage />} />
         <Route path={routes.COACH_ALL_SWIMMERS} element={<AllSwimmersPage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
