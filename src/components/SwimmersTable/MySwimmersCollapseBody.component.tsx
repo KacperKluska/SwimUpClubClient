@@ -1,25 +1,18 @@
 import { Button, Collapse, TableCell } from '@mui/material';
 import axios from 'axios';
 import { useContext } from 'react';
-import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { useTranslations } from '../../translations/src';
 import { Data } from './SwimmersTable.component';
 import { UserContext } from '../../context/UserContext';
 import { SnackBarContext } from '../../context/SnackBarContext';
+import { StyledCollapsedBody } from './SwimmersTable.styles';
 
 interface Props {
   row: Data;
   open: boolean;
   refreshData: () => void;
 }
-
-const StyledCollapsedBody = styled.div`
-  display: flex;
-  justify-content: center;
-
-  width: 100%;
-`;
 
 export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
   const translate = useTranslations();
@@ -62,26 +55,22 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
     <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <StyledCollapsedBody>
-          <TableCell key="remove" align="center">
-            <Button
-              type="button"
-              variant="outlined"
-              color="error"
-              onClick={() => handleRemove(row.email)}
-            >
-              {translate('mySwimmersPage.remove')}
-            </Button>
-          </TableCell>
-          <TableCell key="view" align="center">
-            <Button
-              type="button"
-              variant="outlined"
-              color="primary"
-              onClick={() => handleViewData(row.email)}
-            >
-              {translate('mySwimmersPage.view')}
-            </Button>
-          </TableCell>
+          <Button
+            type="button"
+            variant="outlined"
+            color="error"
+            onClick={() => handleRemove(row.email)}
+          >
+            {translate('mySwimmersPage.remove')}
+          </Button>
+          <Button
+            type="button"
+            variant="outlined"
+            color="primary"
+            onClick={() => handleViewData(row.email)}
+          >
+            {translate('mySwimmersPage.view')}
+          </Button>
         </StyledCollapsedBody>
       </Collapse>
     </TableCell>
