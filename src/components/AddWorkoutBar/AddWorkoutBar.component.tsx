@@ -1,4 +1,5 @@
 import { Button, Typography } from '@mui/material';
+import { WorkoutSession } from '../../pages/AddWorkoutPage/AddWorkoutPage';
 import { useTranslations } from '../../translations/src';
 import {
   StyledButtons,
@@ -12,6 +13,7 @@ interface Props {
   deleteWorkout?: () => void;
   addingNote: boolean;
   addingWorkout: boolean;
+  workoutSession?: WorkoutSession;
 }
 
 export const AddWorkoutBar = ({
@@ -20,6 +22,7 @@ export const AddWorkoutBar = ({
   deleteWorkout,
   addingNote,
   addingWorkout,
+  workoutSession,
 }: Props) => {
   const translate = useTranslations();
 
@@ -30,26 +33,23 @@ export const AddWorkoutBar = ({
           {translate('addWorkoutPage.session')}
         </Typography>
         <div>
-          Data:&nbsp;<span>02.08.2022</span>
+          Data:&nbsp;<span>{workoutSession?.date}</span>
         </div>
         <div>
-          Zawodnik:&nbsp;<span>Kacper&nbsp;Kluska</span>
+          Zawodnik:&nbsp;
+          <span>
+            {workoutSession?.swimmer.name}&nbsp;
+            {workoutSession?.swimmer.surname}
+          </span>
         </div>
         <div>
-          Trener:&nbsp;<span>Kacper&nbsp;Kluska</span>
+          Trener:&nbsp;
+          <span>
+            {workoutSession?.coach.name}&nbsp;{workoutSession?.coach.surname}
+          </span>
         </div>
       </StyledSessionDetails>
       <StyledButtons>
-        {addNote && (
-          <Button
-            variant="outlined"
-            color="primary"
-            onClick={addNote}
-            disabled={addingWorkout}
-          >
-            {translate('addWorkoutPage.addNote')}
-          </Button>
-        )}
         {addWorkout && (
           <Button
             variant="outlined"
@@ -58,6 +58,16 @@ export const AddWorkoutBar = ({
             disabled={addingNote}
           >
             {translate('addWorkoutPage.addWorkout')}
+          </Button>
+        )}
+        {addNote && (
+          <Button
+            variant="outlined"
+            color="primary"
+            onClick={addNote}
+            disabled={addingWorkout}
+          >
+            {translate('addWorkoutPage.addNote')}
           </Button>
         )}
         {deleteWorkout && (
