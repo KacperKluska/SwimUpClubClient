@@ -76,6 +76,8 @@ export default {
       email: 'Email',
       confirmRemoveMessage: `Czy na pewno chcesz usunąć użytkownika o emailu: {value}, ze swojej listy zawodników?`,
       removeMessageError: `Nie udało się usunąć użytkownika {value} z twojej listy zawodników.`,
+      addWorkoutSessionError: `Nie udało się utworzyć sesji treningowej dla {value}.`,
+      addedWorkoutSession: `Udało się utworzyć sesję treningową dla {value}.`,
       remove: 'Usuń',
       view: 'Podgląd',
       addWorkout: 'Dodaj trening',
@@ -87,6 +89,8 @@ export default {
       deleteSession: 'Usuń sesję',
       workoutsTab: 'Treningi',
       notesTab: 'Notatki',
+      sessionRemoved: `Usunięto sesję`,
+      sessionRemoveError: `Wystąpił nieznany problem podczas usuwania sesji.`,
     },
     allSwimmersPage: {
       title: 'Zawodnicy',

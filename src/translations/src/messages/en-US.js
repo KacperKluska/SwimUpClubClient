@@ -75,6 +75,8 @@ export default {
       email: 'Email',
       confirmRemoveMessage: `Are you sure you want to delete user with email: {value} from your swimmers list?`,
       removeMessageError: `Couldn't remove user {value} from yours swimmers list.`,
+      addWorkoutSessionError: `Couldn't create workout session for {value}.`,
+      addedWorkoutSession: `Successfully created workout session for {value}.`,
       remove: 'Delete',
       view: 'View',
       addWorkout: 'Add workout',
@@ -86,6 +88,8 @@ export default {
       deleteSession: 'Delete Session',
       workoutsTab: 'Workouts',
       notesTab: 'Notes',
+      sessionRemoved: `Session deleted`,
+      sessionRemoveError: `There was an error when trying to delete session.`,
     },
     allSwimmersPage: {
       title: 'Swimmers',

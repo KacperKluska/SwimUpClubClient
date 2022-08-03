@@ -7,6 +7,7 @@ import { Data } from './SwimmersTable.component';
 import { UserContext } from '../../context/UserContext';
 import { SnackBarContext } from '../../context/SnackBarContext';
 import { StyledCollapsedBody } from './SwimmersTable.styles';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 interface Props {
   row: Data;
@@ -20,6 +21,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
   const { userData } = useContext(UserContext);
   const { setSnackBar } = useContext(SnackBarContext);
   const { user } = userData;
+  const [, setWorkoutSession] = useLocalStorage('workoutSession', {});
 
   const handleRemove = async (email: string) => {
     if (
@@ -51,9 +53,29 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
     navigate(`/coach/user/${userEmail}`, { replace: true });
   };
 
-  const handleStartWorkoutSession = (userEmail: string) => {
-    console.log('hello', userEmail);
-    navigate(`/coach/add-workout/${userEmail}`, { replace: true });
+  const handleStartWorkoutSession = async (userEmail: string) => {
+    try {
+      const result = await axios.post(
+        'http://localhost:3001/workout-sessions',
+        { swimmerEmail: userEmail, coachEmail: user?.email ?? '' },
+        { withCredentials: true },
+      );
+      setWorkoutSession(result);
+      setSnackBar(
+        translate('mySwimmersPage.addedWorkoutSession', {
+          value: userEmail,
+        }),
+        'success',
+      );
+      navigate(`/coach/add-workout/${userEmail}`, { replace: true });
+    } catch (error) {
+      setSnackBar(
+        translate('mySwimmersPage.addWorkoutSessionError', {
+          value: userEmail,
+        }),
+        'error',
+      );
+    }
   };
 
   return (
