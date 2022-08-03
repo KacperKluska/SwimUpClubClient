@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import { SnackBarContext } from '../context/SnackBarContext';
 
-export const useLocalStorage = (key: string, initialValue: string) => {
+export const useLocalStorage = (key: string, initialValue: object) => {
   const [storedValue, setStoredValue] = useState(() => {
     if (typeof window === 'undefined') {
       return initialValue;
