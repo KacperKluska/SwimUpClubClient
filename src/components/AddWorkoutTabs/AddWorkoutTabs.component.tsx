@@ -30,7 +30,7 @@ export const AddWorkoutTabs = ({
   const translate = useTranslations();
 
   return (
-    <Box sx={{ width: '100%', mt: '1rem' }}>
+    <Box sx={{ width: '100%', mt: '1rem', maxWidth: '800px' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs
           value={value}

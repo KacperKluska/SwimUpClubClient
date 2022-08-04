@@ -9,6 +9,8 @@ export default {
     pageInProgress: 'Strona {page} jest w budowie',
     common: {
       loading: 'Ładowanie...',
+      delete: 'Usuń',
+      add: 'Dodaj',
     },
     appBar: {
       appName: 'SwimUp Club',
@@ -91,6 +93,15 @@ export default {
       notesTab: 'Notatki',
       sessionRemoved: `Usunięto sesję`,
       sessionRemoveError: `Wystąpił nieznany problem podczas usuwania sesji.`,
+      notes: {
+        label: 'Nowa notatka (max 500 znaków)',
+        placeholder: 'Zacznij pisać tutaj...',
+        emptyNote:
+          'Nie możesz dodać pustej notatki. Uzupełnij wpierw jej treść.',
+        noteAdded: 'Notatka dodana poprawnie.',
+        noteAddingError:
+          'Wystąpił błąd poczas dodawania notatki. Skontaktuj się z deweloperem.',
+      },
     },
     allSwimmersPage: {
       title: 'Zawodnicy',

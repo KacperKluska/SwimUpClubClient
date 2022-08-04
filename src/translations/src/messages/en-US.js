@@ -8,6 +8,8 @@ export default {
     pageInProgress: 'Page {page} is in progress',
     common: {
       loading: 'Loading...',
+      delete: 'Delete',
+      add: 'Add',
     },
     appBar: {
       appName: 'SwimUp Club',
@@ -90,6 +92,14 @@ export default {
       notesTab: 'Notes',
       sessionRemoved: `Session deleted`,
       sessionRemoveError: `There was an error when trying to delete session.`,
+      notes: {
+        label: 'New note (max 500 characters)',
+        placeholder: 'Start typing here...',
+        emptyNote: 'You cannot add empty note. Enter some text first.',
+        noteAdded: 'Note added successfully.',
+        noteAddingError:
+          'There was an error when adding note. Contact the developer.',
+      },
     },
     allSwimmersPage: {
       title: 'Swimmers',
