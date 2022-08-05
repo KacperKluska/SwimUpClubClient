@@ -10,6 +10,7 @@ import { TabPanel } from '../../components/AddWorkoutTabs/TabPanel.component';
 import { Note } from '../../components/Note/Note.component';
 import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
 import { UserData } from '../../components/UserData/UserData.component';
+import { Workout } from '../../components/Workout/Workout.component';
 import { SnackBarContext } from '../../context/SnackBarContext';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useTranslations } from '../../translations/src';
@@ -40,6 +41,32 @@ export interface Note {
   id: string;
 }
 
+interface WorkoutType {
+  id: string;
+  type: string;
+}
+
+interface SwimmingStyle {
+  id: string;
+  style: string;
+}
+
+interface PoolLength {
+  id: string;
+  length: number;
+}
+
+export interface Workout {
+  id: string;
+  time: string;
+  averageSpeed: string;
+  averagePace: string;
+  distance: number;
+  poolLength: PoolLength;
+  swimmingStyle: SwimmingStyle;
+  workoutTypes: WorkoutType;
+}
+
 function isWorkoutSession(obj: any): obj is WorkoutSession {
   return (
     'id' in obj &&
@@ -55,7 +82,7 @@ export const AddWorkoutPage = () => {
   const { setSnackBar } = useContext(SnackBarContext);
   const [tabValue, setTabValue] = useState(0);
   const [notes, setNotes] = useState<Note[]>([]);
-  const [workouts, setWorkouts] = useState([]);
+  const [workouts, setWorkouts] = useState<Workout[]>([]);
   const [addingWorkout, setAddingWorkout] = useState(false);
   const [addingNote, setAddingNote] = useState(false);
   const [storedValue, setStoredValue] = useLocalStorage('workoutSession', {});
@@ -91,6 +118,16 @@ export const AddWorkoutPage = () => {
     setNotes(notes);
   };
 
+  const handleAddWorkout = (workout: Workout) => {
+    setWorkouts([...workouts, workout]);
+  };
+
+  const handleRemoveWorkout = (workout: Workout) => {
+    const index = workouts.indexOf(workout);
+    workouts.splice(index, 1);
+    setWorkouts(workouts);
+  };
+
   const closeAddingNote = () => {
     setAddingNote(false);
   };
@@ -102,6 +139,19 @@ export const AddWorkoutPage = () => {
         withCredentials: true,
       });
       setNotes(result.data.notes);
+    } catch (error) {
+      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
+  const getWorkouts = async () => {
+    try {
+      const result = await axios.get('http://localhost:3001/workouts', {
+        params: { workoutSessionId: storedSession.id },
+        withCredentials: true,
+      });
+      setWorkouts(result.data.workouts);
     } catch (error) {
       const errorMsg = translate('addWorkoutPage.sessionRemoveError');
       handleAxiosError(error, setSnackBar, errorMsg);
@@ -125,6 +175,7 @@ export const AddWorkoutPage = () => {
 
   useEffect(() => {
     getNotes();
+    getWorkouts();
   }, []);
 
   return (
@@ -167,16 +218,26 @@ export const AddWorkoutPage = () => {
             </Box>
           )}
           <TabPanel value={tabValue} index={0}>
-            Workouts TabPanel
+            {workouts.length
+              ? workouts.map((workout) => (
+                  <Workout
+                    key={workout.id}
+                    workout={workout}
+                    handleRemoveWorkout={handleRemoveWorkout}
+                  />
+                ))
+              : 'No workouts available'}
           </TabPanel>
           <TabPanel value={tabValue} index={1}>
-            {notes.map((note) => (
-              <Note
-                key={note.id}
-                note={note}
-                handleRemoveNote={handleRemoveNote}
-              />
-            ))}
+            {notes.length
+              ? notes.map((note) => (
+                  <Note
+                    key={note.id}
+                    note={note}
+                    handleRemoveNote={handleRemoveNote}
+                  />
+                ))
+              : 'No notes available'}
           </TabPanel>
         </AddWorkoutTabs>
       </OneColumnLayout>

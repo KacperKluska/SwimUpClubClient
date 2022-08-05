@@ -9,6 +9,8 @@ export default {
     common: {
       loading: 'Loading...',
       delete: 'Delete',
+      remove: 'Remove',
+      cancel: 'Cancel',
       add: 'Add',
     },
     appBar: {

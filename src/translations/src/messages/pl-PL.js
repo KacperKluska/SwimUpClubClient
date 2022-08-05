@@ -10,6 +10,8 @@ export default {
     common: {
       loading: 'Ładowanie...',
       delete: 'Usuń',
+      remove: 'Usuń',
+      cancel: 'Anuluj',
       add: 'Dodaj',
     },
     appBar: {
