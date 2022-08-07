@@ -65,10 +65,10 @@ export const AddWorkout = ({
       const workoutToAdd = result.data.workout;
 
       addWorkout(workoutToAdd);
-      setSnackBar(translate('addWorkoutPage.notes.noteAdded'), 'success');
+      setSnackBar(translate('addWorkoutPage.workouts.workoutAdded'), 'success');
       closeAddingWorkout();
     } catch (error) {
-      const errorMsg = translate('addWorkoutPage.notes.noteAddingError');
+      const errorMsg = translate('addWorkoutPage.workouts.workoutAddingError');
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -95,32 +95,34 @@ export const AddWorkout = ({
 
   return (
     <StyledAddWorkout onSubmit={handleAddWorkout}>
-      <Typography variant="h4">Add Workout</Typography>
+      <Typography variant="h4">
+        {translate('addWorkoutPage.workouts.title')}
+      </Typography>
       <RadioGroupComponent
         values={swimmingStyles.map((st) => st.style)}
         onValueChange={(e) => handleRadioValueChange(e, 'swimmingStyle')}
         name="swimming-styles"
-        title="Swimming Style"
+        title={translate('addWorkoutPage.workouts.swimmingStyle')}
         required
       />
       <RadioGroupComponent
         values={poolLengths.map((pl) => pl.length)}
         onValueChange={(e) => handleRadioValueChange(e, 'poolLength')}
         name="pool-lengths"
-        title="Pool Length"
+        title={translate('addWorkoutPage.workouts.poolLength')}
         required
       />
       <RadioGroupComponent
         values={workoutTypes.map((wt) => wt.type)}
         onValueChange={(e) => handleRadioValueChange(e, 'workoutType')}
         name="workout-types"
-        title="Workout Type"
+        title={translate('addWorkoutPage.workouts.workoutType')}
         required
       />
       <StyledInputs>
         <TextField
           type="number"
-          label="Distance"
+          label={translate('addWorkoutPage.workouts.distance')}
           id="distance"
           InputProps={{
             inputProps: {
@@ -134,7 +136,7 @@ export const AddWorkout = ({
         />
         <TextField
           type="time"
-          label="Time"
+          label={translate('addWorkoutPage.workouts.time')}
           id="time"
           required
           fullWidth
@@ -146,7 +148,7 @@ export const AddWorkout = ({
           {translate('common.add')}
         </Button>
         <Button variant="outlined" color="error" onClick={closeAddingWorkout}>
-          {translate('common.delete')}
+          {translate('common.cancel')}
         </Button>
       </StyledButtons>
     </StyledAddWorkout>

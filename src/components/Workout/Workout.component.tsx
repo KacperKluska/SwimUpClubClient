@@ -13,23 +13,23 @@ interface Props {
 }
 
 export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
-  console.log(
-    '🚀 ~ file: Workout.component.tsx ~ line 16 ~ Workout ~ workout',
-    workout,
-  );
   const { setSnackBar } = useContext(SnackBarContext);
   const translate = useTranslations();
 
   const handleWorkoutRemove = async () => {
     try {
-      await axios.delete('http://localhost:3001/notes', {
-        params: { noteId: workout.id },
+      await axios.delete(`http://localhost:3001/workouts/${workout.id}`, {
         withCredentials: true,
       });
       handleRemoveWorkout(workout);
-      setSnackBar('removed', 'success');
+      setSnackBar(
+        translate('addWorkoutPage.workouts.workoutRemoved'),
+        'success',
+      );
     } catch (error) {
-      const errorMsg = 'not removed';
+      const errorMsg = translate(
+        'addWorkoutPage.workouts.workoutRemovingError',
+      );
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -37,16 +37,26 @@ export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
   return (
     <StyledWorkout>
       <Typography>{workout.id}</Typography>
-      <div>Time: {workout.time}</div>
-      <div>Distance: {workout.distance}</div>
-      <div>Style: {workout.swimmingStyle.style}</div>
-      <div>Type: {workout.workoutTypes.type}</div>
+      <div>
+        {translate('addWorkoutPage.workouts.time')}&nbsp;{workout.time}
+      </div>
+      <div>
+        {translate('addWorkoutPage.workouts.distance')}&nbsp;{workout.distance}
+      </div>
+      <div>
+        {translate('addWorkoutPage.workouts.style')}&nbsp;
+        {workout.swimmingStyle.style}
+      </div>
+      <div>
+        {translate('addWorkoutPage.workouts.type')}&nbsp;
+        {workout.workoutTypes.type}
+      </div>
       <StyledRemoveButton
         color="error"
         variant="outlined"
         onClick={handleWorkoutRemove}
       >
-        {translate('common.delete')}
+        {translate('common.remove')}
       </StyledRemoveButton>
     </StyledWorkout>
   );

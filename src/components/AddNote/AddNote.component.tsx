@@ -27,14 +27,14 @@ export const AddNote = ({ closeAddingNote, sessionId, addNote }: Props) => {
       return;
     }
     try {
-      await axios.post(
+      const result = await axios.post(
         'http://localhost:3001/notes',
         { workoutSessionId: sessionId, text },
         {
           withCredentials: true,
         },
       );
-      addNote({ note: text, id: sessionId });
+      addNote({ note: text, id: result.data.id });
       setSnackBar(translate('addWorkoutPage.notes.noteAdded'), 'success');
       closeAddingNote();
     } catch (error) {
@@ -67,7 +67,7 @@ export const AddNote = ({ closeAddingNote, sessionId, addNote }: Props) => {
           {translate('common.add')}
         </Button>
         <Button variant="outlined" color="error" onClick={closeAddingNote}>
-          {translate('common.delete')}
+          {translate('common.cancel')}
         </Button>
       </StyledButtons>
     </section>

@@ -5,6 +5,7 @@ import { SnackBarContext } from '../../context/SnackBarContext';
 import { Note as NoteI } from '../../pages/AddWorkoutPage/AddWorkoutPage';
 import { StyledNote, StyledRemoveButton } from './Note.styles';
 import { handleAxiosError } from '../../utils/handleAxiosError';
+import { useTranslations } from '../../translations/src';
 
 interface Props {
   note: NoteI;
@@ -13,6 +14,7 @@ interface Props {
 
 export const Note = ({ note, handleRemoveNote }: Props) => {
   const { setSnackBar } = useContext(SnackBarContext);
+  const translate = useTranslations();
 
   const handleNoteRemove = async () => {
     try {
@@ -21,9 +23,9 @@ export const Note = ({ note, handleRemoveNote }: Props) => {
         withCredentials: true,
       });
       handleRemoveNote(note);
-      setSnackBar('removed', 'success');
+      setSnackBar(translate('addWorkoutPage.notes.noteRemoved'), 'success');
     } catch (error) {
-      const errorMsg = 'not removed';
+      const errorMsg = translate('addWorkoutPage.notes.noteRemovingError');
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -36,7 +38,7 @@ export const Note = ({ note, handleRemoveNote }: Props) => {
         variant="outlined"
         onClick={handleNoteRemove}
       >
-        Remove
+        {translate('common.remove')}
       </StyledRemoveButton>
     </StyledNote>
   );

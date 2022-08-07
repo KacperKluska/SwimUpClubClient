@@ -103,6 +103,27 @@ export default {
         noteAdded: 'Notatka dodana poprawnie.',
         noteAddingError:
           'Wystąpił błąd poczas dodawania notatki. Skontaktuj się z deweloperem.',
+        emptyArray: 'Nie ma żadnych notatek w tej sesji',
+        noteCanceled: 'Dodawanie notatki anulowane.',
+        noteRemoved: 'Notatka usunięta.',
+        noteRemovingError: 'Nieznany błąd podczas usuwania notatki.',
+      },
+      workouts: {
+        title: 'Dodaj trening',
+        time: 'Czas: ',
+        distance: 'Dystans: ',
+        style: 'Styl: ',
+        type: 'Typ: ',
+        emptyArray: 'Nie ma żadnych treningów w tej sesji',
+        workoutAdded: 'Trening dodany poprawnie.',
+        workoutAddingError:
+          'Wystąpił błąd poczas dodawania treningu. Skontaktuj się z deweloperem.',
+        workoutRemoved: 'Trening usunięty.',
+        workoutRemovingError:
+          'Wystąpił nieznany błąd podczas usuwania treningu.',
+        swimmingStyle: 'Styl pływacki:',
+        poolLength: 'Długość basenu:',
+        workoutType: 'Typ treningu:',
       },
     },
     allSwimmersPage: {

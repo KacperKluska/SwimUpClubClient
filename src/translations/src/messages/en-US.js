@@ -101,6 +101,27 @@ export default {
         noteAdded: 'Note added successfully.',
         noteAddingError:
           'There was an error when adding note. Contact the developer.',
+        emptyArray: 'There is no notes in this session.',
+        noteCanceled: 'Adding note canceled.',
+        noteRemoved: 'Note removed.',
+        noteRemovingError: 'There was an error when trying to delete note.',
+      },
+      workouts: {
+        title: 'Add Workout',
+        time: 'Time: ',
+        distance: 'Distance: ',
+        style: 'Style: ',
+        type: 'Type: ',
+        emptyArray: 'There is no workouts in this session.',
+        workoutAdded: 'Workout added successfully.',
+        workoutAddingError:
+          'There was an error when adding workout. Contact the developer.',
+        workoutRemoved: 'Workout removed.',
+        workoutRemovingError:
+          'There was an error when trying to delete workout.',
+        swimmingStyle: 'Swimming style:',
+        poolLength: 'Pool length:',
+        workoutType: 'Workout type:',
       },
     },
     allSwimmersPage: {

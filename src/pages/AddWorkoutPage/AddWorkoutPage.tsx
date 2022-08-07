@@ -282,7 +282,7 @@ export const AddWorkoutPage = () => {
                     handleRemoveWorkout={handleRemoveWorkout}
                   />
                 ))
-              : 'No workouts available'}
+              : translate('addWorkoutPage.workouts.emptyArray')}
           </TabPanel>
           <TabPanel value={tabValue} index={1}>
             {notes.length
@@ -293,7 +293,7 @@ export const AddWorkoutPage = () => {
                     handleRemoveNote={handleRemoveNote}
                   />
                 ))
-              : 'No notes available'}
+              : translate('addWorkoutPage.notes.emptyArray')}
           </TabPanel>
         </AddWorkoutTabs>
       </OneColumnLayout>
