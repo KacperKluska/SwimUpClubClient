@@ -54,7 +54,7 @@ export const RegisterBox = () => {
     else setSnackBar(msg, 'error');
   };
 
-  const handleLogin = async (e: any) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     const validation = validateFields(
       name,
@@ -180,7 +180,7 @@ export const RegisterBox = () => {
   }
 
   return (
-    <StyledForm onSubmit={handleLogin}>
+    <StyledForm onSubmit={handleRegister}>
       <StyledBox>
         <StyledHeader variant="h4">
           {translate('registerPage.title')}

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AddNote } from '../../components/AddNote/AddNote.component';
+import { AddWorkout } from '../../components/AddWorkout/AddWorkout.component';
 import { AddWorkoutBar } from '../../components/AddWorkoutBar/AddWorkoutBar.component';
 import { AddWorkoutTabs } from '../../components/AddWorkoutTabs/AddWorkoutTabs.component';
 import { TabPanel } from '../../components/AddWorkoutTabs/TabPanel.component';
@@ -41,17 +42,17 @@ export interface Note {
   id: string;
 }
 
-interface WorkoutType {
+export interface WorkoutType {
   id: string;
   type: string;
 }
 
-interface SwimmingStyle {
+export interface SwimmingStyle {
   id: string;
   style: string;
 }
 
-interface PoolLength {
+export interface PoolLength {
   id: string;
   length: number;
 }
@@ -59,8 +60,8 @@ interface PoolLength {
 export interface Workout {
   id: string;
   time: string;
-  averageSpeed: string;
-  averagePace: string;
+  averageSpeed: number;
+  averagePace: number;
   distance: number;
   poolLength: PoolLength;
   swimmingStyle: SwimmingStyle;
@@ -83,6 +84,9 @@ export const AddWorkoutPage = () => {
   const [tabValue, setTabValue] = useState(0);
   const [notes, setNotes] = useState<Note[]>([]);
   const [workouts, setWorkouts] = useState<Workout[]>([]);
+  const [poolLengths, setPoolLengths] = useState<PoolLength[]>([]);
+  const [swimmingStyles, setSwimmingStyles] = useState<SwimmingStyle[]>([]);
+  const [workoutTypes, setWorkoutTypes] = useState<WorkoutType[]>([]);
   const [addingWorkout, setAddingWorkout] = useState(false);
   const [addingNote, setAddingNote] = useState(false);
   const [storedValue, setStoredValue] = useLocalStorage('workoutSession', {});
@@ -109,7 +113,7 @@ export const AddWorkoutPage = () => {
   };
 
   const handleAddNote = (note: Note) => {
-    setNotes([...notes, note]);
+    setNotes([note, ...notes]);
   };
 
   const handleRemoveNote = (note: Note) => {
@@ -119,13 +123,17 @@ export const AddWorkoutPage = () => {
   };
 
   const handleAddWorkout = (workout: Workout) => {
-    setWorkouts([...workouts, workout]);
+    setWorkouts([workout, ...workouts]);
   };
 
   const handleRemoveWorkout = (workout: Workout) => {
     const index = workouts.indexOf(workout);
     workouts.splice(index, 1);
     setWorkouts(workouts);
+  };
+
+  const closeAddingWorkout = () => {
+    setAddingWorkout(false);
   };
 
   const closeAddingNote = () => {
@@ -158,6 +166,51 @@ export const AddWorkoutPage = () => {
     }
   };
 
+  const getPoolLengths = async () => {
+    try {
+      const result = await axios.get(
+        'http://localhost:3001/workouts/poolLengths',
+        {
+          withCredentials: true,
+        },
+      );
+      setPoolLengths(result.data.poolLengths);
+    } catch (error) {
+      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
+  const getSwimmingStyles = async () => {
+    try {
+      const result = await axios.get(
+        'http://localhost:3001/workouts/swimmingStyles',
+        {
+          withCredentials: true,
+        },
+      );
+      setSwimmingStyles(result.data.swimmingStyles);
+    } catch (error) {
+      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
+  const getWorkoutTypes = async () => {
+    try {
+      const result = await axios.get(
+        'http://localhost:3001/workouts/workoutTypes',
+        {
+          withCredentials: true,
+        },
+      );
+      setWorkoutTypes(result.data.workoutTypes);
+    } catch (error) {
+      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
   const handleDeleteWorkoutSession = async () => {
     try {
       await axios.delete('http://localhost:3001/workout-sessions', {
@@ -176,6 +229,9 @@ export const AddWorkoutPage = () => {
   useEffect(() => {
     getNotes();
     getWorkouts();
+    getPoolLengths();
+    getSwimmingStyles();
+    getWorkoutTypes();
   }, []);
 
   return (
@@ -197,14 +253,14 @@ export const AddWorkoutPage = () => {
         >
           {addingWorkout && (
             <Box sx={{ p: '3rem' }}>
-              Tutaj jest formularz treningu
-              <Button
-                variant="outlined"
-                color="error"
-                onClick={() => setAddingWorkout(false)}
-              >
-                X
-              </Button>
+              <AddWorkout
+                workoutSessionId={storedSession.id}
+                closeAddingWorkout={closeAddingWorkout}
+                addWorkout={handleAddWorkout}
+                poolLengths={poolLengths}
+                swimmingStyles={swimmingStyles}
+                workoutTypes={workoutTypes}
+              />
             </Box>
           )}
 
