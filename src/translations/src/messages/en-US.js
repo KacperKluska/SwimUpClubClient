@@ -12,6 +12,9 @@ export default {
       remove: 'Remove',
       cancel: 'Cancel',
       add: 'Add',
+      date: 'Date',
+      swimmer: 'Swimmer',
+      coach: 'Coach',
     },
     appBar: {
       appName: 'SwimUp Club',
@@ -111,7 +114,7 @@ export default {
         time: 'Time: ',
         distance: 'Distance: ',
         style: 'Style: ',
-        type: 'Type: ',
+        type: 'Workout type: ',
         emptyArray: 'There is no workouts in this session.',
         workoutAdded: 'Workout added successfully.',
         workoutAddingError:
@@ -122,6 +125,8 @@ export default {
         swimmingStyle: 'Swimming style:',
         poolLength: 'Pool length:',
         workoutType: 'Workout type:',
+        averageSpeed: 'Average speed: {value} km/h',
+        averagePace: 'Average pace: {value} min/100m',
       },
     },
     allSwimmersPage: {

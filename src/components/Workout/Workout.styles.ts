@@ -16,3 +16,9 @@ export const StyledRemoveButton = styled(Button)`
   right: 1rem;
   bottom: 1rem;
 `;
+
+export const StyledData = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+`;

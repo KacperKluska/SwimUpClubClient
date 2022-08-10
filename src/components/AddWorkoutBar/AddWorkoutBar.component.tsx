@@ -25,6 +25,7 @@ export const AddWorkoutBar = ({
   workoutSession,
 }: Props) => {
   const translate = useTranslations();
+  const dateToShow = workoutSession?.date.slice(0, 10);
 
   return (
     <StyledPaper>
@@ -33,17 +34,17 @@ export const AddWorkoutBar = ({
           {translate('addWorkoutPage.session')}
         </Typography>
         <div>
-          Data:&nbsp;<span>{workoutSession?.date}</span>
+          {translate('common.date')}:&nbsp;<span>{dateToShow}</span>
         </div>
         <div>
-          Zawodnik:&nbsp;
+          {translate('common.swimmer')}:&nbsp;
           <span>
             {workoutSession?.swimmer.name}&nbsp;
             {workoutSession?.swimmer.surname}
           </span>
         </div>
         <div>
-          Trener:&nbsp;
+          {translate('common.coach')}:&nbsp;
           <span>
             {workoutSession?.coach.name}&nbsp;{workoutSession?.coach.surname}
           </span>

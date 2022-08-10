@@ -13,6 +13,9 @@ export default {
       remove: 'Usuń',
       cancel: 'Anuluj',
       add: 'Dodaj',
+      date: 'Data',
+      swimmer: 'Zawodnik',
+      coach: 'Trener',
     },
     appBar: {
       appName: 'SwimUp Club',
@@ -113,7 +116,7 @@ export default {
         time: 'Czas: ',
         distance: 'Dystans: ',
         style: 'Styl: ',
-        type: 'Typ: ',
+        type: 'Typ treningu: ',
         emptyArray: 'Nie ma żadnych treningów w tej sesji',
         workoutAdded: 'Trening dodany poprawnie.',
         workoutAddingError:
@@ -124,6 +127,8 @@ export default {
         swimmingStyle: 'Styl pływacki:',
         poolLength: 'Długość basenu:',
         workoutType: 'Typ treningu:',
+        averageSpeed: 'Średnia prędkość: {value} km/h',
+        averagePace: 'Średnie tempo: {value} /100m',
       },
     },
     allSwimmersPage: {
