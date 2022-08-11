@@ -26,7 +26,7 @@ export const useServerImage = (name: string) => {
 
   useEffect(() => {
     getImage();
-  }, []);
+  }, [name]);
 
   return img;
 };
@@ -61,7 +61,8 @@ export const useUserImage = (name: string) => {
 
   useEffect(() => {
     getImage();
-  }, []);
+    console.log('odieżam w useImage');
+  }, [name]);
 
   return img;
 };

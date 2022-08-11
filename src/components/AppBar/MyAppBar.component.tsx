@@ -1,4 +1,3 @@
-import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -13,6 +12,7 @@ import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { Button, FormControl, InputLabel, Paper, Select } from '@mui/material';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { CustomLink } from '../CustomLink/CustomLink.component';
 import { Routes } from '../../pages/Routing/Routes.type';
 import { useTranslations } from '../../translations/src';
@@ -20,8 +20,6 @@ import { useUserImage } from '../../hooks/useImage';
 
 interface Props {
   title: string;
-  name: string;
-  imageName: string;
   userLogged: boolean;
   setUserLogged: React.Dispatch<React.SetStateAction<boolean>>;
   darkMode: boolean;
@@ -32,8 +30,6 @@ interface Props {
 
 export const MyAppBar = ({
   title,
-  name,
-  imageName,
   userLogged,
   setUserLogged,
   darkMode = false,
@@ -41,10 +37,10 @@ export const MyAppBar = ({
   language = 'PL',
   setLanguage,
 }: Props) => {
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null,
-  );
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const translate = useTranslations();
+  const [userName, setUserName] = useState('');
+  const [imageName, setImageName] = useState('');
   const img = useUserImage(imageName);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -71,6 +67,20 @@ export const MyAppBar = ({
     });
     setUserLogged(false);
   };
+
+  const getUserData = async () => {
+    const result = await axios.get('http://localhost:3001/users/user', {
+      withCredentials: true,
+    });
+    if (result.status === 200) {
+      setUserName(result.data.name || '');
+      setImageName(result.data.photo || '');
+    }
+  };
+
+  useEffect(() => {
+    getUserData();
+  }, [userLogged]);
 
   const settings = [
     { name: 'profile', path: Routes.SETTINGS },
@@ -124,7 +134,10 @@ export const MyAppBar = ({
             {userLogged ? (
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt={name} src={img || 'undefined'} />
+                  <Avatar
+                    alt={userName.toUpperCase()}
+                    src={img || 'undefined'}
+                  />
                 </IconButton>
               </Tooltip>
             ) : (
