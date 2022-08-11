@@ -31,13 +31,13 @@ export const useServerImage = (name: string) => {
   return img;
 };
 
-export const useUserImage = (name: string) => {
+export const useUserImage = (email: string) => {
   const [img, setImg] = useState<string | null>();
 
   const getImage = async () => {
     try {
       const response = await fetch(
-        `http://localhost:3001/uploads/file?imgName=${name}`,
+        `http://localhost:3001/uploads/otherUserFile/${email}`,
         {
           credentials: 'include',
           method: 'GET',
@@ -61,8 +61,7 @@ export const useUserImage = (name: string) => {
 
   useEffect(() => {
     getImage();
-    console.log('odieżam w useImage');
-  }, [name]);
+  }, [email]);
 
   return img;
 };

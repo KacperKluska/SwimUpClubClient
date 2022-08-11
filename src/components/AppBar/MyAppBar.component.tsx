@@ -40,8 +40,8 @@ export const MyAppBar = ({
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
   const translate = useTranslations();
   const [userName, setUserName] = useState('');
-  const [imageName, setImageName] = useState('');
-  const img = useUserImage(imageName);
+  const [userEmail, setUserEmail] = useState('');
+  const img = useUserImage(userEmail);
 
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
@@ -74,7 +74,7 @@ export const MyAppBar = ({
     });
     if (result.status === 200) {
       setUserName(result.data.name || '');
-      setImageName(result.data.photo || '');
+      setUserEmail(result.data.email || '');
     }
   };
 

@@ -38,7 +38,7 @@ export const UserData = ({
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const translate = useTranslations();
-  const img = useUserImage(data?.photo || '');
+  const img = useUserImage(data?.email || '');
   const originalEmail = data?.email;
 
   const handleInputChange = (event: any, label: string) => {
