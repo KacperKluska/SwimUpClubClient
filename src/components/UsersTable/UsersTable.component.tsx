@@ -13,7 +13,6 @@ export interface Column {
   label: string;
   minWidth?: number;
   align?: 'left' | 'center' | 'right';
-  format?: (value: number) => string;
 }
 
 export interface Data {
@@ -64,7 +63,7 @@ export const UsersTable = ({ page, rowsPerPage, users }: Props) => {
           {users
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
             .map((row) => (
-              <Row row={row} isSmartphone={isSmartphone} />
+              <Row row={row} isSmartphone={isSmartphone} key={row.email} />
             ))}
         </TableBody>
       </Table>

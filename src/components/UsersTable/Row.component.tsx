@@ -22,6 +22,8 @@ interface Props {
 const StyledCollapsedBody = styled.div`
   display: flex;
   justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
 
   width: 100%;
 `;
@@ -89,26 +91,22 @@ export const Row = ({ row, isSmartphone }: Props) => {
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
           <Collapse in={open} timeout="auto" unmountOnExit>
             <StyledCollapsedBody>
-              <TableCell key="remove" align="center">
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="error"
-                  onClick={() => handleDelete(row.email)}
-                >
-                  {translate('usersList.delete')}
-                </Button>
-              </TableCell>
-              <TableCell key="edit" align="center">
-                <Button
-                  type="button"
-                  variant="outlined"
-                  color="primary"
-                  onClick={() => handleEdit(row.email)}
-                >
-                  {translate('usersList.edit')}
-                </Button>
-              </TableCell>
+              <Button
+                type="button"
+                variant="outlined"
+                color="error"
+                onClick={() => handleDelete(row.email)}
+              >
+                {translate('usersList.delete')}
+              </Button>
+              <Button
+                type="button"
+                variant="outlined"
+                color="primary"
+                onClick={() => handleEdit(row.email)}
+              >
+                {translate('usersList.edit')}
+              </Button>
             </StyledCollapsedBody>
           </Collapse>
         </TableCell>
