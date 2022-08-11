@@ -9,6 +9,7 @@ import { UserContext } from '../../context/UserContext';
 import { SwimmersTable } from '../../components/SwimmersTable/SwimmersTable.component';
 import { MySwimmersRow } from '../../components/SwimmersTable/MySwimmersRow.component';
 import useWindowDimensions from '../../hooks/useWindowDimension';
+import { LoadingPage } from '../LoadingPage/LoadingPage';
 
 export const MySwimmersPage = () => {
   const [page, setPage] = useState(0);
@@ -63,7 +64,7 @@ export const MySwimmersPage = () => {
     getUsers();
   }, []);
 
-  if (loading) return <div>loading...</div>;
+  if (loading) return <LoadingPage />;
 
   return (
     <CenteredPaper>

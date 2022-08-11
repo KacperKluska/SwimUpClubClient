@@ -34,7 +34,7 @@ export const SwimmersPage = () => {
     });
     if (result.status === 200) {
       setUsers(
-        result.data.map(
+        result.data.swimmers.map(
           (user: { name: string; surname: string; email: string }) => ({
             name: user.name,
             surname: user.surname,

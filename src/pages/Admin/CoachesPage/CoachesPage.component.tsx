@@ -34,7 +34,7 @@ export const CoachesPage = () => {
     });
     if (result.status === 200) {
       setUsers(
-        result.data.map(
+        result.data.coaches.map(
           (user: { name: string; surname: string; email: string }) => ({
             name: user.name,
             surname: user.surname,
