@@ -6,6 +6,8 @@ export const Routes = {
   SETTINGS: '/settings',
   DICTIONARY: '/dictionary',
   TIMER: '/timer',
+  USER_MY_COACHES: '/user/my-coaches',
+  USER_COACH_PROFILE: '/user/coach/:userEmail',
   ADMIN_SWIMMERS: '/admin/swimmers',
   ADMIN_COACHES: '/admin/coaches',
   ADMIN_USER_PROFILE: '/admin/user/:userEmail',
