@@ -91,6 +91,7 @@ export default {
     },
     addWorkoutPage: {
       session: 'Sesja',
+      sessionId: 'Sesja #{value}',
       addNote: 'Dodaj notatkę',
       addWorkout: 'Dodaj trening',
       deleteSession: 'Usuń sesję',
@@ -139,6 +140,12 @@ export default {
       addedToMyList: "Dodano do 'Moi zawodnicy'",
       addToMyListError:
         'Nie udało się dodać zawodnika o emailu {value} do listy twoich zawodników.',
+    },
+    myWorkoutSessionsPage: {
+      title: 'Moje sesje treningowe',
+      view: 'Zobacz szczegóły',
+      loadingError:
+        'Wystąpił nieoczekiwany błąd podczas wczytywania sesji treningowych.',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',

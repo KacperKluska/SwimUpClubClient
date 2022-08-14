@@ -16,6 +16,7 @@ import { RegisterPage } from '../RegisterPage/RegisterPage.component';
 import { SettingsPage } from '../SettingsPage/SettingsPage.component';
 import { TimerPage } from '../TimerPage/TimerPage.component';
 import { MyCoachesPage } from '../User/MyCoachesPage/MyCoachesPage';
+import { MyWorkoutSessionsPage } from '../User/MyWorkoutSessionsPage/MyWorkoutSessionsPage';
 import { Routes as routes } from './Routes.type';
 
 export const Routing = () => (
@@ -33,6 +34,10 @@ export const Routing = () => (
       <Route path={routes.TIMER} element={<TimerPage />} />
       <Route element={<ProtectedRoute requiredRole="USER" />}>
         <Route path={routes.USER_MY_COACHES} element={<MyCoachesPage />} />
+        <Route
+          path={routes.USER_MY_WORKOUT_SESSIONS}
+          element={<MyWorkoutSessionsPage />}
+        />
         <Route path={routes.USER_COACH_PROFILE} element={<ProfilePage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="COACH" />}>

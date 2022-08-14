@@ -7,19 +7,23 @@ interface Props {
   coach?: UserDataInterface;
   swimmer?: UserDataInterface;
   dateToShow?: string;
+  index?: number;
 }
 
 export const WorkoutSessionDetails = ({
   coach,
   swimmer,
   dateToShow,
+  index,
 }: Props) => {
   const translate = useTranslations();
 
   return (
     <StyledSessionDetails>
       <Typography variant="h4">
-        {translate('addWorkoutPage.session')}
+        {typeof index !== 'number'
+          ? translate('addWorkoutPage.session')
+          : translate('addWorkoutPage.sessionId', { value: index + 1 })}
       </Typography>
       <div>
         {translate('common.date')}:&nbsp;<span>{dateToShow}</span>

@@ -15,7 +15,7 @@ const getMenuItems = (
   switch (role) {
     case 'USER':
       return [
-        { name: 'workouts', path: Routes.HOME },
+        { name: 'workouts', path: Routes.USER_MY_WORKOUT_SESSIONS },
         { name: 'coaches', path: Routes.USER_MY_COACHES },
         { name: 'dictionary', path: Routes.HOME },
         { name: 'calendar', path: Routes.HOME },

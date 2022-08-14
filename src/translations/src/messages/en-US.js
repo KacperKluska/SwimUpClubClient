@@ -90,6 +90,7 @@ export default {
     },
     addWorkoutPage: {
       session: 'Session',
+      sessionId: 'Session #{value}',
       addNote: 'Add note',
       addWorkout: 'Add workout',
       deleteSession: 'Delete Session',
@@ -136,6 +137,11 @@ export default {
       addedToMyList: "Added to 'My swimmers'",
       addToMyListError:
         "Couldn't add user with email {value} to your swimmers list.",
+    },
+    myWorkoutSessionsPage: {
+      title: 'My Workout Sessions',
+      view: 'View details',
+      loadingError: 'An unexpected error has occurred while fetching workout sessions data.'
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
