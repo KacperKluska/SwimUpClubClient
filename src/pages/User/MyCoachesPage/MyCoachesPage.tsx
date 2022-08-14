@@ -11,7 +11,7 @@ import useWindowDimensions from '../../../hooks/useWindowDimension';
 import { LoadingPage } from '../../LoadingPage/LoadingPage';
 import { MyCoachesRow } from '../../../components/MyCoaches/MyCoachesRow.component';
 
-export const MyWorkoutSessionsPage = () => {
+export const MyCoachesPage = () => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [coaches, setCoaches] = useState<Data[]>([]);

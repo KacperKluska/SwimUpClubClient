@@ -15,7 +15,7 @@ import { ProfilePage } from '../ProfilePage/ProfilePage.component';
 import { RegisterPage } from '../RegisterPage/RegisterPage.component';
 import { SettingsPage } from '../SettingsPage/SettingsPage.component';
 import { TimerPage } from '../TimerPage/TimerPage.component';
-import { MyWorkoutSessionsPage } from '../User/MyWorkoutSessionsPage/MyWorkoutSessionsPage';
+import { MyCoachesPage } from '../User/MyCoachesPage/MyCoachesPage';
 import { Routes as routes } from './Routes.type';
 
 export const Routing = () => (
@@ -32,10 +32,7 @@ export const Routing = () => (
       <Route path={routes.SETTINGS} element={<SettingsPage />} />
       <Route path={routes.TIMER} element={<TimerPage />} />
       <Route element={<ProtectedRoute requiredRole="USER" />}>
-        <Route
-          path={routes.USER_MY_COACHES}
-          element={<MyWorkoutSessionsPage />}
-        />
+        <Route path={routes.USER_MY_COACHES} element={<MyCoachesPage />} />
         <Route path={routes.USER_COACH_PROFILE} element={<ProfilePage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="COACH" />}>
