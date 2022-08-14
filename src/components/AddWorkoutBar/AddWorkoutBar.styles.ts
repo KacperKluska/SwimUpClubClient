@@ -15,22 +15,6 @@ export const StyledPaper = styled(Paper)`
   min-width: 400px;
 `;
 
-export const StyledSessionDetails = styled.section`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  div {
-    font-weight: bold;
-    font-size: 1.1rem;
-
-    span {
-      font-weight: normal;
-      font-size: 1rem;
-    }
-  }
-`;
-
 export const StyledButtons = styled.section`
   width: 100%;
   justify-content: flex-end;

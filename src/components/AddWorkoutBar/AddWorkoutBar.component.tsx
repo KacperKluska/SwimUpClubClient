@@ -1,11 +1,8 @@
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import { WorkoutSession } from '../../pages/AddWorkoutPage/AddWorkoutPage';
 import { useTranslations } from '../../translations/src';
-import {
-  StyledButtons,
-  StyledPaper,
-  StyledSessionDetails,
-} from './AddWorkoutBar.styles';
+import { WorkoutSessionDetails } from '../WorkoutSessionDetails/WorkoutSessionDetails.component';
+import { StyledButtons, StyledPaper } from './AddWorkoutBar.styles';
 
 interface Props {
   addNote?: () => void;
@@ -29,27 +26,11 @@ export const AddWorkoutBar = ({
 
   return (
     <StyledPaper>
-      <StyledSessionDetails>
-        <Typography variant="h4">
-          {translate('addWorkoutPage.session')}
-        </Typography>
-        <div>
-          {translate('common.date')}:&nbsp;<span>{dateToShow}</span>
-        </div>
-        <div>
-          {translate('common.swimmer')}:&nbsp;
-          <span>
-            {workoutSession?.swimmer.name}&nbsp;
-            {workoutSession?.swimmer.surname}
-          </span>
-        </div>
-        <div>
-          {translate('common.coach')}:&nbsp;
-          <span>
-            {workoutSession?.coach.name}&nbsp;{workoutSession?.coach.surname}
-          </span>
-        </div>
-      </StyledSessionDetails>
+      <WorkoutSessionDetails
+        coach={workoutSession?.coach}
+        swimmer={workoutSession?.swimmer}
+        dateToShow={dateToShow}
+      />
       <StyledButtons>
         {addWorkout && (
           <Button

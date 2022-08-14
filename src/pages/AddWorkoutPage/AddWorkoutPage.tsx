@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { SyntheticEvent, useContext, useEffect, useState } from 'react';
@@ -10,7 +9,6 @@ import { AddWorkoutTabs } from '../../components/AddWorkoutTabs/AddWorkoutTabs.c
 import { TabPanel } from '../../components/AddWorkoutTabs/TabPanel.component';
 import { Note } from '../../components/Note/Note.component';
 import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
-import { UserData } from '../../components/UserData/UserData.component';
 import { Workout } from '../../components/Workout/Workout.component';
 import { SnackBarContext } from '../../context/SnackBarContext';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -18,7 +16,7 @@ import { useTranslations } from '../../translations/src';
 import { handleAxiosError } from '../../utils/handleAxiosError';
 import { CenteredPaper } from '../CenteredPaper/CenteredPaper.component';
 
-interface UserData {
+export interface UserDataInterface {
   email: string;
   id: string;
   name: string;
@@ -30,8 +28,8 @@ interface UserData {
 }
 
 export interface WorkoutSession {
-  coach: UserData;
-  swimmer: UserData;
+  coach: UserDataInterface;
+  swimmer: UserDataInterface;
   date: string;
   id: string;
   message: string;
