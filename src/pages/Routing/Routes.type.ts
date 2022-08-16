@@ -17,4 +17,6 @@ export const Routes = {
   COACH_ALL_SWIMMERS: '/coach/all-swimmers',
   COACH_ADD_WORKOUT: '/coach/add-workout/:userEmail',
   COACH_SWIMMER_PROFILE: '/coach/user/:userEmail',
+  COACH_MY_WORKOUT_SESSIONS: '/coach/my-workout-sessions',
+  COACH_MY_WORKOUT_SESSION: '/coach/my-workout-sessions/:sessionId',
 };

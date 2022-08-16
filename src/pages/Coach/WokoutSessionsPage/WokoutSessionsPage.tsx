@@ -13,7 +13,7 @@ import { WorkoutSession as WorkoutSessionI } from '../../AddWorkoutPage/AddWorko
 import { CenteredPaper } from '../../CenteredPaper/CenteredPaper.component';
 import { LoadingPage } from '../../LoadingPage/LoadingPage';
 
-export const MyWorkoutSessionsPage = () => {
+export const WorkoutSessionsPage = () => {
   const [loading, setLoading] = useState(true);
   const [workoutSessions, setWorkoutSessions] = useState<WorkoutSessionI[]>([]);
   const translate = useTranslations();
@@ -27,7 +27,7 @@ export const MyWorkoutSessionsPage = () => {
     try {
       setLoading(true);
       const result = await axios.get(
-        `http://localhost:3001/workout-sessions/forSwimmer`,
+        `http://localhost:3001/workout-sessions/forCoach`,
         {
           withCredentials: true,
           params: { email: user?.email ?? '' },
@@ -47,7 +47,7 @@ export const MyWorkoutSessionsPage = () => {
 
   const handleView = (session: WorkoutSessionI) => {
     setStoredValue(session);
-    navigate(`/user/my-workout-sessions/${session.id}`, { replace: true });
+    navigate(`/coach/my-workout-sessions/${session.id}`, { replace: true });
   };
 
   if (loading) return <LoadingPage />;

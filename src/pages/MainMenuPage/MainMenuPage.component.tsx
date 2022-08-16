@@ -28,6 +28,7 @@ const getMenuItems = (
         { name: 'dictionary', path: Routes.DICTIONARY },
         { name: 'calendar', path: Routes.HOME },
         { name: 'timer', path: Routes.TIMER },
+        { name: 'workouts', path: Routes.COACH_MY_WORKOUT_SESSIONS },
       ];
     case 'ADMIN':
       return [

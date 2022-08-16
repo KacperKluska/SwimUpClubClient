@@ -5,6 +5,8 @@ import { CoachesPage } from '../Admin/CoachesPage/CoachesPage.component';
 import { SwimmersPage } from '../Admin/SwimmersPage/SwimmersPage.component';
 import { UserPage } from '../Admin/UserPage/UserPage.component';
 import { AllSwimmersPage } from '../AllSwimmersPage/AllSwimmersPage';
+import { WorkoutSessionPage } from '../Coach/WokoutSessionPage/WokoutSessionPage';
+import { WorkoutSessionsPage } from '../Coach/WokoutSessionsPage/WokoutSessionsPage';
 import { DictionaryPage } from '../DictionaryPage/DictionaryPage.component';
 import { HomePage } from '../HomePage/HomePage.component';
 import { LoginPage } from '../LoginPage/LoginPage.component';
@@ -50,6 +52,14 @@ export const Routing = () => (
         <Route path={routes.COACH_MY_SWIMMERS} element={<MySwimmersPage />} />
         <Route path={routes.COACH_ADD_WORKOUT} element={<AddWorkoutPage />} />
         <Route path={routes.COACH_ALL_SWIMMERS} element={<AllSwimmersPage />} />
+        <Route
+          path={routes.COACH_MY_WORKOUT_SESSIONS}
+          element={<WorkoutSessionsPage />}
+        />
+        <Route
+          path={routes.COACH_MY_WORKOUT_SESSION}
+          element={<WorkoutSessionPage />}
+        />
       </Route>
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
         <Route path={routes.REGISTER} element={<RegisterPage />} />
