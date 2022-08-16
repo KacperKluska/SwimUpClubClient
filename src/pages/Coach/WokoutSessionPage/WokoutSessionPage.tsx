@@ -1,5 +1,6 @@
 import { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import { AddWorkoutBar } from '../../../components/AddWorkoutBar/AddWorkoutBar.component';
 import { AddWorkoutTabs } from '../../../components/AddWorkoutTabs/AddWorkoutTabs.component';
 import { TabPanel } from '../../../components/AddWorkoutTabs/TabPanel.component';
@@ -23,7 +24,8 @@ export const WorkoutSessionPage = () => {
   const [tabValue, setTabValue] = useState(0);
   const [notes, setNotes] = useState<NoteI[]>([]);
   const [workouts, setWorkouts] = useState<WorkoutI[]>([]);
-  const [storedValue] = useLocalStorage('workoutSession', {});
+  const [storedValue, setStoredValue] = useLocalStorage('workoutSession', {});
+  const navigate = useNavigate();
 
   const storedSession = storedValue;
   let workoutSession;
@@ -65,6 +67,21 @@ export const WorkoutSessionPage = () => {
     }
   };
 
+  const handleDeleteWorkoutSession = async () => {
+    try {
+      await axios.delete('http://localhost:3001/workout-sessions', {
+        params: { id: storedSession.id },
+        withCredentials: true,
+      });
+      setSnackBar(translate('addWorkoutPage.sessionRemoved'), 'success');
+      setStoredValue({});
+      navigate(`/coach/my-workout-sessions`, { replace: true });
+    } catch (error) {
+      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
+  };
+
   useEffect(() => {
     getNotes();
     getWorkouts();
@@ -73,7 +90,10 @@ export const WorkoutSessionPage = () => {
   return (
     <CenteredPaper>
       <OneColumnLayout>
-        <AddWorkoutBar workoutSession={workoutSession} />
+        <AddWorkoutBar
+          workoutSession={workoutSession}
+          deleteWorkout={handleDeleteWorkoutSession}
+        />
         <AddWorkoutTabs handleChange={handleTabChange} value={tabValue}>
           <TabPanel value={tabValue} index={0}>
             {workouts.length

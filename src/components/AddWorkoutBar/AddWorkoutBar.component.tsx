@@ -17,8 +17,8 @@ export const AddWorkoutBar = ({
   addNote,
   addWorkout,
   deleteWorkout,
-  addingNote = true,
-  addingWorkout = true,
+  addingNote = false,
+  addingWorkout = false,
   workoutSession,
 }: Props) => {
   const translate = useTranslations();
