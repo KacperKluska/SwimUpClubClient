@@ -9,7 +9,7 @@ import { useTranslations } from '../../translations/src';
 
 interface Props {
   note: NoteI;
-  handleRemoveNote: (note: NoteI) => void;
+  handleRemoveNote?: (note: NoteI) => void;
 }
 
 export const Note = ({ note, handleRemoveNote }: Props) => {
@@ -22,7 +22,7 @@ export const Note = ({ note, handleRemoveNote }: Props) => {
         params: { noteId: note.id },
         withCredentials: true,
       });
-      handleRemoveNote(note);
+      if (handleRemoveNote) handleRemoveNote(note);
       setSnackBar(translate('addWorkoutPage.notes.noteRemoved'), 'success');
     } catch (error) {
       const errorMsg = translate('addWorkoutPage.notes.noteRemovingError');
@@ -33,13 +33,15 @@ export const Note = ({ note, handleRemoveNote }: Props) => {
   return (
     <StyledNote>
       <Typography>{note.note}</Typography>
-      <StyledRemoveButton
-        color="error"
-        variant="outlined"
-        onClick={handleNoteRemove}
-      >
-        {translate('common.remove')}
-      </StyledRemoveButton>
+      {handleRemoveNote && (
+        <StyledRemoveButton
+          color="error"
+          variant="outlined"
+          onClick={handleNoteRemove}
+        >
+          {translate('common.remove')}
+        </StyledRemoveButton>
+      )}
     </StyledNote>
   );
 };

@@ -6,6 +6,7 @@ import { WorkoutSession } from '../../../components/WorkoutSession/WorkoutSessio
 import { WorkoutSessionDetails } from '../../../components/WorkoutSessionDetails/WorkoutSessionDetails.component';
 import { SnackBarContext } from '../../../context/SnackBarContext';
 import { UserContext } from '../../../context/UserContext';
+import { useLocalStorage } from '../../../hooks/useLocalStorage';
 import { useTranslations } from '../../../translations/src';
 import { handleAxiosError } from '../../../utils/handleAxiosError';
 import { WorkoutSession as WorkoutSessionI } from '../../AddWorkoutPage/AddWorkoutPage';
@@ -20,6 +21,7 @@ export const MyWorkoutSessionsPage = () => {
   const { setSnackBar } = useContext(SnackBarContext);
   const { user } = userData;
   const navigate = useNavigate();
+  const [, setStoredValue] = useLocalStorage('workoutSession', {});
 
   const getMyWorkoutSessions = async () => {
     try {
@@ -43,8 +45,9 @@ export const MyWorkoutSessionsPage = () => {
     getMyWorkoutSessions();
   }, []);
 
-  const handleView = (sessionId: string) => {
-    navigate(`/user/my-workout-sessions/${sessionId}`, { replace: true });
+  const handleView = (session: WorkoutSessionI) => {
+    setStoredValue(session);
+    navigate(`/user/my-workout-sessions/${session.id}`, { replace: true });
   };
 
   if (loading) return <LoadingPage />;
@@ -57,7 +60,7 @@ export const MyWorkoutSessionsPage = () => {
         </Typography>
         {workoutSessions.map((ws, index) => (
           <Box sx={{ my: 2 }} key={ws.id}>
-            <WorkoutSession sessionId={ws.id} handleView={handleView}>
+            <WorkoutSession workoutSession={ws} handleView={handleView}>
               <WorkoutSessionDetails
                 coach={ws.coach}
                 swimmer={ws.swimmer}

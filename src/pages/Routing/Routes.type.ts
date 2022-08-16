@@ -7,6 +7,7 @@ export const Routes = {
   DICTIONARY: '/dictionary',
   TIMER: '/timer',
   USER_MY_WORKOUT_SESSIONS: '/user/my-workout-sessions',
+  USER_MY_WORKOUT_SESSION: '/user/my-workout-sessions/:sessionId',
   USER_MY_COACHES: '/user/my-coaches',
   USER_COACH_PROFILE: '/user/coach/:userEmail',
   ADMIN_SWIMMERS: '/admin/swimmers',

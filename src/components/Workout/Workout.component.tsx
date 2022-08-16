@@ -13,7 +13,7 @@ import { useTranslations } from '../../translations/src';
 
 interface Props {
   workout: WorkoutI;
-  handleRemoveWorkout: (workout: WorkoutI) => void;
+  handleRemoveWorkout?: (workout: WorkoutI) => void;
 }
 
 export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
@@ -30,7 +30,7 @@ export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
       await axios.delete(`http://localhost:3001/workouts/${workout.id}`, {
         withCredentials: true,
       });
-      handleRemoveWorkout(workout);
+      if (handleRemoveWorkout) handleRemoveWorkout(workout);
       setSnackBar(
         translate('addWorkoutPage.workouts.workoutRemoved'),
         'success',
@@ -76,13 +76,15 @@ export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
           {workout.swimmingStyle.style}
         </div>
       </StyledData>
-      <StyledRemoveButton
-        color="error"
-        variant="outlined"
-        onClick={handleWorkoutRemove}
-      >
-        {translate('common.remove')}
-      </StyledRemoveButton>
+      {handleRemoveWorkout && (
+        <StyledRemoveButton
+          color="error"
+          variant="outlined"
+          onClick={handleWorkoutRemove}
+        >
+          {translate('common.remove')}
+        </StyledRemoveButton>
+      )}
     </StyledWorkout>
   );
 };

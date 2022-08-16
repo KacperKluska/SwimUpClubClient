@@ -16,8 +16,8 @@ interface Props {
   children: React.ReactNode;
   value: number;
   handleChange: (event: SyntheticEvent, newValue: number) => void;
-  addingNote: boolean;
-  addingWorkout: boolean;
+  addingNote?: boolean;
+  addingWorkout?: boolean;
 }
 
 export const AddWorkoutTabs = ({

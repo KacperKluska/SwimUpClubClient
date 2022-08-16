@@ -66,14 +66,8 @@ export interface Workout {
   workoutTypes: WorkoutType;
 }
 
-function isWorkoutSession(obj: any): obj is WorkoutSession {
-  return (
-    'id' in obj &&
-    'coach' in obj &&
-    'swimmer' in obj &&
-    'date' in obj &&
-    'message' in obj
-  );
+export function isWorkoutSession(obj: any): obj is WorkoutSession {
+  return 'id' in obj && 'coach' in obj && 'swimmer' in obj && 'date' in obj;
 }
 
 export const AddWorkoutPage = () => {
@@ -90,7 +84,7 @@ export const AddWorkoutPage = () => {
   const [storedValue, setStoredValue] = useLocalStorage('workoutSession', {});
   const navigate = useNavigate();
 
-  const storedSession = storedValue.data;
+  const storedSession = storedValue;
   let workoutSession;
   if (isWorkoutSession(storedSession)) {
     workoutSession = storedSession;

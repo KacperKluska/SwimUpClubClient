@@ -8,8 +8,8 @@ interface Props {
   addNote?: () => void;
   addWorkout?: () => void;
   deleteWorkout?: () => void;
-  addingNote: boolean;
-  addingWorkout: boolean;
+  addingNote?: boolean;
+  addingWorkout?: boolean;
   workoutSession?: WorkoutSession;
 }
 
@@ -17,8 +17,8 @@ export const AddWorkoutBar = ({
   addNote,
   addWorkout,
   deleteWorkout,
-  addingNote,
-  addingWorkout,
+  addingNote = true,
+  addingWorkout = true,
   workoutSession,
 }: Props) => {
   const translate = useTranslations();

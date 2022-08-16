@@ -60,7 +60,7 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
         { swimmerEmail: userEmail, coachEmail: user?.email ?? '' },
         { withCredentials: true },
       );
-      setWorkoutSession(result);
+      setWorkoutSession(result.data);
       setSnackBar(
         translate('mySwimmersPage.addedWorkoutSession', {
           value: userEmail,

@@ -1,15 +1,20 @@
 import { Button } from '@mui/material';
 import { ReactNode } from 'react';
+import { WorkoutSession as WorkoutSessionI } from '../../pages/AddWorkoutPage/AddWorkoutPage';
 import { useTranslations } from '../../translations/src';
 import { StyledWorkoutSession, StyledButtons } from './WorkoutSession.styles';
 
 interface Props {
   children: ReactNode;
-  handleView?: (sessionId: string) => void;
-  sessionId: string;
+  handleView?: (workoutSession: WorkoutSessionI) => void;
+  workoutSession: WorkoutSessionI;
 }
 
-export const WorkoutSession = ({ children, handleView, sessionId }: Props) => {
+export const WorkoutSession = ({
+  children,
+  handleView,
+  workoutSession,
+}: Props) => {
   const translate = useTranslations();
 
   return (
@@ -20,7 +25,7 @@ export const WorkoutSession = ({ children, handleView, sessionId }: Props) => {
           <Button
             variant="outlined"
             color="primary"
-            onClick={() => handleView(sessionId)}
+            onClick={() => handleView(workoutSession)}
           >
             {translate('myWorkoutSessionsPage.view')}
           </Button>
