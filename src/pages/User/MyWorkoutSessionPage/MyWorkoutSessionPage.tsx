@@ -43,7 +43,7 @@ export const MyWorkoutSessionPage = () => {
       });
       setNotes(result.data.notes);
     } catch (error) {
-      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      const errorMsg = translate('myWorkoutSessionsPage.sessionPage.notesLoadingError');
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -56,7 +56,7 @@ export const MyWorkoutSessionPage = () => {
       });
       setWorkouts(result.data.workouts);
     } catch (error) {
-      const errorMsg = translate('addWorkoutPage.sessionRemoveError');
+      const errorMsg = translate('myWorkoutSessionsPage.sessionPage.workoutsLoadingError');
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };

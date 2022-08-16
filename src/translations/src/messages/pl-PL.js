@@ -146,6 +146,12 @@ export default {
       view: 'Zobacz szczegóły',
       loadingError:
         'Wystąpił nieoczekiwany błąd podczas wczytywania sesji treningowych.',
+      sessionPage: {
+        workoutsLoadingError:
+          'Wystąpił nieoczekiwany błąd podczas wczytywania treningow.',
+        notesLoadingError:
+          'Wystąpił nieoczekiwany błąd podczas wczytywania notatek.',
+      },
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
