@@ -179,6 +179,7 @@ export default {
       stop: 'Stop',
       copy: 'Copy',
       copiedMessage: 'Meantime copied!',
+      meantimes: 'Meantimes:',
     },
     usersList: {
       usersListTitle: 'Swimmers list',

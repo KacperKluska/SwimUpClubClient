@@ -1,4 +1,4 @@
-import { Alert, Snackbar } from '@mui/material';
+import { Alert, Button, Snackbar, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useTranslations } from '../../translations/src';
 import { getTimeString } from '../../utils/getTimeString';
@@ -34,69 +34,95 @@ export const Timer = () => {
       </StyledHeader>
       <StyledButtons>
         {!timerOn && time === 0 && (
-          <button type="button" onClick={() => setTimerOn(true)}>
-            {translate('timer.start')}
-          </button>
-        )}
-        {timerOn && (
-          <button type="button" onClick={() => setTimerOn(false)}>
-            {translate('timer.pause')}
-          </button>
-        )}
-        {timerOn && (
-          <button
+          <Button
             type="button"
+            variant="outlined"
+            color="success"
+            onClick={() => setTimerOn(true)}
+          >
+            {translate('timer.start')}
+          </Button>
+        )}
+        {timerOn && (
+          <Button
+            type="button"
+            variant="outlined"
+            color="success"
+            onClick={() => setTimerOn(false)}
+          >
+            {translate('timer.pause')}
+          </Button>
+        )}
+        {timerOn && (
+          <Button
+            type="button"
+            variant="outlined"
+            color="primary"
             onClick={() => setMeantime([...meantime, time])}
           >
             {translate('timer.split')}
-          </button>
+          </Button>
         )}
         {!timerOn && time > 0 && (
-          <button
+          <Button
             type="button"
+            variant="outlined"
+            color="error"
             onClick={() => {
               setTime(0);
               setMeantime([0]);
             }}
           >
             {translate('timer.reset')}
-          </button>
+          </Button>
         )}
         {!timerOn && time > 0 && (
-          <button type="button" onClick={() => setTimerOn(true)}>
-            {translate('timer.resume')}
-          </button>
-        )}
-        {!timerOn && time > 0 && (
-          <button
+          <Button
             type="button"
+            variant="outlined"
+            color="success"
+            onClick={() => setTimerOn(true)}
+          >
+            {translate('timer.resume')}
+          </Button>
+        )}
+        {/* {!timerOn && time > 0 && (
+          <Button
+            type="button"
+            variant="outlined"
+            color="primary"
             onClick={() => {
               navigator.clipboard.writeText(`${time}`);
               handleSnackBarClick();
             }}
           >
             {translate('timer.copy')}
-          </button>
-        )}
+          </Button>
+        )} */}
       </StyledButtons>
-      <div>
+      <section>
+        {meantime.length > 1 && (
+          <Typography variant="h5">{translate('timer.meantimes')}</Typography>
+        )}
         {meantime.map((item, index) =>
           index ? (
             <div>
-              {`#${index} ${getTimeString(item)} `}
-              <button
+              {`#${index}. ${getTimeString(item)} `}
+              {/* <Button
                 type="button"
+                variant="outlined"
+                color="primary"
                 onClick={() => {
                   navigator.clipboard.writeText(`${item}`);
                   handleSnackBarClick();
                 }}
               >
                 {translate('timer.copy')}
-              </button>
+              </Button> */}
             </div>
           ) : null,
         )}
-      </div>
+      </section>
       <Snackbar
         open={open}
         autoHideDuration={2000}
@@ -107,7 +133,7 @@ export const Timer = () => {
           severity="success"
           sx={{ width: '100%' }}
         >
-          Midtime copied!
+          {translate('timer.copiedMessage')}
         </Alert>
       </Snackbar>
     </StyledTimer>

@@ -185,6 +185,7 @@ export default {
       stop: 'Stop',
       copy: 'Kopiuj',
       copiedMessage: 'Międzyczas skopiowany',
+      meantimes: 'Międzyczasy:',
     },
     usersList: {
       usersListTitle: 'Lista zawodników',

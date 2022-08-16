@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material';
 import { Box } from '@mui/system';
 import axios from 'axios';
 import { SyntheticEvent, useContext, useEffect, useState } from 'react';
@@ -9,6 +10,7 @@ import { AddWorkoutTabs } from '../../components/AddWorkoutTabs/AddWorkoutTabs.c
 import { TabPanel } from '../../components/AddWorkoutTabs/TabPanel.component';
 import { Note } from '../../components/Note/Note.component';
 import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
+import { Timer } from '../../components/Timer/Timer.component';
 import { Workout } from '../../components/Workout/Workout.component';
 import { SnackBarContext } from '../../context/SnackBarContext';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
@@ -244,7 +246,16 @@ export const AddWorkoutPage = () => {
           addingNote={addingNote}
         >
           {addingWorkout && (
-            <Box sx={{ p: '3rem' }}>
+            <Box
+              sx={{
+                p: '3rem',
+                display: 'flex',
+                gap: '1rem',
+                flexDirection: 'column',
+              }}
+            >
+              <Timer />
+              <Divider />
               <AddWorkout
                 workoutSessionId={storedSession.id}
                 closeAddingWorkout={closeAddingWorkout}
