@@ -5,6 +5,7 @@ import { CoachesPage } from '../Admin/CoachesPage/CoachesPage.component';
 import { SwimmersPage } from '../Admin/SwimmersPage/SwimmersPage.component';
 import { UserPage } from '../Admin/UserPage/UserPage.component';
 import { AllSwimmersPage } from '../AllSwimmersPage/AllSwimmersPage';
+import { CalendarPage as CoachCalendarPage } from '../Coach/CalendarPage/CalendarPage';
 import { WorkoutSessionPage } from '../Coach/WokoutSessionPage/WokoutSessionPage';
 import { WorkoutSessionsPage } from '../Coach/WokoutSessionsPage/WokoutSessionsPage';
 import { DictionaryPage } from '../DictionaryPage/DictionaryPage.component';
@@ -17,6 +18,7 @@ import { ProfilePage } from '../ProfilePage/ProfilePage.component';
 import { RegisterPage } from '../RegisterPage/RegisterPage.component';
 import { SettingsPage } from '../SettingsPage/SettingsPage.component';
 import { TimerPage } from '../TimerPage/TimerPage.component';
+import { CalendarPage as UserCalendarPage } from '../User/CalendarPage/CalendarPage';
 import { MyCoachesPage } from '../User/MyCoachesPage/MyCoachesPage';
 import { MyWorkoutSessionPage } from '../User/MyWorkoutSessionPage/MyWorkoutSessionPage';
 import { MyWorkoutSessionsPage } from '../User/MyWorkoutSessionsPage/MyWorkoutSessionsPage';
@@ -46,6 +48,7 @@ export const Routing = () => (
           element={<MyWorkoutSessionsPage />}
         />
         <Route path={routes.USER_COACH_PROFILE} element={<ProfilePage />} />
+        <Route path={routes.USER_CALENDAR} element={<UserCalendarPage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="COACH" />}>
         <Route path={routes.COACH_SWIMMER_PROFILE} element={<ProfilePage />} />
@@ -60,6 +63,7 @@ export const Routing = () => (
           path={routes.COACH_MY_WORKOUT_SESSION}
           element={<WorkoutSessionPage />}
         />
+        <Route path={routes.COACH_CALENDAR} element={<CoachCalendarPage />} />
       </Route>
       <Route element={<ProtectedRoute requiredRole="ADMIN" />}>
         <Route path={routes.REGISTER} element={<RegisterPage />} />

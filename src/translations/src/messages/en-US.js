@@ -141,15 +141,22 @@ export default {
     myWorkoutSessionsPage: {
       title: 'My Workout Sessions',
       view: 'View details',
-      loadingError: 'An unexpected error has occurred while fetching workout sessions data.',
+      loadingError:
+        'An unexpected error has occurred while fetching workout sessions data.',
       sessionPage: {
-        workoutsLoadingError: 'An unexpected error has occurred while fetching workouts data.',
-        notesLoadingError: 'An unexpected error has occurred while fetching notes data.'
-      } 
+        workoutsLoadingError:
+          'An unexpected error has occurred while fetching workouts data.',
+        notesLoadingError:
+          'An unexpected error has occurred while fetching notes data.',
+      },
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',
       joinTitle: 'Join to SwimUp Club today!',
+    },
+    calendarPage: {
+      title: 'My events',
+      loadingError: 'There was an error while loading your events.',
     },
     mainMenu: {
       cards: {

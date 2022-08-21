@@ -10,6 +10,7 @@ export const Routes = {
   USER_MY_WORKOUT_SESSION: '/user/my-workout-sessions/:sessionId',
   USER_MY_COACHES: '/user/my-coaches',
   USER_COACH_PROFILE: '/user/coach/:userEmail',
+  USER_CALENDAR: '/user/calendar',
   ADMIN_SWIMMERS: '/admin/swimmers',
   ADMIN_COACHES: '/admin/coaches',
   ADMIN_USER_PROFILE: '/admin/user/:userEmail',
@@ -19,4 +20,5 @@ export const Routes = {
   COACH_SWIMMER_PROFILE: '/coach/user/:userEmail',
   COACH_MY_WORKOUT_SESSIONS: '/coach/my-workout-sessions',
   COACH_MY_WORKOUT_SESSION: '/coach/my-workout-sessions/:sessionId',
+  COACH_CALENDAR: '/coach/calendar',
 };

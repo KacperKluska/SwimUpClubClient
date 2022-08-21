@@ -17,8 +17,8 @@ const getMenuItems = (
       return [
         { name: 'workouts', path: Routes.USER_MY_WORKOUT_SESSIONS },
         { name: 'coaches', path: Routes.USER_MY_COACHES },
-        { name: 'dictionary', path: Routes.HOME },
-        { name: 'calendar', path: Routes.HOME },
+        { name: 'dictionary', path: Routes.DICTIONARY },
+        { name: 'calendar', path: Routes.USER_CALENDAR },
         { name: 'timer', path: Routes.TIMER },
       ];
     case 'COACH':
@@ -26,7 +26,7 @@ const getMenuItems = (
         { name: 'swimmers', path: Routes.COACH_ALL_SWIMMERS },
         { name: 'mySwimmers', path: Routes.COACH_MY_SWIMMERS },
         { name: 'dictionary', path: Routes.DICTIONARY },
-        { name: 'calendar', path: Routes.HOME },
+        { name: 'calendar', path: Routes.COACH_CALENDAR },
         { name: 'timer', path: Routes.TIMER },
         { name: 'workouts', path: Routes.COACH_MY_WORKOUT_SESSIONS },
       ];
