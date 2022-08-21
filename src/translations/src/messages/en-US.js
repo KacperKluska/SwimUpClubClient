@@ -74,6 +74,21 @@ export default {
       passwordRepeated: 'Repeated password',
       passwordRepeatedPlaceholder: 'Repeat new password',
       changePassword: 'Change password',
+      addEvent: {
+        title: 'Add event for a swimmer',
+        text: 'Text',
+        dateAndTime: 'Start date and time',
+        duration: 'Duration time',
+        durationValues: {
+          hour: '1 hour',
+          twoHours: '2 hours',
+          threeHours: '3 hours',
+        },
+        button: 'Add event',
+        eventAdded: 'Added event to calendar.',
+        eventAddingError:
+          'There was an error when trying to add event to calendar.',
+      },
     },
     mySwimmersPage: {
       title: 'My swimmers',

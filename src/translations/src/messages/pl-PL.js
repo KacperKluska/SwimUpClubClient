@@ -75,6 +75,20 @@ export default {
       passwordRepeated: 'Powtórzone hasło',
       passwordRepeatedPlaceholder: 'Powtórz nowe hasło',
       changePassword: 'Zmień hasło',
+      addEvent: {
+        title: 'Dodaj wydarzenie dla użytkownika',
+        text: 'Treść',
+        dateAndTime: 'Data i czas rozpoczęcia',
+        duration: 'Czas trwania',
+        durationValues: {
+          hour: '1 godzina',
+          twoHours: '2 godziny',
+          threeHours: '3 godziny',
+        },
+        button: 'Dodaj wydarzenie',
+        eventAdded: 'Dodano wydarzenie do kalendarza.',
+        eventAddingError: 'Nie udało się dodać wydarzenia do kalendarza.',
+      },
     },
     mySwimmersPage: {
       title: 'Moi zawodnicy',

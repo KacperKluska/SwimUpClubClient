@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AddEvent } from '../../../components/AddEvent/AddEvent.component';
 import { OneColumnLayout } from '../../../components/OneColumnLayout/OneColumnLayout.component';
 import { UserData } from '../../../components/UserData/UserData.component';
 import { UserDetails } from '../../../components/UserDetails/UserDetails.component';
@@ -59,6 +60,7 @@ export const SwimmerProfilePage = () => {
       <OneColumnLayout>
         {!loading && (
           <>
+            <AddEvent swimmerEmail={data?.email} />
             <UserData data={data} />
             <UserDetails details={details} />
           </>
