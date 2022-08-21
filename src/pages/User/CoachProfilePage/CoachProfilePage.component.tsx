@@ -1,16 +1,13 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
-import { UserData } from '../../components/UserData/UserData.component';
-import { UserDetails } from '../../components/UserDetails/UserDetails.component';
-import { CenteredPaper } from '../CenteredPaper/CenteredPaper.component';
-import {
-  Data,
-  Details,
-} from '../SettingsPage/SettingsPage.component';
+import { OneColumnLayout } from '../../../components/OneColumnLayout/OneColumnLayout.component';
+import { UserData } from '../../../components/UserData/UserData.component';
+import { UserDetails } from '../../../components/UserDetails/UserDetails.component';
+import { CenteredPaper } from '../../CenteredPaper/CenteredPaper.component';
+import { Data, Details } from '../../SettingsPage/SettingsPage.component';
 
-export const ProfilePage = () => {
+export const CoachProfilePage = () => {
   const [data, setData] = useState<Data | null>(null);
   const [details, setDetails] = useState<Details | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
