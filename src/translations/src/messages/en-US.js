@@ -100,6 +100,11 @@ export default {
         updatePasswordError:
           'There was an error when trying to update user password.',
       },
+      genders: {
+        man: 'Man',
+        woman: 'Woman',
+        not_binary: 'Not binary',
+      },
     },
     mySwimmersPage: {
       title: 'My swimmers',
@@ -155,6 +160,15 @@ export default {
         workoutType: 'Workout type:',
         averageSpeed: 'Average speed: {value} km/h',
         averagePace: 'Average pace: {value} min/100m',
+      },
+      swimmingStyles: {
+        backstroke: 'Backstroke',
+        breaststroke: 'Breaststroke',
+        butterfly: 'Butterfly',
+        front_crawl: 'Front crawl',
+      },
+      workoutTypes: {
+        sprint: 'Sprint',
       },
     },
     allSwimmersPage: {

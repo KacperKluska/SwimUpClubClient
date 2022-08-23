@@ -97,6 +97,11 @@ export default {
         uploadImageError: 'Nie udało się dodać zdjęcia dla użytkownika.',
         updatePasswordError: 'Nie udało się zaktualizować hasła użytkownika.',
       },
+      genders: {
+        man: 'Mężczyzna',
+        woman: 'Kobieta',
+        not_binary: 'Nie binarny',
+      },
     },
     mySwimmersPage: {
       title: 'Moi zawodnicy',
@@ -153,6 +158,15 @@ export default {
         workoutType: 'Typ treningu:',
         averageSpeed: 'Średnia prędkość: {value} km/h',
         averagePace: 'Średnie tempo: {value} /100m',
+      },
+      swimmingStyles: {
+        backstroke: 'Grzbietowy',
+        breaststroke: 'Żabka',
+        butterfly: 'Motylkowy',
+        front_crawl: 'Kraul',
+      },
+      workoutTypes: {
+        sprint: 'Sprint',
       },
     },
     allSwimmersPage: {

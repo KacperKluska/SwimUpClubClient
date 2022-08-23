@@ -14,6 +14,7 @@ import {
   Details,
   UpdatedDetails,
 } from '../../pages/SettingsPage/SettingsPage.component';
+import { nameToSymbol } from '../../utils/nameToSymbol';
 
 interface Props {
   details: Details | null;
@@ -56,7 +57,13 @@ export const UserDetails = ({ details, handleUpdateCallback }: Props) => {
     },
     { label: 'weight', value: weight || undefined, editable: true },
     { label: 'height', value: height || undefined, editable: true },
-    { label: 'gender', value: details?.gender || undefined, editable: false },
+    {
+      label: 'gender',
+      value: details?.gender
+        ? translate(`settingsPage.genders.${nameToSymbol(details.gender)}`)
+        : undefined,
+      editable: false,
+    },
   ];
 
   return (

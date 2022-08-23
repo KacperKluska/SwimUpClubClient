@@ -104,6 +104,7 @@ export const AddWorkout = ({
         name="swimming-styles"
         title={translate('addWorkoutPage.workouts.swimmingStyle')}
         required
+        translatePrefix="addWorkoutPage.swimmingStyles"
       />
       <RadioGroupComponent
         values={poolLengths.map((pl) => pl.length)}
@@ -118,6 +119,7 @@ export const AddWorkout = ({
         name="workout-types"
         title={translate('addWorkoutPage.workouts.workoutType')}
         required
+        translatePrefix="addWorkoutPage.workoutTypes"
       />
       <StyledInputs>
         <TextField

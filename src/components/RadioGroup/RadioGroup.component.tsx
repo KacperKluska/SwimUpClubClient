@@ -5,6 +5,8 @@ import {
   Radio,
   RadioGroup,
 } from '@mui/material';
+import { useTranslations } from '../../translations/src';
+import { nameToSymbol } from '../../utils/nameToSymbol';
 
 interface Props {
   values: string[] | number[];
@@ -15,6 +17,7 @@ interface Props {
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   required?: boolean;
+  translatePrefix?: string;
 }
 
 export const RadioGroupComponent = ({
@@ -24,8 +27,11 @@ export const RadioGroupComponent = ({
   name,
   title,
   required = false,
+  translatePrefix,
 }: Props) => {
+  const translate = useTranslations();
   const label = `${name}-radio-group`;
+
   return (
     <FormControl required={required}>
       <FormLabel id={label}>{title}</FormLabel>
@@ -40,7 +46,9 @@ export const RadioGroupComponent = ({
           <FormControlLabel
             value={typeof value === 'string' ? value.toUpperCase() : value}
             control={<Radio required={required} />}
-            label={value}
+            label={
+              translatePrefix ? translate(`${translatePrefix}.${nameToSymbol(value)}`) : value
+            }
             key={value}
           />
         ))}
