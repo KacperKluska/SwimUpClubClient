@@ -238,6 +238,7 @@ export const AddWorkoutPage = () => {
           addingWorkout={addingWorkout}
           addingNote={addingNote}
           workoutSession={workoutSession}
+          removable
         />
         <AddWorkoutTabs
           handleChange={handleTabChange}

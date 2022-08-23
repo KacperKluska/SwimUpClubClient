@@ -17,9 +17,12 @@ import {
   isWorkoutSession,
 } from '../../AddWorkoutPage/AddWorkoutPage';
 import { handleAxiosError } from '../../../utils/handleAxiosError';
+import { UserContext } from '../../../context/UserContext';
 
 export const WorkoutSessionPage = () => {
   const translate = useTranslations();
+  const { userData } = useContext(UserContext);
+  const { user } = userData;
   const { setSnackBar } = useContext(SnackBarContext);
   const [tabValue, setTabValue] = useState(0);
   const [notes, setNotes] = useState<NoteI[]>([]);
@@ -82,6 +85,8 @@ export const WorkoutSessionPage = () => {
     }
   };
 
+  const canDeleteSession = () => storedSession.coach.email === user?.email;
+
   useEffect(() => {
     getNotes();
     getWorkouts();
@@ -93,6 +98,7 @@ export const WorkoutSessionPage = () => {
         <AddWorkoutBar
           workoutSession={workoutSession}
           deleteWorkout={handleDeleteWorkoutSession}
+          removable={canDeleteSession()}
         />
         <AddWorkoutTabs handleChange={handleTabChange} value={tabValue}>
           <TabPanel value={tabValue} index={0}>

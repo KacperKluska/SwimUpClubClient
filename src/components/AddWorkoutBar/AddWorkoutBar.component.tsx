@@ -11,6 +11,7 @@ interface Props {
   addingNote?: boolean;
   addingWorkout?: boolean;
   workoutSession?: WorkoutSession;
+  removable: boolean;
 }
 
 export const AddWorkoutBar = ({
@@ -20,6 +21,7 @@ export const AddWorkoutBar = ({
   addingNote = false,
   addingWorkout = false,
   workoutSession,
+  removable,
 }: Props) => {
   const translate = useTranslations();
   const dateToShow = workoutSession?.date.slice(0, 10);
@@ -52,7 +54,7 @@ export const AddWorkoutBar = ({
             {translate('addWorkoutPage.addNote')}
           </Button>
         )}
-        {deleteWorkout && (
+        {deleteWorkout && removable && (
           <Button
             variant="outlined"
             color="error"

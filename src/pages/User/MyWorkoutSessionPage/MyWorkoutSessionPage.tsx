@@ -43,7 +43,9 @@ export const MyWorkoutSessionPage = () => {
       });
       setNotes(result.data.notes);
     } catch (error) {
-      const errorMsg = translate('myWorkoutSessionsPage.sessionPage.notesLoadingError');
+      const errorMsg = translate(
+        'myWorkoutSessionsPage.sessionPage.notesLoadingError',
+      );
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -56,7 +58,9 @@ export const MyWorkoutSessionPage = () => {
       });
       setWorkouts(result.data.workouts);
     } catch (error) {
-      const errorMsg = translate('myWorkoutSessionsPage.sessionPage.workoutsLoadingError');
+      const errorMsg = translate(
+        'myWorkoutSessionsPage.sessionPage.workoutsLoadingError',
+      );
       handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
@@ -69,7 +73,7 @@ export const MyWorkoutSessionPage = () => {
   return (
     <CenteredPaper>
       <OneColumnLayout>
-        <AddWorkoutBar workoutSession={workoutSession} />
+        <AddWorkoutBar workoutSession={workoutSession} removable />
         <AddWorkoutTabs handleChange={handleTabChange} value={tabValue}>
           <TabPanel value={tabValue} index={0}>
             {workouts.length
