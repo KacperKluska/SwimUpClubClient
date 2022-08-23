@@ -15,6 +15,10 @@ export const lightTheme = createTheme({
     mode: 'light',
     primary: blue,
     secondary: grey,
+    background: {
+      paper: '#FFFDFA',
+      default: '#FFFDFA',
+    },
   },
 });
 

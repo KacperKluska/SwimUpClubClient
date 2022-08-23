@@ -2,6 +2,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { useTheme } from '@mui/material/styles';
 import {
   StyledPaper,
   StyledCopyright,
@@ -14,9 +15,17 @@ import { useTranslations } from '../../translations/src';
 
 export const AppFooter = () => {
   const translate = useTranslations();
+  const theme = useTheme();
 
   return (
-    <StyledPaper elevation={0}>
+    <StyledPaper
+      style={{
+        backgroundColor: `${
+          theme.palette.mode === 'dark' ? 'black' : '#121212'
+        }`,
+        color: 'white',
+      }}
+    >
       <StyledData>
         <StyledColumn>
           <StyledColumnHeader>{translate('footer.contact')}</StyledColumnHeader>
