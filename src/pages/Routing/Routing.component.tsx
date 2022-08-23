@@ -7,6 +7,7 @@ import { UserPage } from '../Admin/UserPage/UserPage.component';
 import { AllSwimmersPage } from '../AllSwimmersPage/AllSwimmersPage';
 import { CalendarPage as CoachCalendarPage } from '../Coach/CalendarPage/CalendarPage';
 import { SwimmerProfilePage } from '../Coach/SwimmerProfilePage/SwimmerProfilePage.component';
+import { SwimmerWorkoutSessionsPage } from '../Coach/SwimmerWorkoutSessionsPage/SwimmerWorkoutSessionsPage';
 import { WorkoutSessionPage } from '../Coach/WokoutSessionPage/WokoutSessionPage';
 import { WorkoutSessionsPage } from '../Coach/WokoutSessionsPage/WokoutSessionsPage';
 import { DictionaryPage } from '../DictionaryPage/DictionaryPage.component';
@@ -69,6 +70,10 @@ export const Routing = () => (
         <Route
           path={routes.COACH_MY_WORKOUT_SESSION}
           element={<WorkoutSessionPage />}
+        />
+        <Route
+          path={routes.COACH_SWIMMER_WORKOUT_SESSIONS}
+          element={<SwimmerWorkoutSessionsPage />}
         />
         <Route path={routes.COACH_CALENDAR} element={<CoachCalendarPage />} />
       </Route>

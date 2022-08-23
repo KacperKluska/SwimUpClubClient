@@ -52,6 +52,10 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
   const handleViewData = async (userEmail: string) => {
     navigate(`/coach/user/${userEmail}`, { replace: true });
   };
+  
+  const handleViewWorkoutSessions = async (userEmail: string) => {
+    navigate(`/coach/user/${userEmail}/workout-sessions/`, { replace: true });
+  };
 
   const handleStartWorkoutSession = async (userEmail: string) => {
     try {
@@ -97,6 +101,14 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
             onClick={() => handleViewData(row.email)}
           >
             {translate('mySwimmersPage.view')}
+          </Button>
+          <Button
+            type="button"
+            variant="outlined"
+            color="primary"
+            onClick={() => handleViewWorkoutSessions(row.email)}
+          >
+            {translate('mySwimmersPage.viewWorkoutSessions')}
           </Button>
           <Button
             type="button"

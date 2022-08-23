@@ -102,6 +102,7 @@ export default {
       remove: 'Delete',
       view: 'View',
       addWorkout: 'Add workout',
+      viewWorkoutSessions: 'Workout sessions',
     },
     addWorkoutPage: {
       session: 'Session',
@@ -164,6 +165,7 @@ export default {
         notesLoadingError:
           'An unexpected error has occurred while fetching notes data.',
       },
+      noSessions: 'There is no sessions for this user.',
     },
     homePage: {
       mainTitle: 'Track your score, beat the best',

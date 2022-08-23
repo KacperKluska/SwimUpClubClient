@@ -102,6 +102,7 @@ export default {
       remove: 'Usuń',
       view: 'Podgląd',
       addWorkout: 'Dodaj trening',
+      viewWorkoutSessions: 'Sesje treningowe',
     },
     addWorkoutPage: {
       session: 'Sesja',
@@ -166,6 +167,7 @@ export default {
         notesLoadingError:
           'Wystąpił nieoczekiwany błąd podczas wczytywania notatek.',
       },
+      noSessions: 'Nie ma żadnej sesji treningowej dla tego użytkownika.',
     },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
