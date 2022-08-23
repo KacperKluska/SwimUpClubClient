@@ -23,14 +23,14 @@ interface ServerCalendarEvent {
 }
 
 export const CalendarPage = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState<CalendarEvent[]>([]);
   const { setSnackBar } = useContext(SnackBarContext);
   const { userData } = useContext(UserContext);
   const { user } = userData;
   const translate = useTranslations();
 
-  const getUsers = async () => {
+  const getEvents = async () => {
     try {
       setLoading(true);
       const result = await axios.get(
@@ -58,7 +58,7 @@ export const CalendarPage = () => {
   };
 
   useEffect(() => {
-    getUsers();
+    getEvents();
   }, []);
 
   if (loading) return <LoadingPage />;
