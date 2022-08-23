@@ -1,9 +1,12 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ChangePassword } from '../../components/ChangePassword/ChangePassword.component';
 import { OneColumnLayout } from '../../components/OneColumnLayout/OneColumnLayout.component';
 import { UserData } from '../../components/UserData/UserData.component';
 import { UserDetails } from '../../components/UserDetails/UserDetails.component';
+import { SnackBarContext } from '../../context/SnackBarContext';
+import { useTranslations } from '../../translations/src';
+import { handleAxiosError } from '../../utils/handleAxiosError';
 import { CenteredPaper } from '../CenteredPaper/CenteredPaper.component';
 import { LoadingPage } from '../LoadingPage/LoadingPage';
 
@@ -40,6 +43,8 @@ export const SettingsPage = () => {
   const [data, setData] = useState<Data | null>(null);
   const [details, setDetails] = useState<Details | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+  const { setSnackBar } = useContext(SnackBarContext);
+  const translate = useTranslations();
 
   const getUserData = async () => {
     try {
@@ -69,6 +74,8 @@ export const SettingsPage = () => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
+      const errorMsg = translate('settingsPage.errors.loadingUserDataError');
+      handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
 
@@ -80,36 +87,46 @@ export const SettingsPage = () => {
   };
 
   const handleDataUpdate = async (updatedData: UpdatedData) => {
-    const { name, surname, email, originalEmail } = updatedData;
-    await axios.patch(
-      'http://localhost:3001/users/user',
-      {
-        newName: name,
-        newSurname: surname,
-        newEmail: email,
-      },
-      { withCredentials: true },
-    );
-    if (email !== originalEmail) {
-      await axios.delete('http://localhost:3001/auth/logout', {
-        withCredentials: true,
-      });
+    try {
+      const { name, surname, email, originalEmail } = updatedData;
+      await axios.patch(
+        'http://localhost:3001/users/user',
+        {
+          newName: name,
+          newSurname: surname,
+          newEmail: email,
+        },
+        { withCredentials: true },
+      );
+      if (email !== originalEmail) {
+        await axios.delete('http://localhost:3001/auth/logout', {
+          withCredentials: true,
+        });
+      }
+    } catch (error) {
+      const errorMsg = translate('settingsPage.errors.updateUserDataError');
+      handleAxiosError(error, setSnackBar, errorMsg);
     }
     window.location.reload();
   };
 
   const handleDetailsUpdate = async (updatedDetails: UpdatedDetails) => {
-    const { age, weight, height, phoneNumber } = updatedDetails;
-    await axios.patch(
-      'http://localhost:3001/users/user/details',
-      {
-        newAge: age,
-        newWeight: weight,
-        newHeight: height,
-        newPhoneNumber: phoneNumber,
-      },
-      { withCredentials: true },
-    );
+    try {
+      const { age, weight, height, phoneNumber } = updatedDetails;
+      await axios.patch(
+        'http://localhost:3001/users/user/details',
+        {
+          newAge: age,
+          newWeight: weight,
+          newHeight: height,
+          newPhoneNumber: phoneNumber,
+        },
+        { withCredentials: true },
+      );
+    } catch (error) {
+      const errorMsg = translate('settingsPage.errors.updateUserDetailsError');
+      handleAxiosError(error, setSnackBar, errorMsg);
+    }
     window.location.reload();
   };
 
@@ -123,22 +140,22 @@ export const SettingsPage = () => {
         withCredentials: true,
       });
     } catch (error) {
-      console.error(error);
+      const errorMsg = translate('settingsPage.errors.uploadImageError');
+      handleAxiosError(error, setSnackBar, errorMsg);
     }
     window.location.reload();
   };
 
   const handlePasswordChange = async (newPassword: string) => {
-    console.log('password', newPassword);
     try {
-      const result = await axios.patch(
+      await axios.patch(
         'http://localhost:3001/auth/change-password',
         { password: newPassword },
         { withCredentials: true },
       );
-      console.log('result', result);
     } catch (error) {
-      console.error(error);
+      const errorMsg = translate('settingsPage.errors.updatePasswordError');
+      handleAxiosError(error, setSnackBar, errorMsg);
     }
   };
 

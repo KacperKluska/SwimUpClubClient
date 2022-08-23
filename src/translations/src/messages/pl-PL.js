@@ -89,6 +89,14 @@ export default {
         eventAdded: 'Dodano wydarzenie do kalendarza.',
         eventAddingError: 'Nie udało się dodać wydarzenia do kalendarza.',
       },
+      errors: {
+        loadingUserDataError: 'Nie udało się załadować danych użytkownika.',
+        updateUserDataError: 'Nie udało się zaktualizować danych użytkownika.',
+        updateUserDetailsError:
+          'Nie udało się zaktualizować detali użytkownika.',
+        uploadImageError: 'Nie udało się dodać zdjęcia dla użytkownika.',
+        updatePasswordError: 'Nie udało się zaktualizować hasła użytkownika.',
+      },
     },
     mySwimmersPage: {
       title: 'Moi zawodnicy',

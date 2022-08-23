@@ -89,6 +89,17 @@ export default {
         eventAddingError:
           'There was an error when trying to add event to calendar.',
       },
+      errors: {
+        loadingUserDataError: 'There was an error when trying to user data.',
+        updateUserDataError:
+          'There was an error when trying to update user data.',
+        updateUserDetailsError:
+          'There was an error when trying to update user details.',
+        uploadImageError:
+          'There was an error when trying to upload user image.',
+        updatePasswordError:
+          'There was an error when trying to update user password.',
+      },
     },
     mySwimmersPage: {
       title: 'My swimmers',

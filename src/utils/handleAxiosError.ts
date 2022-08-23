@@ -7,7 +7,7 @@ export const handleAxiosError = (
   optionalError: string,
 ) => {
   if (axios.isAxiosError(error)) {
-    setSnackBar(error.response?.data?.message, 'error');
+    setSnackBar(`${optionalError}\n${error.response?.data?.message}`, 'error');
   } else {
     setSnackBar(optionalError, 'error');
   }
