@@ -85,7 +85,12 @@ export const WorkoutSessionPage = () => {
     }
   };
 
-  const canDeleteSession = () => storedSession.coach.email === user?.email;
+  const canDeleteSession = () => {
+    if (storedSession?.coach?.email === undefined || user?.email === undefined)
+      return false;
+
+    return storedSession.coach.email === user.email;
+  };
 
   useEffect(() => {
     getNotes();
