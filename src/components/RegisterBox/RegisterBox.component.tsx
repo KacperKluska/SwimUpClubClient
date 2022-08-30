@@ -276,7 +276,9 @@ export const RegisterBox = () => {
           </RadioGroup>
         </FormControl>
         {error ? ErrorMessage : null}
-        <Button type="submit">{translate('registerPage.signUp')}</Button>
+        <Button variant="outlined" color="primary" type="submit">
+          {translate('registerPage.signUp')}
+        </Button>
       </StyledBox>
     </StyledForm>
   );
