@@ -232,6 +232,7 @@ export default {
     },
     usersList: {
       usersListTitle: 'Swimmers list',
+      coachesListTitle: 'Coaches list',
       name: 'Name',
       surname: 'Surname',
       email: 'Email',

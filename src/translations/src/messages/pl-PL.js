@@ -231,6 +231,7 @@ export default {
     },
     usersList: {
       usersListTitle: 'Lista zawodników',
+      coachesListTitle: 'Lista trenerów',
       name: 'Imie',
       surname: 'Nazwisko',
       email: 'Email',

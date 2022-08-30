@@ -56,7 +56,7 @@ export const CoachesPage = () => {
     <CenteredPaper>
       <div>
         <Typography variant="h4">
-          {translate('usersList.usersListTitle')}
+          {translate('usersList.coachesListTitle')}
         </Typography>
         <UsersTable page={page} rowsPerPage={rowsPerPage} users={users} />
         <TablePagination
