@@ -167,6 +167,8 @@ export default {
       },
       workoutTypes: {
         sprint: 'Sprint',
+        warm_up: 'Rozgrzewka',
+        condition: 'Kondycja',
       },
     },
     allSwimmersPage: {
