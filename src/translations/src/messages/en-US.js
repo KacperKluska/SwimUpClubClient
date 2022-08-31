@@ -120,6 +120,9 @@ export default {
       addWorkout: 'Add workout',
       viewWorkoutSessions: 'Workout sessions',
     },
+    myCoachesPage: {
+      title: 'My coaches',
+    },
     addWorkoutPage: {
       session: 'Session',
       sessionId: 'Session #{value}',

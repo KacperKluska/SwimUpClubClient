@@ -117,6 +117,9 @@ export default {
       addWorkout: 'Dodaj trening',
       viewWorkoutSessions: 'Sesje treningowe',
     },
+    myCoachesPage: {
+      title: 'Moi trenerzy',
+    },
     addWorkoutPage: {
       session: 'Sesja',
       sessionId: 'Sesja #{value}',

@@ -65,9 +65,7 @@ export const MyCoachesPage = () => {
   return (
     <CenteredPaper>
       <div>
-        <Typography variant="h4">
-          {translate('myWorkoutSessionsPage.title')}
-        </Typography>
+        <Typography variant="h4">{translate('myCoachesPage.title')}</Typography>
         <SwimmersTable>
           {coaches
             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
