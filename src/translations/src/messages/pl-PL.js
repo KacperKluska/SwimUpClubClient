@@ -196,6 +196,19 @@ export default {
       },
       noSessions: 'Nie ma żadnej sesji treningowej dla tego użytkownika.',
     },
+    mySwimmerWorkoutSessionsPage: {
+      title: 'Sesje treningowe zawodnika',
+      view: 'Zobacz szczegóły',
+      loadingError:
+        'Wystąpił nieoczekiwany błąd podczas wczytywania sesji treningowych.',
+      sessionPage: {
+        workoutsLoadingError:
+          'Wystąpił nieoczekiwany błąd podczas wczytywania treningow.',
+        notesLoadingError:
+          'Wystąpił nieoczekiwany błąd podczas wczytywania notatek.',
+      },
+      noSessions: 'Nie ma żadnej sesji treningowej dla tego użytkownika.',
+    },
     homePage: {
       mainTitle: 'Śledź swoje wyniki, walcz z najlepszymi',
       joinTitle: 'Dołącz do SwimUp Club już dzisiaj!',

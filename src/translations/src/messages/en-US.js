@@ -197,6 +197,19 @@ export default {
       },
       noSessions: 'There is no sessions for this user.',
     },
+    mySwimmerWorkoutSessionsPage: {
+      title: 'Swimmer workout sessions',
+      view: 'View details',
+      loadingError:
+        'An unexpected error has occurred while fetching workout sessions data.',
+      sessionPage: {
+        workoutsLoadingError:
+          'An unexpected error has occurred while fetching workouts data.',
+        notesLoadingError:
+          'An unexpected error has occurred while fetching notes data.',
+      },
+      noSessions: 'There is no sessions for this user.',
+    },
     homePage: {
       mainTitle: 'Track your score, beat the best',
       joinTitle: 'Join to SwimUp Club today!',

@@ -33,7 +33,7 @@ export const SwimmerWorkoutSessionsPage = () => {
       );
       setWorkoutSessions(result.data.sessions);
     } catch (error) {
-      const errorMsg = translate('myWorkoutSessionsPage.loadingError');
+      const errorMsg = translate('mySwimmerWorkoutSessionsPage.loadingError');
       handleAxiosError(error, setSnackBar, errorMsg);
     }
     setLoading(false);
@@ -54,11 +54,11 @@ export const SwimmerWorkoutSessionsPage = () => {
     <CenteredPaper>
       <div>
         <Typography variant="h4">
-          {translate('myWorkoutSessionsPage.title')}
+          {translate('mySwimmerWorkoutSessionsPage.title')}
         </Typography>
         {!workoutSessions.length && (
           <Box sx={{ mb: 2 }}>
-            {translate('myWorkoutSessionsPage.noSessions')}
+            {translate('mySwimmerWorkoutSessionsPage.noSessions')}
           </Box>
         )}
         {workoutSessions.map((ws, index) => (
