@@ -10,6 +10,7 @@ import {
 } from './Workout.styles';
 import { handleAxiosError } from '../../utils/handleAxiosError';
 import { useTranslations } from '../../translations/src';
+import { nameToSymbol } from '../../utils/nameToSymbol';
 
 interface Props {
   workout: WorkoutI;
@@ -69,11 +70,19 @@ export const Workout = ({ workout, handleRemoveWorkout }: Props) => {
         </div>
         <div>
           {translate('addWorkoutPage.workouts.type')}&nbsp;
-          {workout.workoutTypes.type}
+          {translate(
+            `addWorkoutPage.workoutTypes.${nameToSymbol(
+              workout.workoutTypes.type,
+            )}`,
+          )}
         </div>
         <div>
           {translate('addWorkoutPage.workouts.style')}&nbsp;
-          {workout.swimmingStyle.style}
+          {translate(
+            `addWorkoutPage.swimmingStyles.${nameToSymbol(
+              workout.swimmingStyle.style,
+            )}`,
+          )}
         </div>
       </StyledData>
       {handleRemoveWorkout && (
