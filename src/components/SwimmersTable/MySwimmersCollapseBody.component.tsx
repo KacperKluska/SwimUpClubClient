@@ -50,9 +50,9 @@ export const MySwimmersCollapseBody = ({ row, open, refreshData }: Props) => {
   };
 
   const handleViewData = async (userEmail: string) => {
-    navigate(`/coach/user/${userEmail}`, { replace: true });
+    navigate(`/coach/my-user/${userEmail}`, { replace: true });
   };
-  
+
   const handleViewWorkoutSessions = async (userEmail: string) => {
     navigate(`/coach/user/${userEmail}/workout-sessions/`, { replace: true });
   };

@@ -1,13 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { AddEvent } from '../../../components/AddEvent/AddEvent.component';
 import { OneColumnLayout } from '../../../components/OneColumnLayout/OneColumnLayout.component';
 import { UserData } from '../../../components/UserData/UserData.component';
 import { UserDetails } from '../../../components/UserDetails/UserDetails.component';
 import { CenteredPaper } from '../../CenteredPaper/CenteredPaper.component';
 import { Data, Details } from '../../SettingsPage/SettingsPage.component';
 
-export const SwimmerProfilePage = () => {
+export const MySwimmerProfilePage = () => {
   const [data, setData] = useState<Data | null>(null);
   const [details, setDetails] = useState<Details | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -59,6 +60,7 @@ export const SwimmerProfilePage = () => {
       <OneColumnLayout>
         {!loading && (
           <>
+            <AddEvent swimmerEmail={data?.email} />
             <UserData data={data} />
             <UserDetails details={details} />
           </>
