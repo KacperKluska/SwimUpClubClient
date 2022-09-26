@@ -217,6 +217,8 @@ export default {
     calendarPage: {
       title: 'My events',
       loadingError: 'There was an error while loading your events.',
+      createSession:
+        'Are you sure you want to create workout session for {value}?',
     },
     mainMenu: {
       cards: {

@@ -45,7 +45,9 @@ export const CalendarPage = () => {
           (event: ServerCalendarEvent): CalendarEvent => ({
             start: new Date(event.dateStart),
             end: new Date(event.dateEnd),
-            title: event.title,
+            title: `Title: ${event.title},\nCoach: ${event.coach.name} ${event.coach.surname},\nSwimmer: ${event.swimmer.name} ${event.swimmer.surname},`,
+            coachEmail: event.coach.email,
+            swimmerEmail: event.swimmer.email,
           }),
         ),
       );

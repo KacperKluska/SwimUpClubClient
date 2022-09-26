@@ -216,6 +216,8 @@ export default {
     calendarPage: {
       title: 'Moje wydarzenia',
       loadingError: 'Wystąpił błąd podczas ładowania twoich wydarzeń.',
+      createSession:
+        'Czy jesteś pewien że chcesz założyć sesje treningową dla {value}?',
     },
     mainMenu: {
       cards: {
